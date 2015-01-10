@@ -1,5 +1,6 @@
 {
     "name": "prbdias/mbway-php",
+    "type": "library",
     "description": "PHP library to communicate with MB WAY API.",
     "license": "MIT",
     "authors": [
