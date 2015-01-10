@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MerchantFinancialWSService"
+	targetNamespace="http://financial.services.merchant.channelmanagermsp.sibs/"
+	xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:tns="http://financial.services.merchant.channelmanagermsp.sibs/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://financial.services.merchant.channelmanagermsp.sibs/"
+				schemaLocation="MBWayWebServiceSchema.xsd" />
+		</xsd:schema>
+	</types>
+	<message name="requestFinancialOperationResponse">
+		<part name="parameters" element="tns:requestFinancialOperationResponse"></part>
+	</message>
+	<message name="requestFinancialOperation">
+		<part name="parameters" element="tns:requestFinancialOperation"></part>
+	</message>
+	<portType name="MerchantFinancialOperationWS">
+		<operation name="requestFinancialOperation">
+			<input message="tns:requestFinancialOperation"
+				wsam:Action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest">
+			</input>
+			<output message="tns:requestFinancialOperationResponse"
+				wsam:Action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationResponse">
+			</output>
+		</operation>
+	</portType>
+
+	<binding name="MerchantFinancialOperationWSPortBinding" type="tns:MerchantFinancialOperationWS">
+		<wsaw:UsingAddressing required="false" />
+		<wsp:PolicyReference
+			URI="#MerchantFinancialOperationWSPortBinding_WSAM_Addressing_Policy" />
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="requestFinancialOperation">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+
+	<service name="MerchantFinancialOperationWSService">
+		<port name="MerchantFinancialOperationWSPort" binding="tns:MerchantFinancialOperationWSPortBinding">
+			<soap:address
+				location="http://qly.mbway.pt/Merchant/requestFinancialOperationWS" />
+		</port>
+	</service>
+	<wsp:Policy
+		wsu:Id="MerchantFinancialOperationWSPortBinding_WSAM_Addressing_Policy">
+		<wsam:Addressing wsp:Optional="true">
+			<wsp:Policy />
+		</wsam:Addressing>
+	</wsp:Policy>
+</definitions>
