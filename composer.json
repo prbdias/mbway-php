@@ -8,14 +8,11 @@
             "email": "prbdias@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
     "require-dev": {
-        "wsdl2phpgenerator/wsdl2phpgenerator": "3.1.0"
+        "phpunit/phpunit": "@stable"
     },
+    "minimum-stability": "stable",
     "autoload": {
         "psr-0": { "prbdias\\mbway": "src/" }
-    },
-    "scripts": {
-        "post-update-cmd": "prbdias\\mbway\\MBWayGenerator::gen"
     }
 }
