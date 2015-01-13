@@ -1,20 +1,21 @@
 <?php
+namespace prbdias\mbway;
 
 class Merchant
 {
     /**
-     * @var iPAddress $iPAddress
+     * @var string $iPAddress
      */
     protected $iPAddress = null;
 
     /**
-     * @var posId $posId
+     * @var string $posId
      */
     protected $posId = null;
 
     /**
-     * @param iPAddress $iPAddress
-     * @param posId $posId
+     * @param string $iPAddress
+     * @param string $posId
      */
     public function __construct($iPAddress, $posId)
     {
@@ -23,7 +24,7 @@ class Merchant
     }
 
     /**
-     * @return iPAddress
+     * @return string
      */
     public function getIPAddress()
     {
@@ -31,7 +32,7 @@ class Merchant
     }
 
     /**
-     * @param iPAddress $iPAddress
+     * @param string $iPAddress
      * @return Merchant
      */
     public function setIPAddress($iPAddress)
@@ -41,7 +42,7 @@ class Merchant
     }
 
     /**
-     * @return posId
+     * @return string
      */
     public function getPosId()
     {
@@ -49,7 +50,7 @@ class Merchant
     }
 
     /**
-     * @param posId $posId
+     * @param string $posId
      * @return Merchant
      */
     public function setPosId($posId)
