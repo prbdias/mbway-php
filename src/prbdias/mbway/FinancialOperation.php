@@ -1,4 +1,5 @@
 <?php
+namespace prbdias\mbway;
 
 class FinancialOperation
 {
@@ -8,25 +9,25 @@ class FinancialOperation
     protected $amount = null;
 
     /**
-     * @var currencyCode $currencyCode
+     * @var string $currencyCode
      */
     protected $currencyCode = null;
 
     /**
-     * @var operationTypeCode $operationTypeCode
+     * @var string $operationTypeCode
      */
     protected $operationTypeCode = null;
 
     /**
-     * @var merchantOprId $merchantOprId
+     * @var string $merchantOprId
      */
     protected $merchantOprId = null;
 
     /**
      * @param int $amount
-     * @param currencyCode $currencyCode
-     * @param operationTypeCode $operationTypeCode
-     * @param merchantOprId $merchantOprId
+     * @param string $currencyCode
+     * @param string $operationTypeCode
+     * @param string $merchantOprId
      */
     public function __construct($amount, $currencyCode, $operationTypeCode, $merchantOprId)
     {
@@ -55,7 +56,7 @@ class FinancialOperation
     }
 
     /**
-     * @return currencyCode
+     * @return string
      */
     public function getCurrencyCode()
     {
@@ -63,7 +64,7 @@ class FinancialOperation
     }
 
     /**
-     * @param currencyCode $currencyCode
+     * @param string $currencyCode
      * @return FinancialOperation
      */
     public function setCurrencyCode($currencyCode)
@@ -73,7 +74,7 @@ class FinancialOperation
     }
 
     /**
-     * @return operationTypeCode
+     * @return string
      */
     public function getOperationTypeCode()
     {
@@ -81,7 +82,7 @@ class FinancialOperation
     }
 
     /**
-     * @param operationTypeCode $operationTypeCode
+     * @param string $operationTypeCode
      * @return FinancialOperation
      */
     public function setOperationTypeCode($operationTypeCode)
@@ -91,7 +92,7 @@ class FinancialOperation
     }
 
     /**
-     * @return merchantOprId
+     * @return string
      */
     public function getMerchantOprId()
     {
@@ -99,7 +100,7 @@ class FinancialOperation
     }
 
     /**
-     * @param merchantOprId $merchantOprId
+     * @param string $merchantOprId
      * @return FinancialOperation
      */
     public function setMerchantOprId($merchantOprId)

@@ -1,4 +1,5 @@
 <?php
+namespace prbdias\mbway;
 
 class MBWayClient extends \SoapClient
 {

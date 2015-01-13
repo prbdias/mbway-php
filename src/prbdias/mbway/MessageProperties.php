@@ -1,29 +1,30 @@
 <?php
+namespace prbdias\mbway;
 
 class MessageProperties
 {
     /**
-     * @var channel $channel
+     * @var string $channel
      */
     protected $channel = null;
 
     /**
-     * @var apiVersion $apiVersion
+     * @var string $apiVersion
      */
     protected $apiVersion = null;
 
     /**
-     * @var channelTypeCode $channelTypeCode
+     * @var string $channelTypeCode
      */
     protected $channelTypeCode = null;
 
     /**
-     * @var networkCode $networkCode
+     * @var string $networkCode
      */
     protected $networkCode = null;
 
     /**
-     * @var serviceType $serviceType
+     * @var string $serviceType
      */
     protected $serviceType = null;
 
@@ -33,11 +34,11 @@ class MessageProperties
     protected $timestamp = null;
 
     /**
-     * @param channel $channel
-     * @param apiVersion $apiVersion
-     * @param channelTypeCode $channelTypeCode
-     * @param networkCode $networkCode
-     * @param serviceType $serviceType
+     * @param string $channel
+     * @param string $apiVersion
+     * @param string $channelTypeCode
+     * @param string $networkCode
+     * @param string $serviceType
      * @param \DateTime $timestamp
      */
     public function __construct($channel, $apiVersion, $channelTypeCode, $networkCode, $serviceType, \DateTime $timestamp)
@@ -51,7 +52,7 @@ class MessageProperties
     }
 
     /**
-     * @return channel
+     * @return string
      */
     public function getChannel()
     {
@@ -59,7 +60,7 @@ class MessageProperties
     }
 
     /**
-     * @param channel $channel
+     * @param string $channel
      * @return MessageProperties
      */
     public function setChannel($channel)
@@ -69,7 +70,7 @@ class MessageProperties
     }
 
     /**
-     * @return apiVersion
+     * @return string
      */
     public function getApiVersion()
     {
@@ -77,7 +78,7 @@ class MessageProperties
     }
 
     /**
-     * @param apiVersion $apiVersion
+     * @param string $apiVersion
      * @return MessageProperties
      */
     public function setApiVersion($apiVersion)
@@ -87,7 +88,7 @@ class MessageProperties
     }
 
     /**
-     * @return channelTypeCode
+     * @return string
      */
     public function getChannelTypeCode()
     {
@@ -95,7 +96,7 @@ class MessageProperties
     }
 
     /**
-     * @param channelTypeCode $channelTypeCode
+     * @param string $channelTypeCode
      * @return MessageProperties
      */
     public function setChannelTypeCode($channelTypeCode)
@@ -105,7 +106,7 @@ class MessageProperties
     }
 
     /**
-     * @return networkCode
+     * @return string
      */
     public function getNetworkCode()
     {
@@ -113,7 +114,7 @@ class MessageProperties
     }
 
     /**
-     * @param networkCode $networkCode
+     * @param string $networkCode
      * @return MessageProperties
      */
     public function setNetworkCode($networkCode)
@@ -123,7 +124,7 @@ class MessageProperties
     }
 
     /**
-     * @return serviceType
+     * @return string
      */
     public function getServiceType()
     {
@@ -131,7 +132,7 @@ class MessageProperties
     }
 
     /**
-     * @param serviceType $serviceType
+     * @param string $serviceType
      * @return MessageProperties
      */
     public function setServiceType($serviceType)

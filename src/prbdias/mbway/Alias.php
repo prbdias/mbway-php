@@ -1,20 +1,21 @@
 <?php
+namespace prbdias\mbway;
 
 class Alias
 {
     /**
-     * @var aliasName $aliasName
+     * @var string $aliasName
      */
     protected $aliasName = null;
 
     /**
-     * @var aliasTypeCde $aliasTypeCde
+     * @var string $aliasTypeCde
      */
     protected $aliasTypeCde = null;
 
     /**
-     * @param aliasName $aliasName
-     * @param aliasTypeCde $aliasTypeCde
+     * @param string $aliasName
+     * @param string $aliasTypeCde
      */
     public function __construct($aliasName, $aliasTypeCde)
     {
@@ -23,7 +24,7 @@ class Alias
     }
 
     /**
-     * @return aliasName
+     * @return string
      */
     public function getAliasName()
     {
@@ -31,7 +32,7 @@ class Alias
     }
 
     /**
-     * @param aliasName $aliasName
+     * @param string $aliasName
      * @return Alias
      */
     public function setAliasName($aliasName)
@@ -41,7 +42,7 @@ class Alias
     }
 
     /**
-     * @return aliasTypeCde
+     * @return string
      */
     public function getAliasTypeCde()
     {
@@ -49,7 +50,7 @@ class Alias
     }
 
     /**
-     * @param aliasTypeCde $aliasTypeCde
+     * @param string $aliasTypeCde
      * @return Alias
      */
     public function setAliasTypeCde($aliasTypeCde)
