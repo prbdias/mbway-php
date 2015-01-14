@@ -1,64 +1,50 @@
 <?php
+namespace prbdias\mbway\FinancialOperation;
+
+use prbdias\mbway\Alias;
+use prbdias\mbway\Merchant;
+use prbdias\mbway\MessageProperties;
+use prbdias\mbway\FinancialOperation;
 
 class RequestFinancialOperationRequest
 {
     /**
-     * @var messageType $messageType
+     * @var string $messageType
      */
-    protected $messageType = null;
+    protected $messageType;
 
     /**
-     * @var aditionalData $aditionalData
+     * @var string $aditionalData
      */
-    protected $aditionalData = null;
+    protected $aditionalData;
 
     /**
      * @var Alias $alias
      */
-    protected $alias = null;
+    protected $alias;
 
     /**
      * @var FinancialOperation $financialOperation
      */
-    protected $financialOperation = null;
+    protected $financialOperation;
 
     /**
      * @var FinancialOperation $referencedFinancialOperation
      */
-    protected $referencedFinancialOperation = null;
+    protected $referencedFinancialOperation;
 
     /**
      * @var Merchant $merchant
      */
-    protected $merchant = null;
+    protected $merchant;
 
     /**
-     * @var messageProperties $messageProperties
+     * @var MessageProperties $messageProperties
      */
-    protected $messageProperties = null;
+    protected $messageProperties;
 
     /**
-     * @param messageType $messageType
-     * @param aditionalData $aditionalData
-     * @param Alias $alias
-     * @param FinancialOperation $financialOperation
-     * @param FinancialOperation $referencedFinancialOperation
-     * @param Merchant $merchant
-     * @param messageProperties $messageProperties
-     */
-    public function __construct($messageType, $aditionalData, $alias, $financialOperation, $referencedFinancialOperation, $merchant, $messageProperties)
-    {
-        $this->messageType = $messageType;
-        $this->aditionalData = $aditionalData;
-        $this->alias = $alias;
-        $this->financialOperation = $financialOperation;
-        $this->referencedFinancialOperation = $referencedFinancialOperation;
-        $this->merchant = $merchant;
-        $this->messageProperties = $messageProperties;
-    }
-
-    /**
-     * @return messageType
+     * @return string
      */
     public function getMessageType()
     {
@@ -66,7 +52,7 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param messageType $messageType
+     * @param string $messageType
      * @return RequestFinancialOperationRequest
      */
     public function setMessageType($messageType)
@@ -76,7 +62,7 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @return aditionalData
+     * @return string
      */
     public function getAditionalData()
     {
@@ -84,7 +70,7 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param aditionalData $aditionalData
+     * @param string $aditionalData
      * @return RequestFinancialOperationRequest
      */
     public function setAditionalData($aditionalData)
@@ -105,7 +91,7 @@ class RequestFinancialOperationRequest
      * @param Alias $alias
      * @return RequestFinancialOperationRequest
      */
-    public function setAlias($alias)
+    public function setAlias(Alias $alias)
     {
         $this->alias = $alias;
         return $this;
@@ -123,7 +109,7 @@ class RequestFinancialOperationRequest
      * @param FinancialOperation $financialOperation
      * @return RequestFinancialOperationRequest
      */
-    public function setFinancialOperation($financialOperation)
+    public function setFinancialOperation(FinancialOperation $financialOperation)
     {
         $this->financialOperation = $financialOperation;
         return $this;
@@ -141,7 +127,7 @@ class RequestFinancialOperationRequest
      * @param FinancialOperation $referencedFinancialOperation
      * @return RequestFinancialOperationRequest
      */
-    public function setReferencedFinancialOperation($referencedFinancialOperation)
+    public function setReferencedFinancialOperation(FinancialOperation $referencedFinancialOperation)
     {
         $this->referencedFinancialOperation = $referencedFinancialOperation;
         return $this;
@@ -159,14 +145,14 @@ class RequestFinancialOperationRequest
      * @param Merchant $merchant
      * @return RequestFinancialOperationRequest
      */
-    public function setMerchant($merchant)
+    public function setMerchant(Merchant $merchant)
     {
         $this->merchant = $merchant;
         return $this;
     }
 
     /**
-     * @return messageProperties
+     * @return MessageProperties
      */
     public function getMessageProperties()
     {
@@ -174,10 +160,10 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param messageProperties $messageProperties
+     * @param MessageProperties $messageProperties
      * @return RequestFinancialOperationRequest
      */
-    public function setMessageProperties($messageProperties)
+    public function setMessageProperties(MessageProperties $messageProperties)
     {
         $this->messageProperties = $messageProperties;
         return $this;

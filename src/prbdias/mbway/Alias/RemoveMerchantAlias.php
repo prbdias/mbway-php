@@ -1,22 +1,15 @@
 <?php
+namespace prbdias\mbway\Alias;
 
 class RemoveMerchantAlias
 {
     /**
-     * @var removeMerchantAliasRequest $arg0
+     * @var RemoveMerchantAliasRequest $arg0
      */
-    protected $arg0 = null;
+    protected $arg0;
 
     /**
-     * @param removeMerchantAliasRequest $arg0
-     */
-    public function __construct($arg0)
-    {
-        $this->arg0 = $arg0;
-    }
-
-    /**
-     * @return removeMerchantAliasRequest
+     * @return RemoveMerchantAliasRequest
      */
     public function getArg0()
     {
@@ -24,10 +17,10 @@ class RemoveMerchantAlias
     }
 
     /**
-     * @param removeMerchantAliasRequest $arg0
+     * @param RemoveMerchantAliasRequest $arg0
      * @return RemoveMerchantAlias
      */
-    public function setArg0($arg0)
+    public function setArg0(RemoveMerchantAliasRequest $arg0)
     {
         $this->arg0 = $arg0;
         return $this;

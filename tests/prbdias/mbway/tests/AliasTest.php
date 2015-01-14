@@ -9,23 +9,24 @@
  */
 
 namespace prbdias\mbway\tests;
+
 use prbdias\mbway\Alias;
 
 /**
  * Class AliasTest
  * @package prbdias\mbway\tests
  */
-class AliasTest extends \PHPUnit_Framework_TestCase {
-
+class AliasTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @return Alias
      */
     public function testConstructor()
     {
-        $alias = new Alias('aliasname', 'aliastypecode');
+        $alias = new Alias();
 
-        $this->assertSame($alias->getAliasName(), 'aliasname');
-        $this->assertSame($alias->getAliasTypeCde(), 'aliastypecode');
+        $this->assertNull($alias->getAliasName());
+        $this->assertNull($alias->getAliasTypeCde());
 
         return $alias;
     }

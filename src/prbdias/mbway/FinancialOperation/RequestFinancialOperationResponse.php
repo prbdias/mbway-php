@@ -1,19 +1,12 @@
 <?php
+namespace prbdias\mbway\FinancialOperation;
 
 class RequestFinancialOperationResponse
 {
     /**
      * @var RequestFinancialOperationResult $return
      */
-    protected $return = null;
-
-    /**
-     * @param RequestFinancialOperationResult $return
-     */
-    public function __construct($return)
-    {
-        $this->return = $return;
-    }
+    protected $return;
 
     /**
      * @return RequestFinancialOperationResult
@@ -27,7 +20,7 @@ class RequestFinancialOperationResponse
      * @param RequestFinancialOperationResult $return
      * @return RequestFinancialOperationResponse
      */
-    public function setReturn($return)
+    public function setReturn(RequestFinancialOperationResult $return)
     {
         $this->return = $return;
         return $this;

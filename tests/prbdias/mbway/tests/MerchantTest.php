@@ -10,24 +10,23 @@
 
 namespace prbdias\mbway\tests;
 
-
 use prbdias\mbway\Merchant;
 
 /**
  * Class MerchantTest
  * @package prbdias\mbway\tests
  */
-class MerchantTest extends \PHPUnit_Framework_TestCase {
-
+class MerchantTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @return Merchant
      */
     public function testConstructor()
     {
-        $merchant = new Merchant('85.23.98.1', 'posid');
+        $merchant = new Merchant();
 
-        $this->assertSame($merchant->getIPAddress(), '85.23.98.1');
-        $this->assertSame($merchant->getPosId(), 'posid');
+        $this->assertNull($merchant->getIPAddress());
+        $this->assertNull($merchant->getPosId());
 
         return $merchant;
     }

@@ -3,7 +3,8 @@ namespace prbdias\mbway;
 
 class MBWayClient extends \SoapClient
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct('wsdl\MBWayWebService.wsdl');
     }
 

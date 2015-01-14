@@ -6,22 +6,12 @@ class Alias
     /**
      * @var string $aliasName
      */
-    protected $aliasName = null;
+    protected $aliasName;
 
     /**
      * @var string $aliasTypeCde
      */
-    protected $aliasTypeCde = null;
-
-    /**
-     * @param string $aliasName
-     * @param string $aliasTypeCde
-     */
-    public function __construct($aliasName, $aliasTypeCde)
-    {
-        $this->aliasName = $aliasName;
-        $this->aliasTypeCde = $aliasTypeCde;
-    }
+    protected $aliasTypeCde;
 
     /**
      * @return string

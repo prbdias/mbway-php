@@ -1,54 +1,37 @@
 <?php
+namespace prbdias\mbway\FinancialOperation;
 
 class RequestFinancialOperationResult
 {
     /**
      * @var int $amount
      */
-    protected $amount = null;
+    protected $amount;
 
     /**
      * @var string $currencyCode
      */
-    protected $currencyCode = null;
+    protected $currencyCode;
 
     /**
-     * @var merchantOperationID $merchantOperationID
+     * @var string $merchantOperationID
      */
-    protected $merchantOperationID = null;
+    protected $merchantOperationID;
 
     /**
-     * @var statusCode $statusCode
+     * @var string $statusCode
      */
-    protected $statusCode = null;
+    protected $statusCode;
 
     /**
      * @var \DateTime $timestamp
      */
-    protected $timestamp = null;
+    protected $timestamp;
 
     /**
      * @var string $token
      */
-    protected $token = null;
-
-    /**
-     * @param int $amount
-     * @param string $currencyCode
-     * @param merchantOperationID $merchantOperationID
-     * @param statusCode $statusCode
-     * @param \DateTime $timestamp
-     * @param string $token
-     */
-    public function __construct($amount, $currencyCode, $merchantOperationID, $statusCode, \DateTime $timestamp, $token)
-    {
-        $this->amount = $amount;
-        $this->currencyCode = $currencyCode;
-        $this->merchantOperationID = $merchantOperationID;
-        $this->statusCode = $statusCode;
-        $this->timestamp = $timestamp->format(\DateTime::ATOM);
-        $this->token = $token;
-    }
+    protected $token;
 
     /**
      * @return int
@@ -87,7 +70,7 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @return merchantOperationID
+     * @return string
      */
     public function getMerchantOperationID()
     {
@@ -95,7 +78,7 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param merchantOperationID $merchantOperationID
+     * @param string $merchantOperationID
      * @return RequestFinancialOperationResult
      */
     public function setMerchantOperationID($merchantOperationID)
@@ -105,7 +88,7 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @return statusCode
+     * @return string
      */
     public function getStatusCode()
     {
@@ -113,7 +96,7 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param statusCode $statusCode
+     * @param string $statusCode
      * @return RequestFinancialOperationResult
      */
     public function setStatusCode($statusCode)

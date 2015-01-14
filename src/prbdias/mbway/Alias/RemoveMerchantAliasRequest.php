@@ -1,43 +1,32 @@
 <?php
+namespace prbdias\mbway\Alias;
+
+use prbdias\mbway\MessageProperties;
 
 class RemoveMerchantAliasRequest
 {
     /**
-     * @var messageType $messageType
+     * @var string $messageType
      */
-    protected $messageType = null;
+    protected $messageType;
 
     /**
      * @var Alias $alias
      */
-    protected $alias = null;
+    protected $alias;
 
     /**
      * @var Merchant $merchant
      */
-    protected $merchant = null;
+    protected $merchant;
 
     /**
-     * @var messageProperties $messageProperties
+     * @var MessageProperties $messageProperties
      */
-    protected $messageProperties = null;
+    protected $messageProperties;
 
     /**
-     * @param messageType $messageType
-     * @param Alias $alias
-     * @param Merchant $merchant
-     * @param messageProperties $messageProperties
-     */
-    public function __construct($messageType, $alias, $merchant, $messageProperties)
-    {
-        $this->messageType = $messageType;
-        $this->alias = $alias;
-        $this->merchant = $merchant;
-        $this->messageProperties = $messageProperties;
-    }
-
-    /**
-     * @return messageType
+     * @return string
      */
     public function getMessageType()
     {
@@ -45,7 +34,7 @@ class RemoveMerchantAliasRequest
     }
 
     /**
-     * @param messageType $messageType
+     * @param string $messageType
      * @return RemoveMerchantAliasRequest
      */
     public function setMessageType($messageType)
@@ -91,7 +80,7 @@ class RemoveMerchantAliasRequest
     }
 
     /**
-     * @return messageProperties
+     * @return MessageProperties
      */
     public function getMessageProperties()
     {
@@ -99,7 +88,7 @@ class RemoveMerchantAliasRequest
     }
 
     /**
-     * @param messageProperties $messageProperties
+     * @param MessageProperties $messageProperties
      * @return RemoveMerchantAliasRequest
      */
     public function setMessageProperties($messageProperties)
