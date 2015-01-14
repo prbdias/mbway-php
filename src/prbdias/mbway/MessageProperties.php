@@ -6,50 +6,32 @@ class MessageProperties
     /**
      * @var string $channel
      */
-    protected $channel = null;
+    protected $channel;
 
     /**
      * @var string $apiVersion
      */
-    protected $apiVersion = null;
+    protected $apiVersion;
 
     /**
      * @var string $channelTypeCode
      */
-    protected $channelTypeCode = null;
+    protected $channelTypeCode;
 
     /**
      * @var string $networkCode
      */
-    protected $networkCode = null;
+    protected $networkCode;
 
     /**
      * @var string $serviceType
      */
-    protected $serviceType = null;
+    protected $serviceType;
 
     /**
      * @var \DateTime $timestamp
      */
-    protected $timestamp = null;
-
-    /**
-     * @param string $channel
-     * @param string $apiVersion
-     * @param string $channelTypeCode
-     * @param string $networkCode
-     * @param string $serviceType
-     * @param \DateTime $timestamp
-     */
-    public function __construct($channel, $apiVersion, $channelTypeCode, $networkCode, $serviceType, \DateTime $timestamp)
-    {
-        $this->channel = $channel;
-        $this->apiVersion = $apiVersion;
-        $this->channelTypeCode = $channelTypeCode;
-        $this->networkCode = $networkCode;
-        $this->serviceType = $serviceType;
-        $this->timestamp = $timestamp->format(\DateTime::ATOM);
-    }
+    protected $timestamp;
 
     /**
      * @return string

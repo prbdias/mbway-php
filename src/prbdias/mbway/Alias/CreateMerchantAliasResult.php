@@ -1,47 +1,34 @@
 <?php
+namespace prbdias\mbway\Alias;
+
+use prbdias\mbway\Alias;
 
 class CreateMerchantAliasResult
 {
     /**
      * @var Alias $alias
      */
-    protected $alias = null;
+    protected $alias;
 
     /**
-     * @var operationId $operationId
+     * @var string $operationId
      */
-    protected $operationId = null;
+    protected $operationId;
 
     /**
-     * @var statusCode $statusCode
+     * @var string $statusCode
      */
-    protected $statusCode = null;
+    protected $statusCode;
 
     /**
      * @var \DateTime $timestamp
      */
-    protected $timestamp = null;
+    protected $timestamp;
 
     /**
      * @var string $token
      */
-    protected $token = null;
-
-    /**
-     * @param Alias $alias
-     * @param operationId $operationId
-     * @param statusCode $statusCode
-     * @param \DateTime $timestamp
-     * @param string $token
-     */
-    public function __construct($alias, $operationId, $statusCode, \DateTime $timestamp, $token)
-    {
-        $this->alias = $alias;
-        $this->operationId = $operationId;
-        $this->statusCode = $statusCode;
-        $this->timestamp = $timestamp->format(\DateTime::ATOM);
-        $this->token = $token;
-    }
+    protected $token;
 
     /**
      * @return Alias
@@ -55,14 +42,14 @@ class CreateMerchantAliasResult
      * @param Alias $alias
      * @return CreateMerchantAliasResult
      */
-    public function setAlias($alias)
+    public function setAlias(Alias $alias)
     {
         $this->alias = $alias;
         return $this;
     }
 
     /**
-     * @return operationId
+     * @return string
      */
     public function getOperationId()
     {
@@ -70,7 +57,7 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param operationId $operationId
+     * @param string $operationId
      * @return CreateMerchantAliasResult
      */
     public function setOperationId($operationId)
@@ -80,7 +67,7 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @return statusCode
+     * @return string
      */
     public function getStatusCode()
     {
@@ -88,7 +75,7 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param statusCode $statusCode
+     * @param string $statusCode
      * @return CreateMerchantAliasResult
      */
     public function setStatusCode($statusCode)

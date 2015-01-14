@@ -6,36 +6,22 @@ class FinancialOperation
     /**
      * @var int $amount
      */
-    protected $amount = null;
+    protected $amount;
 
     /**
      * @var string $currencyCode
      */
-    protected $currencyCode = null;
+    protected $currencyCode;
 
     /**
      * @var string $operationTypeCode
      */
-    protected $operationTypeCode = null;
+    protected $operationTypeCode;
 
     /**
      * @var string $merchantOprId
      */
-    protected $merchantOprId = null;
-
-    /**
-     * @param int $amount
-     * @param string $currencyCode
-     * @param string $operationTypeCode
-     * @param string $merchantOprId
-     */
-    public function __construct($amount, $currencyCode, $operationTypeCode, $merchantOprId)
-    {
-        $this->amount = $amount;
-        $this->currencyCode = $currencyCode;
-        $this->operationTypeCode = $operationTypeCode;
-        $this->merchantOprId = $merchantOprId;
-    }
+    protected $merchantOprId;
 
     /**
      * @return int

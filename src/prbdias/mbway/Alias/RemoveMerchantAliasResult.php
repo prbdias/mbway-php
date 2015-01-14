@@ -1,33 +1,24 @@
 <?php
+namespace prbdias\mbway\Alias;
+
+use prbdias\mbway\Alias;
 
 class RemoveMerchantAliasResult
 {
     /**
      * @var Alias $alias
      */
-    protected $alias = null;
+    protected $alias;
 
     /**
-     * @var statusCode $statusCode
+     * @var string $statusCode
      */
-    protected $statusCode = null;
+    protected $statusCode;
 
     /**
      * @var \DateTime $timestamp
      */
-    protected $timestamp = null;
-
-    /**
-     * @param Alias $alias
-     * @param statusCode $statusCode
-     * @param \DateTime $timestamp
-     */
-    public function __construct($alias, $statusCode, \DateTime $timestamp)
-    {
-        $this->alias = $alias;
-        $this->statusCode = $statusCode;
-        $this->timestamp = $timestamp->format(\DateTime::ATOM);
-    }
+    protected $timestamp;
 
     /**
      * @return Alias
@@ -41,14 +32,14 @@ class RemoveMerchantAliasResult
      * @param Alias $alias
      * @return RemoveMerchantAliasResult
      */
-    public function setAlias($alias)
+    public function setAlias(Alias $alias)
     {
         $this->alias = $alias;
         return $this;
     }
 
     /**
-     * @return statusCode
+     * @return string
      */
     public function getStatusCode()
     {
@@ -56,7 +47,7 @@ class RemoveMerchantAliasResult
     }
 
     /**
-     * @param statusCode $statusCode
+     * @param string $statusCode
      * @return RemoveMerchantAliasResult
      */
     public function setStatusCode($statusCode)

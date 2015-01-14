@@ -6,22 +6,13 @@ class Merchant
     /**
      * @var string $iPAddress
      */
-    protected $iPAddress = null;
+    protected $iPAddress;
 
     /**
      * @var string $posId
      */
-    protected $posId = null;
+    protected $posId;
 
-    /**
-     * @param string $iPAddress
-     * @param string $posId
-     */
-    public function __construct($iPAddress, $posId)
-    {
-        $this->iPAddress = $iPAddress;
-        $this->posId = $posId;
-    }
 
     /**
      * @return string

@@ -1,50 +1,39 @@
 <?php
+namespace prbdias\mbway\Alias;
+
+use prbdias\mbway\Alias;
+use prbdias\mbway\Merchant;
+use prbdias\mbway\MessageProperties;
 
 class CreateMerchantAliasRequest
 {
     /**
-     * @var messageType $messageType
+     * @var string $messageType
      */
-    protected $messageType = null;
+    protected $messageType;
 
     /**
      * @var Alias $alias
      */
-    protected $alias = null;
+    protected $alias;
 
     /**
      * @var Merchant $merchant
      */
-    protected $merchant = null;
+    protected $merchant;
 
     /**
-     * @var messageProperties $messageProperties
+     * @var MessageProperties $messageProperties
      */
-    protected $messageProperties = null;
+    protected $messageProperties;
 
     /**
      * @var Alias $newAlias
      */
-    protected $newAlias = null;
+    protected $newAlias;
 
     /**
-     * @param messageType $messageType
-     * @param Alias $alias
-     * @param Merchant $merchant
-     * @param messageProperties $messageProperties
-     * @param Alias $newAlias
-     */
-    public function __construct($messageType, $alias, $merchant, $messageProperties, $newAlias)
-    {
-        $this->messageType = $messageType;
-        $this->alias = $alias;
-        $this->merchant = $merchant;
-        $this->messageProperties = $messageProperties;
-        $this->newAlias = $newAlias;
-    }
-
-    /**
-     * @return messageType
+     * @return string
      */
     public function getMessageType()
     {
@@ -52,7 +41,7 @@ class CreateMerchantAliasRequest
     }
 
     /**
-     * @param messageType $messageType
+     * @param string $messageType
      * @return CreateMerchantAliasRequest
      */
     public function setMessageType($messageType)
@@ -73,7 +62,7 @@ class CreateMerchantAliasRequest
      * @param Alias $alias
      * @return CreateMerchantAliasRequest
      */
-    public function setAlias($alias)
+    public function setAlias(Alias $alias)
     {
         $this->alias = $alias;
         return $this;
@@ -91,14 +80,14 @@ class CreateMerchantAliasRequest
      * @param Merchant $merchant
      * @return CreateMerchantAliasRequest
      */
-    public function setMerchant($merchant)
+    public function setMerchant(Merchant $merchant)
     {
         $this->merchant = $merchant;
         return $this;
     }
 
     /**
-     * @return messageProperties
+     * @return MessageProperties
      */
     public function getMessageProperties()
     {
@@ -106,10 +95,10 @@ class CreateMerchantAliasRequest
     }
 
     /**
-     * @param messageProperties $messageProperties
+     * @param MessageProperties $messageProperties
      * @return CreateMerchantAliasRequest
      */
-    public function setMessageProperties($messageProperties)
+    public function setMessageProperties(MessageProperties $messageProperties)
     {
         $this->messageProperties = $messageProperties;
         return $this;
@@ -127,7 +116,7 @@ class CreateMerchantAliasRequest
      * @param Alias $newAlias
      * @return CreateMerchantAliasRequest
      */
-    public function setNewAlias($newAlias)
+    public function setNewAlias(Alias $newAlias)
     {
         $this->newAlias = $newAlias;
         return $this;

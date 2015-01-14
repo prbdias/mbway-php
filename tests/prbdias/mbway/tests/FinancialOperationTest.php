@@ -10,25 +10,25 @@
 
 namespace prbdias\mbway\tests;
 
-
 use prbdias\mbway\FinancialOperation;
 
 /**
  * Class FinancialOperationTest
  * @package prbdias\mbway\tests
  */
-class FinancialOperationTest extends \PHPUnit_Framework_TestCase {
+class FinancialOperationTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @return FinancialOperation
      */
     public function testConstructor()
     {
-        $financialOperation = new FinancialOperation(1, 'EUR', 'operationtypecode', 'merchantoprid');
+        $financialOperation = new FinancialOperation();
 
-        $this->assertSame($financialOperation->getAmount(), 1);
-        $this->assertSame($financialOperation->getCurrencyCode(), 'EUR');
-        $this->assertSame($financialOperation->getOperationTypeCode(), 'operationtypecode');
-        $this->assertSame($financialOperation->getMerchantOprId(), 'merchantoprid');
+        $this->assertNull($financialOperation->getAmount());
+        $this->assertNull($financialOperation->getCurrencyCode());
+        $this->assertNull($financialOperation->getOperationTypeCode());
+        $this->assertNull($financialOperation->getMerchantOprId());
 
         return $financialOperation;
     }

@@ -10,27 +10,26 @@
 
 namespace prbdias\mbway\tests;
 
-
 use prbdias\mbway\MessageProperties;
 
 /**
  * Class MessagePropertiesTest
  * @package prbdias\mbway\tests
  */
-class MessagePropertiesTest extends \PHPUnit_Framework_TestCase {
+class MessagePropertiesTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @return MessageProperties
      */
     public function testConstructor()
     {
-        $datetime = date_create("2013-03-15");
-        $messageProperties = new MessageProperties('channel', 'apiversion', 'channeltypecode', 'networkcode', 'servicetype',  $datetime);
-        $this->assertSame($messageProperties->getChannel(), 'channel');
-        $this->assertSame($messageProperties->getApiVersion(), 'apiversion');
-        $this->assertSame($messageProperties->getChannelTypeCode(), 'channeltypecode');
-        $this->assertSame($messageProperties->getNetworkCode(), 'networkcode');
-        $this->assertSame($messageProperties->getServiceType(), 'servicetype');
-        $this->assertEquals($messageProperties->getTimestamp(), $datetime);
+        $messageProperties = new MessageProperties();
+        $this->assertNull($messageProperties->getChannel());
+        $this->assertNull($messageProperties->getApiVersion());
+        $this->assertNull($messageProperties->getChannelTypeCode());
+        $this->assertNull($messageProperties->getNetworkCode());
+        $this->assertNull($messageProperties->getServiceType());
+        $this->assertNull($messageProperties->getTimestamp());
 
         return $messageProperties;
     }
@@ -57,5 +56,4 @@ class MessagePropertiesTest extends \PHPUnit_Framework_TestCase {
         $this->assertSame($messageProperties->getServiceType(), 'servicetype2');
         $this->assertEquals($messageProperties->getTimestamp(), $datetime);
     }
-
 }

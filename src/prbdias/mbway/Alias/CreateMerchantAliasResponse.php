@@ -1,22 +1,15 @@
 <?php
+namespace prbdias\mbway\Alias;
 
 class CreateMerchantAliasResponse
 {
     /**
-     * @var createMerchantAliasResult $return
+     * @var CreateMerchantAliasResult $return
      */
-    protected $return = null;
+    protected $return;
 
     /**
-     * @param createMerchantAliasResult $return
-     */
-    public function __construct($return)
-    {
-        $this->return = $return;
-    }
-
-    /**
-     * @return createMerchantAliasResult
+     * @return CreateMerchantAliasResult
      */
     public function getReturn()
     {
@@ -24,10 +17,10 @@ class CreateMerchantAliasResponse
     }
 
     /**
-     * @param createMerchantAliasResult $return
+     * @param CreateMerchantAliasResult $return
      * @return CreateMerchantAliasResponse
      */
-    public function setReturn($return)
+    public function setReturn(CreateMerchantAliasResult $return)
     {
         $this->return = $return;
         return $this;
