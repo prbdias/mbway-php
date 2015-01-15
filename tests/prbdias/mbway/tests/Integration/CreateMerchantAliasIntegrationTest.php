@@ -23,11 +23,11 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase {
         $testArgument = new CreateMerchantAliasRequest();
         /* Setting the parameters */
         $testAlias = new Alias();
-        $testAlias->setAliasName("customer@test->com");
+        $testAlias->setAliasName("customer@test.com");
         $testAlias->setAliasTypeCde("002");
         $testArgument->setAlias($testAlias);
         $testMerchant = new Merchant();
-        $testMerchant->setIPAddress("255->255->255->255");
+        $testMerchant->setIPAddress("255.255.255.255");
         $testMerchant->setPosId("200");
         $testArgument->setMerchant($testMerchant);
         $testMsgProps = new MessageProperties();
