@@ -1,16 +1,23 @@
 <?php
 namespace prbdias\mbway;
 
+use prbdias\mbway\Alias\CreateMerchantAlias;
+use prbdias\mbway\Alias\CreateMerchantAliasResponse;
+use prbdias\mbway\Alias\RemoveMerchantAlias;
+use prbdias\mbway\Alias\RemoveMerchantAliasResponse;
+use prbdias\mbway\FinancialOperation\RequestFinancialOperation;
+use prbdias\mbway\FinancialOperation\RequestFinancialOperationResponse;
+
 class MBWayClient extends \SoapClient
 {
     public function __construct()
     {
-        parent::__construct('wsdl\MBWayWebService.wsdl');
+        parent::__construct('./wsdl/MerchantAliasWSService.wsdl');
     }
 
     /**
      * @param CreateMerchantAlias $parameters
-     * @return createMerchantAliasResponse
+     * @return CreateMerchantAliasResponse
      */
     public function createMerchantAlias(CreateMerchantAlias $parameters)
     {
@@ -18,8 +25,8 @@ class MBWayClient extends \SoapClient
     }
 
     /**
-     * @param removeMerchantAlias $parameters
-     * @return removeMerchantAliasResponse
+     * @param RemoveMerchantAlias $parameters
+     * @return RemoveMerchantAliasResponse
      */
     public function removeMerchantAlias(RemoveMerchantAlias $parameters)
     {

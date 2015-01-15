@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.4/phpunit.xsd"
-         bootstrap="tests/bootstrap.php"
+         bootstrap="./tests/bootstrap.php"
          backupGlobals="false"
-         verbose="true"
          colors="true">
     <testsuites>
         <testsuite name="MBWay Test Suite">
@@ -11,7 +10,20 @@
         </testsuite>
     </testsuites>
 
+    <groups>
+        <exclude>
+            <group>integration</group>
+        </exclude>
+    </groups>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+
     <php>
-        <const name="MBWAY_INTEGRATION_TESTS" value="false"/>
+        <const name="MBWAY_RUN_INTEGRATION_TESTS" value="false" />
+        <const name="MBWAY_CONFIG_MERCHANT_POSID" value="2897" />
     </php>
 </phpunit>
