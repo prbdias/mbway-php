@@ -1,8 +1,22 @@
 <?php
 namespace prbdias\mbway;
 
+/**
+ * Class FinancialOperation
+ * @package prbdias\mbway
+ */
 class FinancialOperation
 {
+    /**
+     * FinancialOperation Type Codes
+     */
+    public static $PURCHASE = "022";
+    public static $RETURN = "023";
+    public static $PURCHASE_AUTHORIZATION = "024";
+    public static $PURCHASE_AFTER_AUTHORIZATION = "025";
+    public static $AUTHORIZATION_CANCEL = "026";
+    public static $ANNULMENT = "048";
+
     /**
      * @var int $amount
      */
@@ -14,6 +28,12 @@ class FinancialOperation
     protected $currencyCode;
 
     /**
+     * 022 – Compra
+     * 023 – Devolução
+     * 024 – Autorização de compra
+     * 025 – Compra após autorização
+     * 026 – Cancelamento de autorização
+     * 048 – Anulação
      * @var string $operationTypeCode
      */
     protected $operationTypeCode;

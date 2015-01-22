@@ -11,11 +11,17 @@
 namespace prbdias\mbway\tests\Integration;
 
 
+use prbdias\mbway\Config;
+
 class IntegrationTestCase extends  \PHPUnit_Framework_TestCase{
     public function setUp()
     {
         if (MBWAY_RUN_INTEGRATION_TESTS === false) {
             $this->markTestSkipped('Integration tests are not enabled');
         }
+    }
+
+    public function getConfig(){
+        return new Config(MBWAY_SSL_CERT_PATH, MBWAY_SSL_CERT_PASS);
     }
 }

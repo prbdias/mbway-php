@@ -10,6 +10,13 @@
 
 namespace prbdias\mbway\tests\Integration;
 
+use prbdias\mbway\Alias;
+use prbdias\mbway\Alias\CreateMerchantAlias;
+use prbdias\mbway\Alias\CreateMerchantAliasRequest;
+use prbdias\mbway\MBWayClient;
+use prbdias\mbway\Merchant;
+use prbdias\mbway\MessageProperties;
+
 class CreateMerchantAliasIntegrationTest extends IntegrationTestCase {
 
     /**
@@ -23,29 +30,35 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase {
         $testArgument = new CreateMerchantAliasRequest();
         /* Setting the parameters */
         $testAlias = new Alias();
-        $testAlias->setAliasName("customer@test.com");
-        $testAlias->setAliasTypeCde("002");
+        $testAlias->setAliasName("351#964661733");
+        $testAlias->setAliasTypeCde(Alias::$CELLPHONE);
         $testArgument->setAlias($testAlias);
+
         $testMerchant = new Merchant();
-        $testMerchant->setIPAddress("255.255.255.255");
-        $testMerchant->setPosId("200");
+        $testMerchant->setIPAddress(MBWAY_CONFIG_MERCHANT_IP);
+        $testMerchant->setPosId(MBWAY_CONFIG_MERCHANT_POSID);
         $testArgument->setMerchant($testMerchant);
+
         $testMsgProps = new MessageProperties();
-        $testMsgProps->setChannel("P");
-        $testMsgProps->setChannelTypeCode("01");
-        $testMsgProps->setNetworkCode("01");
+        $testMsgProps->setChannel("01");
+        $testMsgProps->setChannelTypeCode("VPOS");
+        $testMsgProps->setNetworkCode("MULTIB");
         $merchantTimestamp = date_create("2014-09-28");
         $testMsgProps->setTimestamp($merchantTimestamp);
-        $testMsgProps->setServiceType("001");
+        $testMsgProps->setServiceType("01");
         $testMsgProps->setApiVersion("1");
         $testArgument->setMessageProperties($testMsgProps);
         $testArgument->setMessageType("N0001");
+
         $testNewAlias = new Alias();
-        $testNewAlias->setAliasName("alias@mystore.com");
-        $testNewAlias->setAliasTypeCde("003");
+        $testNewAlias->setAliasName("sara@mykubo.com");
+        $testNewAlias->setAliasTypeCde(Alias::$EMAIL);
         $testArgument->setNewAlias($testNewAlias);
         $test->setArg0($testArgument);
-        $service = new MBWayClient();
-        $service->createMerchantAlias($test);
+
+        $service = new MBWayClient($this->getConfig());
+        $response = $service->createMerchantAlias($test);
+        $return = $response->getReturn();
+        var_dump($return);
     }
 }

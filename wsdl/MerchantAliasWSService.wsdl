@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MerchantAliasWSService"
+	targetNamespace="http://alias.services.merchant.channelmanagermsp.sibs/"
+	xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://www.w3.org/ns/ws-policy"
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:tns="http://alias.services.merchant.channelmanagermsp.sibs/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://alias.services.merchant.channelmanagermsp.sibs/"
+				schemaLocation="MerchantAliasWSService_schema1.xsd" />
+		</xsd:schema>
+	</types>
+	<message name="removeMerchantAlias">
+		<part name="parameters" element="tns:removeMerchantAlias">
+		</part>
+	</message>
+	<message name="removeMerchantAliasResponse">
+		<part name="parameters" element="tns:removeMerchantAliasResponse">
+		</part>
+	</message>
+	<message name="createMerchantAlias">
+		<part name="parameters" element="tns:createMerchantAlias">
+		</part>
+	</message>
+	<message name="createMerchantAliasResponse">
+		<part name="parameters" element="tns:createMerchantAliasResponse">
+		</part>
+	</message>
+	<portType name="MerchantAliasWSCreate">
+		<operation name="createMerchantAlias">
+			<input message="tns:createMerchantAlias"
+				wsaw:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest"
+				wsam:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest">
+			</input>
+			<output message="tns:createMerchantAliasResponse"
+				wsam:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasResponse">
+			</output>
+		</operation>
+	</portType>
+	<portType name="MerchantAliasWSRemove">
+		<operation name="removeMerchantAlias">
+			<input message="tns:removeMerchantAlias"
+				wsaw:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/removeMerchantAliasRequest"
+				wsam:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/removeMerchantAliasRequest">
+			</input>
+			<output message="tns:removeMerchantAliasResponse"
+				wsam:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/removeMerchantAliasResponse">
+			</output>
+		</operation>
+	</portType>
+
+
+
+
+	<binding name="MerchantAliasWSPortBindingCreate" type="tns:MerchantAliasWSCreate">
+
+		<wsaw:UsingAddressing required="false" />
+
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="createMerchantAlias">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+
+
+	<binding name="MerchantAliasWSPortBindingRemove" type="tns:MerchantAliasWSRemove">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="removeMerchantAlias">
+			<soap:operation
+				soapAction="http://alias.services.merchant.channelmanagermsp.sibs/removeMerchantAlias" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+
+
+
+	<service name="MerchantAliasWSService">
+		<port name="MerchantAliasWSPortCreate" binding="tns:MerchantAliasWSPortBindingCreate">
+			<soap:address location="https://qly.mbway.pt/Merchant/createMerchantAliasWS" />
+		</port>
+		<port name="MerchantAliasWSPortRemove" binding="tns:MerchantAliasWSPortBindingRemove">
+			<soap:address location="https://qly.mbway.pt/Merchant/removeMerchantAliasWS" />
+		</port>
+	</service>
+
+
+
+
+	<wsp:Policy wsu:Id="MerchantAliasWSPortBinding_WSAM_Addressing_Policy">
+		<wsam:Addressing wsp:Optional="true">
+			<wsp:Policy />
+		</wsam:Addressing>
+	</wsp:Policy>
+</definitions>
