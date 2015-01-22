@@ -1,8 +1,19 @@
 <?php
 namespace prbdias\mbway;
 
+/**
+ * Class Alias
+ * @package prbdias\mbway
+ */
 class Alias
 {
+    /**
+     * Alias Type Codes
+     */
+    public static $CELLPHONE = "001";
+    public static $EMAIL = "002";
+
+
     /**
      * @var string $aliasName
      */
@@ -22,6 +33,7 @@ class Alias
     }
 
     /**
+     * Email or Cellphone(<country code>#<cellphone number>)
      * @param string $aliasName
      * @return Alias
      */

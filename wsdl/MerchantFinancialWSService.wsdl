@@ -10,7 +10,7 @@
 	<types>
 		<xsd:schema>
 			<xsd:import namespace="http://financial.services.merchant.channelmanagermsp.sibs/"
-				schemaLocation="MBWayWebServiceSchema.xsd" />
+				schemaLocation="MerchantFinancialWSService_schema1.xsd" />
 		</xsd:schema>
 	</types>
 	<message name="requestFinancialOperationResponse">
@@ -50,7 +50,7 @@
 	<service name="MerchantFinancialOperationWSService">
 		<port name="MerchantFinancialOperationWSPort" binding="tns:MerchantFinancialOperationWSPortBinding">
 			<soap:address
-				location="http://qly.mbway.pt/Merchant/requestFinancialOperationWS" />
+				location="https://qly.mbway.pt/Merchant/requestFinancialOperationWS" />
 		</port>
 	</service>
 	<wsp:Policy
