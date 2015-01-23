@@ -21,6 +21,14 @@ class RemoveMerchantAliasResult
     protected $timestamp;
 
     /**
+     * Check if result from webservice is valid
+     * @return bool
+     */
+    public function isValid(){
+        return $this->statusCode === '000';
+    }
+
+    /**
      * @return Alias
      */
     public function getAlias()
