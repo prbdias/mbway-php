@@ -8,7 +8,7 @@ class RemoveMerchantAliasRequest
     /**
      * @var string $messageType
      */
-    protected $messageType;
+    private $messageType;
 
     /**
      * @var Alias $alias
@@ -25,22 +25,10 @@ class RemoveMerchantAliasRequest
      */
     protected $messageProperties;
 
-    /**
-     * @return string
-     */
-    public function getMessageType()
-    {
-        return $this->messageType;
-    }
 
-    /**
-     * @param string $messageType
-     * @return RemoveMerchantAliasRequest
-     */
-    public function setMessageType($messageType)
+    function __construct()
     {
-        $this->messageType = $messageType;
-        return $this;
+        $this->messageType = 'N0002';
     }
 
     /**

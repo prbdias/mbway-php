@@ -11,7 +11,7 @@ class RequestFinancialOperationRequest
     /**
      * @var string $messageType
      */
-    protected $messageType;
+    private $messageType;
 
     /**
      * @var string $aditionalData
@@ -43,23 +43,12 @@ class RequestFinancialOperationRequest
      */
     protected $messageProperties;
 
-    /**
-     * @return string
-     */
-    public function getMessageType()
+
+    function __construct()
     {
-        return $this->messageType;
+        $this->messageType = 'N0003';
     }
 
-    /**
-     * @param string $messageType
-     * @return RequestFinancialOperationRequest
-     */
-    public function setMessageType($messageType)
-    {
-        $this->messageType = $messageType;
-        return $this;
-    }
 
     /**
      * @return string

@@ -10,7 +10,7 @@ class CreateMerchantAliasRequest
     /**
      * @var string $messageType
      */
-    protected $messageType;
+    private $messageType;
 
     /**
      * @var Alias $alias
@@ -32,22 +32,9 @@ class CreateMerchantAliasRequest
      */
     protected $newAlias;
 
-    /**
-     * @return string
-     */
-    public function getMessageType()
+    function __construct()
     {
-        return $this->messageType;
-    }
-
-    /**
-     * @param string $messageType
-     * @return CreateMerchantAliasRequest
-     */
-    public function setMessageType($messageType)
-    {
-        $this->messageType = $messageType;
-        return $this;
+        $this->messageType = 'N0001';
     }
 
     /**
