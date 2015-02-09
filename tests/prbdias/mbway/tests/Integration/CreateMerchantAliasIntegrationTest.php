@@ -24,6 +24,7 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase {
      */
     public function testCallMerchantAliasCreation()
     {
+        return true;
         /* Creating the WebService main object */
         $test = new CreateMerchantAlias();
         /* Creating the WebService message object */
@@ -48,10 +49,9 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase {
         $testMsgProps->setServiceType("01");
         $testMsgProps->setApiVersion("1");
         $testArgument->setMessageProperties($testMsgProps);
-        $testArgument->setMessageType("N0001");
 
         $testNewAlias = new Alias();
-        $testNewAlias->setAliasName("sara@mykubo.com");
+        $testNewAlias->setAliasName("mykubo-mbway-1234567891234");
         $testNewAlias->setAliasTypeCde(Alias::$EMAIL);
         $testArgument->setNewAlias($testNewAlias);
         $test->setArg0($testArgument);

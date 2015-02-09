@@ -24,9 +24,12 @@
 
     <php>
         <const name="MBWAY_RUN_INTEGRATION_TESTS" value="true" />
-        <const name="MBWAY_SSL_CERT_PATH" value="certs/file.withkey.pem" />
+        <const name="MBWAY_SSL_CERT_PATH" value="certs/key.pem" />
         <const name="MBWAY_SSL_CERT_PASS" value="somepassword" />
-        <const name="MBWAY_CONFIG_MERCHANT_POSID" value="24830" />
-        <const name="MBWAY_CONFIG_MERCHANT_IP" value="5.196.51.129" />
+        <const name="MBWAY_CONFIG_MERCHANT_POSID" value="22334" />
+        <const name="MBWAY_CONFIG_MERCHANT_IP" value="29.29.29.29" />
+        <const name="MBWAY_ASYNC_SERVICE_MERCHANT_ALIAS" value="http://merchanturl.com/CreateMerchantAliasAsyncResultService" />
+        <const name="MBWAY_ASYNC_SERVICE_FINANCIAL_OPERATION" value="http://merchanturl.com/CreateFinancialOperationAsyncResultService" />
+
     </php>
 </phpunit>

@@ -25,18 +25,21 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase {
      */
     public function testCallFinancialOperation()
     {
-        return true;
+        //return true;
+        $oprid  = uniqid();
+        $amount = 70;
+        $currency = "9782";
         $test = new RequestFinancialOperation();
         $request = new RequestFinancialOperationRequest();
         $operation = new FinancialOperation();
-        $operation->setAmount(20)
-            ->setCurrencyCode("9782")
-            ->setMerchantOprId("22546")
+        $operation->setAmount($amount)
+            ->setCurrencyCode($currency)
+            ->setMerchantOprId($oprid)
             ->setOperationTypeCode(FinancialOperation::$PURCHASE);
 
         $alias = new Alias();
-        $alias->setAliasName("351#964661733")
-            ->setAliasTypeCde("001");
+        $alias->setAliasName("351#911521624")
+            ->setAliasTypeCde(Alias::$CELLPHONE);
 
         $merchant = new Merchant();
         $merchant->setIPAddress(MBWAY_CONFIG_MERCHANT_IP)
@@ -54,15 +57,18 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase {
             ->setFinancialOperation($operation)
             ->setAlias($alias)
             ->setMerchant($merchant)
-            ->setMessageProperties($messageProperties)
-            ->setMessageType("N0003");
-
+            ->setMessageProperties($messageProperties);
 
         $test->setArg0($request);
         $service = new MBWayClient($this->getConfig());
         $response = $service->requestFinancialOperation($test);
         $return = $response->getReturn();
-        $this->assertSame(20, $return->getAmount());
-        var_dump($return);
+
+        $this->assertSame($amount, $return->getAmount());
+        $this->assertSame($oprid, $return->getMerchantOperationID());
+        $this->assertSame($currency, $return->getCurrencyCode());
+        $this->assertTrue($return->isValid());
+        $this->assertNotEmpty($return->getToken());
+        $this->assertNotEmpty($return->getTimestamp());
     }
 }

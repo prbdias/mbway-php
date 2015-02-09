@@ -25,7 +25,6 @@ class RequestFinancialOperationRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($financialOperationRequest->getAlias());
         $this->assertNull($financialOperationRequest->getMerchant());
         $this->assertNull($financialOperationRequest->getMessageProperties());
-        $this->assertNull($financialOperationRequest->getMessageType());
         $this->assertNull($financialOperationRequest->getAditionalData());
         $this->assertNull($financialOperationRequest->getFinancialOperation());
         $this->assertNull($financialOperationRequest->getReferencedFinancialOperation());
@@ -49,7 +48,6 @@ class RequestFinancialOperationRequestTest extends \PHPUnit_Framework_TestCase
         $financialOperationRequest->setAlias($stubAlias)
             ->setMerchant($stubMerchant)
             ->setMessageProperties($stubMessageProperties)
-            ->setMessageType('messagetype')
             ->setAditionalData('aditionaldata')
             ->setFinancialOperation($stubFinancialOperation)
             ->setReferencedFinancialOperation($stubReferencedFinancialOperation);
@@ -57,7 +55,6 @@ class RequestFinancialOperationRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($stubAlias, $financialOperationRequest->getAlias());
         $this->assertSame($stubMerchant, $financialOperationRequest->getMerchant());
         $this->assertSame($stubMessageProperties, $financialOperationRequest->getMessageProperties());
-        $this->assertSame('messagetype', $financialOperationRequest->getMessageType());
         $this->assertSame($stubFinancialOperation, $financialOperationRequest->getFinancialOperation());
         $this->assertSame($stubReferencedFinancialOperation, $financialOperationRequest->getReferencedFinancialOperation());
     }

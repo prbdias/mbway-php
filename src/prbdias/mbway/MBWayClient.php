@@ -13,15 +13,33 @@ use SoapVar;
 
 class MBWayClient
 {
+    /**
+     * @var SoapClient
+     */
     private $financialOperationClient;
+
+    /**
+     * @var SoapClient
+     */
     private $aliasClient;
 
+    /**
+     * @var Config
+     */
+    private $config;
+
+    /**
+     * @var array
+     */
     private static $WSDL = array(
         'DIR' => 'wsdl/',
         'MERCHANT_ALIAS' => 'MerchantAliasWSService.wsdl',
         'FINANCIAL_OPERATION' => 'MerchantFinancialWSService.wsdl',
     );
 
+    /**
+     * @var array
+     */
     private static $classmap = array (
         'alias' => 'prbdias\\mbway\\Alias',
         'financialOperation' => 'prbdias\\mbway\\FinancialOperation',
@@ -29,6 +47,9 @@ class MBWayClient
         'messageProperties' => 'prbdias\\mbway\\MessageProperties'
     );
 
+    /**
+     * @var array
+     */
     private static $classmapMerchantAlias = array (
         'createMerchantAlias' => 'prbdias\\mbway\\Alias\\CreateMerchantAlias',
         'createMerchantAliasRequest' => 'prbdias\\mbway\\Alias\\CreateMerchantAliasRequest',
@@ -40,6 +61,9 @@ class MBWayClient
         'removeMerchantAliasResult' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResult'
     );
 
+    /**
+     * @var array
+     */
     private static $classmapFinancialOperation = array (
         'requestFinancialOperation' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperation',
         'requestFinancialOperationRequest' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationRequest',
@@ -49,6 +73,7 @@ class MBWayClient
 
     public function __construct(Config $config)
     {
+        $this->config = $config;
         foreach (self::$classmap as $key => $value) {
             if (!isset($options['classmap'][$key])) {
                 $options['classmap'][$key] = $value;
@@ -61,7 +86,7 @@ class MBWayClient
             'compression'   => SOAP_COMPRESSION_GZIP | SOAP_COMPRESSION_DEFLATE,
             'keep_alive'    => true,
             'trace'         => true,
-            'exceptions'    => true,
+            'exceptions'    => false,
             'cache_wsdl'    => WSDL_CACHE_NONE,
             'ssl_method'    => SOAP_SSL_METHOD_TLS,
             'local_cert'    => $config->getSSLCert(),
@@ -83,7 +108,7 @@ class MBWayClient
      */
     public function createMerchantAlias(CreateMerchantAlias $parameters)
     {
-        $this->addAddressingFeature($this->aliasClient, 'http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest', 'http://mykubo.com:8080/mykubo/CreateMerchantAliasAsyncResultService/CreateMerchantAliasAsyncResultService.wsdl');
+        $this->addAddressingFeature($this->aliasClient, 'http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest', $this->config->getMerchantAliasAsyncService());
         $save = $this->aliasClient->__soapCall('CreateMerchantAlias', array($parameters));
         echo $this->aliasClient->__getLastRequest();
         return $save;
@@ -104,7 +129,7 @@ class MBWayClient
      */
     public function requestFinancialOperation(RequestFinancialOperation $parameters)
     {
-        $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest', 'http://mykubo.com:8080/mykubo/FinancialOperationAsyncResultService/FinancialOperationAsyncResultService.wsdl');
+        $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest', $this->config->getFinancialOperationAsyncService());
         return $this->financialOperationClient->__soapCall('RequestFinancialOperation', array($parameters));
     }
 

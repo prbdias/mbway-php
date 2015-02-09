@@ -5,6 +5,8 @@ use prbdias\mbway\Alias;
 
 class CreateMerchantAliasResult
 {
+    private static $DATE_MBWAY_FORMAT = 'Y-m-d\TH:i:s.B\Z';
+
     /**
      * @var Alias $alias
      */
@@ -100,7 +102,8 @@ class CreateMerchantAliasResult
         if ($this->timestamp == null) {
             return null;
         } else {
-            return \DateTime::createFromFormat(\DateTime::ATOM, $this->timestamp);
+            $date = new \DateTime();
+            return $date->setTimestamp(strtotime($this->timestamp));
         }
     }
 
