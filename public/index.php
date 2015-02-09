@@ -20,13 +20,15 @@ require __DIR__.'/../vendor/autoload.php';
 #file_put_contents('globals.log', print_r($GLOBALS, true));
 
 try {
+    $asyncService = new MBWayAsyncService('http://34842a79.ngrok.com/');
+
     if($_SERVER['REQUEST_URI'] == '/CreateFinancialOperationAsyncResultService') {
-        MBWayAsyncService::createFinancialOperationAsyncResultService(function (RequestFinancialOperationResult $result) {
+        $asyncService->createFinancialOperationAsyncResultService(function (RequestFinancialOperationResult $result) {
             file_put_contents('financialoperation_callback.log', print_r($result, true));
         });
     }
     elseif($_SERVER['REQUEST_URI'] == '/CreateMerchantAliasAsyncResultService'){
-        MBWayAsyncService::createMerchantAliasAsyncResultService(function(CreateMerchantAliasResult $result){
+        $asyncService->createMerchantAliasAsyncResultService(function(CreateMerchantAliasResult $result){
             file_put_contents('merchantalias_callback.log', print_r($result, true));
         });
     }
