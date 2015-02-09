@@ -135,12 +135,12 @@ class MBWayClient
         return $this->financialOperationClient->__soapCall('RequestFinancialOperation', array($parameters));
     }
 
-    private function addAddressingFeature(SoapClient &$client, $action, $reply_to)
+    private function addAddressingFeature(SoapClient &$client, $action, $replyTo)
     {
         $ns = 'http://www.w3.org/2005/08/addressing'; //Namespace of the WS.
         //Create Soap Header.
         $header[] = new SOAPHeader($ns, 'Action', $action);
-        $address = new SoapVar($reply_to, XSD_STRING, null, null, 'Address', $ns);
+        $address = new SoapVar($replyTo, XSD_STRING, null, null, 'Address', $ns);
         $replyTo = new SoapVar(array($address), SOAP_ENC_OBJECT, null, null, null, $ns);
         $header[] = new SOAPHeader($ns, 'ReplyTo', $replyTo, false);
         $client->__setSoapHeaders($header);
