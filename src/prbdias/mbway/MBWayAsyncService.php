@@ -4,12 +4,18 @@ use SoapServer;
 
 class MBWayAsyncService
 {
+    private $host;
+    function __construct($host)
+    {
+        $this->host = $host;
+    }
+
     /**
      * @param callable $callback
      */
-    static function createFinancialOperationAsyncResultService(callable $callback){
+    function createFinancialOperationAsyncResultService(callable $callback){
         $server = new SoapServer(null, array(
-            'location' => 'http://34842a79.ngrok.com/',
+            'location' => $this->host,
             'uri' => 'http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultRequest',
             'encoding' => SOAP_ENCODED,
         ));
@@ -20,9 +26,9 @@ class MBWayAsyncService
     /**
      * @param callable $callback
      */
-    static function createMerchantAliasAsyncResultService(callable $callback){
+    function createMerchantAliasAsyncResultService(callable $callback){
         $server = new SoapServer(null, array(
-            'location' => 'http://34842a79.ngrok.com/',
+            'location' => $this->host,
             'uri' => 'http://webservices.sibsmerchant.com/MerchantAliasAsyncResult/merchantAliasResultRequest',
             'encoding' => SOAP_ENCODED,
         ));
