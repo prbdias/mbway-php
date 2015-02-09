@@ -137,12 +137,12 @@ class MBWayClient
 
     private function addAddressingFeature(SoapClient &$client, $action, $replyTo)
     {
-        $ns = 'http://www.w3.org/2005/08/addressing'; //Namespace of the WS.
+        $namespace = 'http://www.w3.org/2005/08/addressing'; //Namespace of the WS.
         //Create Soap Header.
-        $header[] = new SOAPHeader($ns, 'Action', $action);
-        $address = new SoapVar($replyTo, XSD_STRING, null, null, 'Address', $ns);
-        $replyTo = new SoapVar(array($address), SOAP_ENC_OBJECT, null, null, null, $ns);
-        $header[] = new SOAPHeader($ns, 'ReplyTo', $replyTo, false);
+        $header[] = new SOAPHeader($namespace, 'Action', $action);
+        $address = new SoapVar($replyTo, XSD_STRING, null, null, 'Address', $namespace);
+        $replyTo = new SoapVar(array($address), SOAP_ENC_OBJECT, null, null, null, $namespace);
+        $header[] = new SOAPHeader($namespace, 'ReplyTo', $replyTo, false);
         $client->__setSoapHeaders($header);
     }
 }
