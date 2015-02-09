@@ -86,7 +86,7 @@ class MBWayClient
             'compression'   => SOAP_COMPRESSION_GZIP | SOAP_COMPRESSION_DEFLATE,
             'keep_alive'    => true,
             'trace'         => true,
-            'exceptions'    => false,
+            'exceptions'    => true,
             'cache_wsdl'    => WSDL_CACHE_NONE,
             'ssl_method'    => SOAP_SSL_METHOD_TLS,
             'local_cert'    => $config->getSSLCert(),
@@ -109,9 +109,7 @@ class MBWayClient
     public function createMerchantAlias(CreateMerchantAlias $parameters)
     {
         $this->addAddressingFeature($this->aliasClient, 'http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest', $this->config->getMerchantAliasAsyncService());
-        $save = $this->aliasClient->__soapCall('CreateMerchantAlias', array($parameters));
-        echo $this->aliasClient->__getLastRequest();
-        return $save;
+        return $this->aliasClient->__soapCall('CreateMerchantAlias', array($parameters));
     }
 
     /**
