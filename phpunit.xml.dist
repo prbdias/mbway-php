@@ -23,7 +23,7 @@
     </filter>
 
     <php>
-        <const name="MBWAY_RUN_INTEGRATION_TESTS" value="true" />
+        <const name="MBWAY_RUN_INTEGRATION_TESTS" value="false" />
         <const name="MBWAY_SSL_CERT_PATH" value="certs/key.pem" />
         <const name="MBWAY_SSL_CERT_PASS" value="somepassword" />
         <const name="MBWAY_CONFIG_MERCHANT_POSID" value="22334" />

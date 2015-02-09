@@ -24,7 +24,6 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase {
      */
     public function testCallMerchantAliasCreation()
     {
-        return true;
         /* Creating the WebService main object */
         $test = new CreateMerchantAlias();
         /* Creating the WebService message object */
