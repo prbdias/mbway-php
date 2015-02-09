@@ -58,7 +58,7 @@ class Config {
      */
     public function getMerchantAliasAsyncService()
     {
-        return $this->$merchantAliasAsyncServiceUrl;
+        return $this->merchantAliasAsyncServiceUrl;
     }
 
     /**
