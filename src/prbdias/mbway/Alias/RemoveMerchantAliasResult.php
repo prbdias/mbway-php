@@ -5,6 +5,8 @@ use prbdias\mbway\Alias;
 
 class RemoveMerchantAliasResult
 {
+    private static $DATE_MBWAY_FORMAT = 'Y-m-d\TH:i:s.B\Z';
+
     /**
      * @var Alias $alias
      */
@@ -72,7 +74,7 @@ class RemoveMerchantAliasResult
         if ($this->timestamp == null) {
             return null;
         } else {
-            return \DateTime::createFromFormat(\DateTime::ATOM, $this->timestamp);
+            return new \DateTime($this->timestamp);
         }
     }
 

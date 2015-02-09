@@ -131,7 +131,7 @@ class MessageProperties
         if ($this->timestamp == null) {
             return null;
         } else {
-            return \DateTime::createFromFormat(\DateTime::ATOM, $this->timestamp);
+            return new \DateTime($this->timestamp);
         }
     }
 

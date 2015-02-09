@@ -25,7 +25,6 @@ class RemoveMerchantAliasRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($merchantAliasRequest->getAlias());
         $this->assertNull($merchantAliasRequest->getMerchant());
         $this->assertNull($merchantAliasRequest->getMessageProperties());
-        $this->assertNull($merchantAliasRequest->getMessageType());
 
         return $merchantAliasRequest;
     }
@@ -43,12 +42,10 @@ class RemoveMerchantAliasRequestTest extends \PHPUnit_Framework_TestCase
 
         $merchantAliasRequest->setAlias($stubAlias)
             ->setMerchant($stubMerchant)
-            ->setMessageProperties($stubMessageProperties)
-            ->setMessageType('messagetype');
+            ->setMessageProperties($stubMessageProperties);
 
         $this->assertSame($stubAlias, $merchantAliasRequest->getAlias());
         $this->assertSame($stubMerchant, $merchantAliasRequest->getMerchant());
         $this->assertSame($stubMessageProperties, $merchantAliasRequest->getMessageProperties());
-        $this->assertSame('messagetype', $merchantAliasRequest->getMessageType());
     }
 }

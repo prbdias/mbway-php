@@ -3,35 +3,44 @@ namespace prbdias\mbway\FinancialOperation;
 
 class RequestFinancialOperationResult
 {
+    private static $DATE_MBWAY_FORMAT = 'Y-m-d\TH:i:s.B\Z';
+
+
     /**
+     * @type int
      * @var int $amount
      */
-    protected $amount;
+    public $amount;
 
     /**
+     * @type string
      * @var string $currencyCode
      */
-    protected $currencyCode;
+    public $currencyCode;
 
     /**
+     * @type string
      * @var string $merchantOperationID
      */
-    protected $merchantOperationID;
+    public $merchantOperationID;
 
     /**
+     * @type string
      * @var string $statusCode
      */
-    protected $statusCode;
+    public $statusCode;
 
     /**
+     * @type dateTime
      * @var \DateTime $timestamp
      */
-    protected $timestamp;
+    public $timestamp;
 
     /**
+     * @type string
      * @var string $token
      */
-    protected $token;
+    public $token;
 
     /**
      * Check if result from webservice is valid
@@ -121,7 +130,7 @@ class RequestFinancialOperationResult
         if ($this->timestamp == null) {
             return null;
         } else {
-            return \DateTime::createFromFormat(\DateTime::ATOM, $this->timestamp);
+            return new \DateTime($this->timestamp);
         }
     }
 
