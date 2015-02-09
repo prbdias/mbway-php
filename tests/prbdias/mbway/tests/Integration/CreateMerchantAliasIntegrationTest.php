@@ -58,7 +58,6 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase {
         $service = new MBWayClient($this->getConfig());
         $response = $service->createMerchantAlias($test);
         $return = $response->getReturn();
-        print_r($return);
 
         //Return 124 because merchant didn't make any purchase before
         $this->assertSame("124", $return->getStatusCode());
