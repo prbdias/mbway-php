@@ -13,7 +13,6 @@ class Merchant
      */
     protected $posId;
 
-
     /**
      * @return string
      */
@@ -23,12 +22,13 @@ class Merchant
     }
 
     /**
-     * @param string $iPAddress
+     * @param  string   $iPAddress
      * @return Merchant
      */
     public function setIPAddress($iPAddress)
     {
         $this->iPAddress = $iPAddress;
+
         return $this;
     }
 
@@ -41,12 +41,13 @@ class Merchant
     }
 
     /**
-     * @param string $posId
+     * @param  string   $posId
      * @return Merchant
      */
     public function setPosId($posId)
     {
         $this->posId = $posId;
+
         return $this;
     }
 }

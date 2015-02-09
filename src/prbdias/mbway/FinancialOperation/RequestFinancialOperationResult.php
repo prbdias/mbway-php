@@ -3,9 +3,6 @@ namespace prbdias\mbway\FinancialOperation;
 
 class RequestFinancialOperationResult
 {
-    private static $DATE_MBWAY_FORMAT = 'Y-m-d\TH:i:s.B\Z';
-
-
     /**
      * @type int
      * @var int $amount
@@ -46,7 +43,8 @@ class RequestFinancialOperationResult
      * Check if result from webservice is valid
      * @return bool
      */
-    public function isValid(){
+    public function isValid()
+    {
         return $this->statusCode === '000';
     }
 
@@ -59,12 +57,13 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param int $amount
+     * @param  int                             $amount
      * @return RequestFinancialOperationResult
      */
     public function setAmount($amount)
     {
         $this->amount = $amount;
+
         return $this;
     }
 
@@ -77,12 +76,13 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param string $currencyCode
+     * @param  string                          $currencyCode
      * @return RequestFinancialOperationResult
      */
     public function setCurrencyCode($currencyCode)
     {
         $this->currencyCode = $currencyCode;
+
         return $this;
     }
 
@@ -95,12 +95,13 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param string $merchantOperationID
+     * @param  string                          $merchantOperationID
      * @return RequestFinancialOperationResult
      */
     public function setMerchantOperationID($merchantOperationID)
     {
         $this->merchantOperationID = $merchantOperationID;
+
         return $this;
     }
 
@@ -113,12 +114,13 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param string $statusCode
+     * @param  string                          $statusCode
      * @return RequestFinancialOperationResult
      */
     public function setStatusCode($statusCode)
     {
         $this->statusCode = $statusCode;
+
         return $this;
     }
 
@@ -128,19 +130,20 @@ class RequestFinancialOperationResult
     public function getTimestamp()
     {
         if ($this->timestamp == null) {
-            return null;
+            return;
         } else {
             return new \DateTime($this->timestamp);
         }
     }
 
     /**
-     * @param \DateTime $timestamp
+     * @param  \DateTime                       $timestamp
      * @return RequestFinancialOperationResult
      */
     public function setTimestamp(\DateTime $timestamp)
     {
         $this->timestamp = $timestamp->format(\DateTime::ATOM);
+
         return $this;
     }
 
@@ -153,12 +156,13 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param string $token
+     * @param  string                          $token
      * @return RequestFinancialOperationResult
      */
     public function setToken($token)
     {
         $this->token = $token;
+
         return $this;
     }
 }

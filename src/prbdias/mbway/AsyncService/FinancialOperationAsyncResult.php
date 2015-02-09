@@ -9,16 +9,19 @@
  */
 
 namespace prbdias\mbway\AsyncService;
+
 use prbdias\mbway\FinancialOperation\RequestFinancialOperationResult;
 
-class FinancialOperationAsyncResult {
+class FinancialOperationAsyncResult
+{
     private $callback;
-    function __construct(callable $callback)
+    public function __construct(callable $callback)
     {
         $this->callback = $callback;
     }
 
-    public function financialOperationResult($arg0){
+    public function financialOperationResult($arg0)
+    {
         $result = new RequestFinancialOperationResult();
         $result->setAmount($arg0->amount)
             ->setCurrencyCode($arg0->currencyCode)

@@ -43,12 +43,10 @@ class RequestFinancialOperationRequest
      */
     protected $messageProperties;
 
-
-    function __construct()
+    public function __construct()
     {
         $this->messageType = 'N0003';
     }
-
 
     /**
      * @return string
@@ -59,12 +57,13 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param string $aditionalData
+     * @param  string                           $aditionalData
      * @return RequestFinancialOperationRequest
      */
     public function setAditionalData($aditionalData)
     {
         $this->aditionalData = $aditionalData;
+
         return $this;
     }
 
@@ -77,12 +76,13 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param Alias $alias
+     * @param  Alias                            $alias
      * @return RequestFinancialOperationRequest
      */
     public function setAlias(Alias $alias)
     {
         $this->alias = $alias;
+
         return $this;
     }
 
@@ -95,12 +95,13 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param FinancialOperation $financialOperation
+     * @param  FinancialOperation               $financialOperation
      * @return RequestFinancialOperationRequest
      */
     public function setFinancialOperation(FinancialOperation $financialOperation)
     {
         $this->financialOperation = $financialOperation;
+
         return $this;
     }
 
@@ -113,12 +114,13 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param FinancialOperation $referencedFinancialOperation
+     * @param  FinancialOperation               $referencedFinancialOperation
      * @return RequestFinancialOperationRequest
      */
     public function setReferencedFinancialOperation(FinancialOperation $referencedFinancialOperation)
     {
         $this->referencedFinancialOperation = $referencedFinancialOperation;
+
         return $this;
     }
 
@@ -131,12 +133,13 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param Merchant $merchant
+     * @param  Merchant                         $merchant
      * @return RequestFinancialOperationRequest
      */
     public function setMerchant(Merchant $merchant)
     {
         $this->merchant = $merchant;
+
         return $this;
     }
 
@@ -149,12 +152,13 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param MessageProperties $messageProperties
+     * @param  MessageProperties                $messageProperties
      * @return RequestFinancialOperationRequest
      */
     public function setMessageProperties(MessageProperties $messageProperties)
     {
         $this->messageProperties = $messageProperties;
+
         return $this;
     }
 }

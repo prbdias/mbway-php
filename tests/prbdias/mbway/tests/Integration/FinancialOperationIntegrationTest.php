@@ -18,8 +18,8 @@ use prbdias\mbway\MBWayClient;
 use prbdias\mbway\Merchant;
 use prbdias\mbway\MessageProperties;
 
-class FinancialOperationIntegrationTest extends IntegrationTestCase {
-
+class FinancialOperationIntegrationTest extends IntegrationTestCase
+{
     /**
      * @group integration
      */

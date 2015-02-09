@@ -32,7 +32,7 @@ class CreateMerchantAliasRequest
      */
     protected $newAlias;
 
-    function __construct()
+    public function __construct()
     {
         $this->messageType = 'N0001';
     }
@@ -46,12 +46,13 @@ class CreateMerchantAliasRequest
     }
 
     /**
-     * @param Alias $alias
+     * @param  Alias                      $alias
      * @return CreateMerchantAliasRequest
      */
     public function setAlias(Alias $alias)
     {
         $this->alias = $alias;
+
         return $this;
     }
 
@@ -64,12 +65,13 @@ class CreateMerchantAliasRequest
     }
 
     /**
-     * @param Merchant $merchant
+     * @param  Merchant                   $merchant
      * @return CreateMerchantAliasRequest
      */
     public function setMerchant(Merchant $merchant)
     {
         $this->merchant = $merchant;
+
         return $this;
     }
 
@@ -82,12 +84,13 @@ class CreateMerchantAliasRequest
     }
 
     /**
-     * @param MessageProperties $messageProperties
+     * @param  MessageProperties          $messageProperties
      * @return CreateMerchantAliasRequest
      */
     public function setMessageProperties(MessageProperties $messageProperties)
     {
         $this->messageProperties = $messageProperties;
+
         return $this;
     }
 
@@ -100,12 +103,13 @@ class CreateMerchantAliasRequest
     }
 
     /**
-     * @param Alias $newAlias
+     * @param  Alias                      $newAlias
      * @return CreateMerchantAliasRequest
      */
     public function setNewAlias(Alias $newAlias)
     {
         $this->newAlias = $newAlias;
+
         return $this;
     }
 }

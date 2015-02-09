@@ -5,8 +5,6 @@ use prbdias\mbway\Alias;
 
 class CreateMerchantAliasResult
 {
-    private static $DATE_MBWAY_FORMAT = 'Y-m-d\TH:i:s.B\Z';
-
     /**
      * @var Alias $alias
      */
@@ -36,7 +34,8 @@ class CreateMerchantAliasResult
      * Check if result from webservice is valid
      * @return bool
      */
-    public function isValid(){
+    public function isValid()
+    {
         return $this->statusCode === '000';
     }
 
@@ -49,12 +48,13 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param Alias $alias
+     * @param  Alias                     $alias
      * @return CreateMerchantAliasResult
      */
     public function setAlias(Alias $alias)
     {
         $this->alias = $alias;
+
         return $this;
     }
 
@@ -67,12 +67,13 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param string $operationId
+     * @param  string                    $operationId
      * @return CreateMerchantAliasResult
      */
     public function setOperationId($operationId)
     {
         $this->operationId = $operationId;
+
         return $this;
     }
 
@@ -85,12 +86,13 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param string $statusCode
+     * @param  string                    $statusCode
      * @return CreateMerchantAliasResult
      */
     public function setStatusCode($statusCode)
     {
         $this->statusCode = $statusCode;
+
         return $this;
     }
 
@@ -100,20 +102,22 @@ class CreateMerchantAliasResult
     public function getTimestamp()
     {
         if ($this->timestamp == null) {
-            return null;
+            return;
         } else {
             $date = new \DateTime();
+
             return $date->setTimestamp(strtotime($this->timestamp));
         }
     }
 
     /**
-     * @param \DateTime $timestamp
+     * @param  \DateTime                 $timestamp
      * @return CreateMerchantAliasResult
      */
     public function setTimestamp(\DateTime $timestamp)
     {
         $this->timestamp = $timestamp->format(\DateTime::ATOM);
+
         return $this;
     }
 
@@ -126,12 +130,13 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param string $token
+     * @param  string                    $token
      * @return CreateMerchantAliasResult
      */
     public function setToken($token)
     {
         $this->token = $token;
+
         return $this;
     }
 }

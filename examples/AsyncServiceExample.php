@@ -15,14 +15,14 @@ require __DIR__.'/../vendor/autoload.php';
 
 $asyncService = new MBWayAsyncService('http://merchanthost.com/');
 //Check URL request to dispatch to the correct async service
-if($_SERVER['REQUEST_URI'] == '/CreateFinancialOperationAsyncResultService') {
+if ($_SERVER['REQUEST_URI'] == '/CreateFinancialOperationAsyncResultService') {
     $asyncService->createFinancialOperationAsyncResultService(function (RequestFinancialOperationResult $result) {
         file_put_contents('financialoperation_callback.log', print_r($result, true));
     });
-}
-elseif($_SERVER['REQUEST_URI'] == '/CreateMerchantAliasAsyncResultService'){
-    $asyncService->createMerchantAliasAsyncResultService(function(CreateMerchantAliasResult $result){
+} elseif ($_SERVER['REQUEST_URI'] == '/CreateMerchantAliasAsyncResultService') {
+    $asyncService->createMerchantAliasAsyncResultService(function (CreateMerchantAliasResult $result) {
         file_put_contents('merchantalias_callback.log', print_r($result, true));
     });
+} else {
+    die('Invalid request');
 }
-else die('Invalid request');

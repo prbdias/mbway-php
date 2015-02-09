@@ -40,17 +40,17 @@ class MBWayClient
     /**
      * @var array
      */
-    private static $classmap = array (
+    private static $classmap = array(
         'alias' => 'prbdias\\mbway\\Alias',
         'financialOperation' => 'prbdias\\mbway\\FinancialOperation',
         'merchant' => 'prbdias\\mbway\\Merchant',
-        'messageProperties' => 'prbdias\\mbway\\MessageProperties'
+        'messageProperties' => 'prbdias\\mbway\\MessageProperties',
     );
 
     /**
      * @var array
      */
-    private static $classmapMerchantAlias = array (
+    private static $classmapMerchantAlias = array(
         'createMerchantAlias' => 'prbdias\\mbway\\Alias\\CreateMerchantAlias',
         'createMerchantAliasRequest' => 'prbdias\\mbway\\Alias\\CreateMerchantAliasRequest',
         'createMerchantAliasResponse' => 'prbdias\\mbway\\Alias\\CreateMerchantAliasResponse',
@@ -58,17 +58,17 @@ class MBWayClient
         'removeMerchantAlias' => 'prbdias\\mbway\\Alias\\RemoveMerchantAlias',
         'removeMerchantAliasRequest' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasRequest',
         'removeMerchantAliasResponse' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResponse',
-        'removeMerchantAliasResult' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResult'
+        'removeMerchantAliasResult' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResult',
     );
 
     /**
      * @var array
      */
-    private static $classmapFinancialOperation = array (
+    private static $classmapFinancialOperation = array(
         'requestFinancialOperation' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperation',
         'requestFinancialOperationRequest' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationRequest',
         'requestFinancialOperationResponse' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResponse',
-        'requestFinancialOperationResult' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResult'
+        'requestFinancialOperationResult' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResult',
     );
 
     public function __construct(Config $config)
@@ -90,7 +90,7 @@ class MBWayClient
             'cache_wsdl'    => WSDL_CACHE_NONE,
             'ssl_method'    => SOAP_SSL_METHOD_TLS,
             'local_cert'    => $config->getSSLCert(),
-            'passphrase'    => $config->getSSLPass()
+            'passphrase'    => $config->getSSLPass(),
         ), $options);
 
         $aliasOptions = $options;
@@ -103,7 +103,7 @@ class MBWayClient
     }
 
     /**
-     * @param CreateMerchantAlias $parameters
+     * @param  CreateMerchantAlias         $parameters
      * @return CreateMerchantAliasResponse
      */
     public function createMerchantAlias(CreateMerchantAlias $parameters)
@@ -111,11 +111,12 @@ class MBWayClient
         $this->addAddressingFeature($this->aliasClient, 'http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest', $this->config->getMerchantAliasAsyncService());
         $save = $this->aliasClient->__soapCall('CreateMerchantAlias', array($parameters));
         echo $this->aliasClient->__getLastRequest();
+
         return $save;
     }
 
     /**
-     * @param RemoveMerchantAlias $parameters
+     * @param  RemoveMerchantAlias         $parameters
      * @return RemoveMerchantAliasResponse
      */
     public function removeMerchantAlias(RemoveMerchantAlias $parameters)
@@ -124,16 +125,18 @@ class MBWayClient
     }
 
     /**
-     * @param RequestFinancialOperation $parameters
+     * @param  RequestFinancialOperation         $parameters
      * @return RequestFinancialOperationResponse
      */
     public function requestFinancialOperation(RequestFinancialOperation $parameters)
     {
         $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest', $this->config->getFinancialOperationAsyncService());
+
         return $this->financialOperationClient->__soapCall('RequestFinancialOperation', array($parameters));
     }
 
-    private function addAddressingFeature(SoapClient &$client, $action, $reply_to){
+    private function addAddressingFeature(SoapClient &$client, $action, $reply_to)
+    {
         $ns = 'http://www.w3.org/2005/08/addressing'; //Namespace of the WS.
         //Create Soap Header.
         $header[] = new SOAPHeader($ns, 'Action', $action);

@@ -13,9 +13,6 @@
     "require-dev": {
         "phpunit/phpunit": "@stable"
     },
-    "require": {
-        "piotrooo/wsdl-creator": "1.*"
-    },
     "minimum-stability": "stable",
     "autoload": {
         "psr-0": { "prbdias\\mbway": "src/" }

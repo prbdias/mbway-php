@@ -17,12 +17,13 @@ class RequestFinancialOperationResponse
     }
 
     /**
-     * @param RequestFinancialOperationResult $return
+     * @param  RequestFinancialOperationResult   $return
      * @return RequestFinancialOperationResponse
      */
     public function setReturn(RequestFinancialOperationResult $return)
     {
         $this->return = $return;
+
         return $this;
     }
 }

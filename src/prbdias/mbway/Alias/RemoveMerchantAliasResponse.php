@@ -17,12 +17,13 @@ class RemoveMerchantAliasResponse
     }
 
     /**
-     * @param RemoveMerchantAliasResult $return
+     * @param  RemoveMerchantAliasResult   $return
      * @return RemoveMerchantAliasResponse
      */
     public function setReturn($return)
     {
         $this->return = $return;
+
         return $this;
     }
 }

@@ -14,7 +14,6 @@ class Alias
     public static $EMAIL = "002";
     public static $GENERIC = "005";
 
-
     /**
      * @var string $aliasName
      */
@@ -35,12 +34,13 @@ class Alias
 
     /**
      * Email or Cellphone(<country code>#<cellphone number>)
-     * @param string $aliasName
+     * @param  string $aliasName
      * @return Alias
      */
     public function setAliasName($aliasName)
     {
         $this->aliasName = $aliasName;
+
         return $this;
     }
 
@@ -53,12 +53,13 @@ class Alias
     }
 
     /**
-     * @param string $aliasTypeCde
+     * @param  string $aliasTypeCde
      * @return Alias
      */
     public function setAliasTypeCde($aliasTypeCde)
     {
         $this->aliasTypeCde = $aliasTypeCde;
+
         return $this;
     }
 }

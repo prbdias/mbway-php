@@ -52,12 +52,13 @@ class FinancialOperation
     }
 
     /**
-     * @param int $amount
+     * @param  int                $amount
      * @return FinancialOperation
      */
     public function setAmount($amount)
     {
         $this->amount = $amount;
+
         return $this;
     }
 
@@ -70,12 +71,13 @@ class FinancialOperation
     }
 
     /**
-     * @param string $currencyCode
+     * @param  string             $currencyCode
      * @return FinancialOperation
      */
     public function setCurrencyCode($currencyCode)
     {
         $this->currencyCode = $currencyCode;
+
         return $this;
     }
 
@@ -88,12 +90,13 @@ class FinancialOperation
     }
 
     /**
-     * @param string $operationTypeCode
+     * @param  string             $operationTypeCode
      * @return FinancialOperation
      */
     public function setOperationTypeCode($operationTypeCode)
     {
         $this->operationTypeCode = $operationTypeCode;
+
         return $this;
     }
 
@@ -106,12 +109,13 @@ class FinancialOperation
     }
 
     /**
-     * @param string $merchantOprId
+     * @param  string             $merchantOprId
      * @return FinancialOperation
      */
     public function setMerchantOprId($merchantOprId)
     {
         $this->merchantOprId = $merchantOprId;
+
         return $this;
     }
 }
