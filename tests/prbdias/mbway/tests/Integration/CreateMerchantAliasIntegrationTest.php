@@ -51,14 +51,16 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase {
         $testArgument->setMessageProperties($testMsgProps);
 
         $testNewAlias = new Alias();
-        $testNewAlias->setAliasName("mykubo-mbway-1234567891234");
-        $testNewAlias->setAliasTypeCde(Alias::$EMAIL);
+        $testNewAlias->setAliasName("merchant-mbway-1234567891234");
+        $testNewAlias->setAliasTypeCde(Alias::$GENERIC);
         $testArgument->setNewAlias($testNewAlias);
         $test->setArg0($testArgument);
 
         $service = new MBWayClient($this->getConfig());
         $response = $service->createMerchantAlias($test);
         $return = $response->getReturn();
-        var_dump($return);
+
+        //Return 124 because merchant didn't make any purchase before
+        $this->assertSame("124", $return->getStatusCode());
     }
 }

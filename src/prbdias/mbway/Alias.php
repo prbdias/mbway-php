@@ -12,6 +12,7 @@ class Alias
      */
     public static $CELLPHONE = "001";
     public static $EMAIL = "002";
+    public static $GENERIC = "005";
 
 
     /**
