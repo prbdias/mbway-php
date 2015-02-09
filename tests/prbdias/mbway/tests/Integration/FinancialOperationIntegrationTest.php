@@ -25,7 +25,6 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase {
      */
     public function testCallFinancialOperation()
     {
-        return true;
         $oprid  = uniqid();
         $amount = 70;
         $currency = "9782";
