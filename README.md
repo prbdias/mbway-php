@@ -5,8 +5,23 @@
 
 PHP library to communicate with MB WAY API.
 
+# Installing via Composer
 
-Under construction
+The recommended way to install is through [Composer](http://composer.org).
+
+```sh
+# Install Composer
+$ curl -sS https://getcomposer.org/installer | php
+
+# Add mbway-php as a dependency
+$ php composer.phar require prbdias/mbway-php:0.0.1
+```
+
+After installing, you need to require Composer's autoloader:
+
+```php
+require 'vendor/autoload.php';
+```
 
 # License
 
