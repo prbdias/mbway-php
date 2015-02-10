@@ -42,12 +42,13 @@ class MessageProperties
     }
 
     /**
-     * @param string $channel
+     * @param  string            $channel
      * @return MessageProperties
      */
     public function setChannel($channel)
     {
         $this->channel = $channel;
+
         return $this;
     }
 
@@ -60,12 +61,13 @@ class MessageProperties
     }
 
     /**
-     * @param string $apiVersion
+     * @param  string            $apiVersion
      * @return MessageProperties
      */
     public function setApiVersion($apiVersion)
     {
         $this->apiVersion = $apiVersion;
+
         return $this;
     }
 
@@ -78,12 +80,13 @@ class MessageProperties
     }
 
     /**
-     * @param string $channelTypeCode
+     * @param  string            $channelTypeCode
      * @return MessageProperties
      */
     public function setChannelTypeCode($channelTypeCode)
     {
         $this->channelTypeCode = $channelTypeCode;
+
         return $this;
     }
 
@@ -96,12 +99,13 @@ class MessageProperties
     }
 
     /**
-     * @param string $networkCode
+     * @param  string            $networkCode
      * @return MessageProperties
      */
     public function setNetworkCode($networkCode)
     {
         $this->networkCode = $networkCode;
+
         return $this;
     }
 
@@ -114,12 +118,13 @@ class MessageProperties
     }
 
     /**
-     * @param string $serviceType
+     * @param  string            $serviceType
      * @return MessageProperties
      */
     public function setServiceType($serviceType)
     {
         $this->serviceType = $serviceType;
+
         return $this;
     }
 
@@ -129,19 +134,20 @@ class MessageProperties
     public function getTimestamp()
     {
         if ($this->timestamp == null) {
-            return null;
+            return;
         } else {
             return new \DateTime($this->timestamp);
         }
     }
 
     /**
-     * @param \DateTime $timestamp
+     * @param  \DateTime         $timestamp
      * @return MessageProperties
      */
     public function setTimestamp(\DateTime $timestamp)
     {
         $this->timestamp = $timestamp->format(\DateTime::ATOM);
+
         return $this;
     }
 }

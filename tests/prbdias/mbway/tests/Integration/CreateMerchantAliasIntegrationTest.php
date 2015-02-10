@@ -17,8 +17,8 @@ use prbdias\mbway\MBWayClient;
 use prbdias\mbway\Merchant;
 use prbdias\mbway\MessageProperties;
 
-class CreateMerchantAliasIntegrationTest extends IntegrationTestCase {
-
+class CreateMerchantAliasIntegrationTest extends IntegrationTestCase
+{
     /**
      * @group integration
      */

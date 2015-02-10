@@ -17,12 +17,13 @@ class RemoveMerchantAlias
     }
 
     /**
-     * @param RemoveMerchantAliasRequest $arg0
+     * @param  RemoveMerchantAliasRequest $arg0
      * @return RemoveMerchantAlias
      */
     public function setArg0(RemoveMerchantAliasRequest $arg0)
     {
         $this->arg0 = $arg0;
+
         return $this;
     }
 }

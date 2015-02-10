@@ -10,8 +10,8 @@
 
 namespace prbdias\mbway;
 
-
-class Config {
+class Config
+{
     /**
      * @var string
      */
@@ -29,7 +29,7 @@ class Config {
      */
     private $financialOperationAsyncServiceUrl;
 
-    function __construct($sslCert, $sslPass, $merchantAliasAsyncServiceUrl, $financialOperationAsyncServiceUrl)
+    public function __construct($sslCert, $sslPass, $merchantAliasAsyncServiceUrl, $financialOperationAsyncServiceUrl)
     {
         $this->sslCert = $sslCert;
         $this->sslPass = $sslPass;
@@ -70,7 +70,7 @@ class Config {
     }
 
     /**
-     * @param string $sslCert
+     * @param  string $sslCert
      * @return void
      */
     public function setSSLCert($sslCert)
@@ -78,9 +78,8 @@ class Config {
         $this->sslCert = $sslCert;
     }
 
-
     /**
-     * @param string $sslPass
+     * @param  string $sslPass
      * @return void
      */
     public function setSSLPass($sslPass)
@@ -89,7 +88,7 @@ class Config {
     }
 
     /**
-     * @param string $merchantAliasAsyncServiceUrl
+     * @param  string $merchantAliasAsyncServiceUrl
      * @return void
      */
     public function setMerchantAliasAsyncService($merchantAliasAsyncServiceUrl)
@@ -98,7 +97,7 @@ class Config {
     }
 
     /**
-     * @param string $financialOperationAsyncServiceUrl
+     * @param  string $financialOperationAsyncServiceUrl
      * @return void
      */
     public function setFinancialOperationAsyncService($financialOperationAsyncServiceUrl)

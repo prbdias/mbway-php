@@ -9,16 +9,19 @@
  */
 
 namespace prbdias\mbway\AsyncService;
+
 use prbdias\mbway\Alias\CreateMerchantAliasResult;
 
-class MerchantAliasAsyncResult {
+class MerchantAliasAsyncResult
+{
     private $callback;
-    function __construct(callable $callback)
+    public function __construct(callable $callback)
     {
         $this->callback = $callback;
     }
 
-    public function merchantAliasResult($arg0){
+    public function merchantAliasResult($arg0)
+    {
         $result = new CreateMerchantAliasResult();
         $result->setStatusCode($arg0->statusCode)
             ->setTimestamp(new \DateTime($arg0->timestamp))

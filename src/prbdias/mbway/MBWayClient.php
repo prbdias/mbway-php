@@ -40,17 +40,17 @@ class MBWayClient
     /**
      * @var array
      */
-    private static $classmap = array (
+    private static $classmap = array(
         'alias' => 'prbdias\\mbway\\Alias',
         'financialOperation' => 'prbdias\\mbway\\FinancialOperation',
         'merchant' => 'prbdias\\mbway\\Merchant',
-        'messageProperties' => 'prbdias\\mbway\\MessageProperties'
+        'messageProperties' => 'prbdias\\mbway\\MessageProperties',
     );
 
     /**
      * @var array
      */
-    private static $classmapMerchantAlias = array (
+    private static $classmapMerchantAlias = array(
         'createMerchantAlias' => 'prbdias\\mbway\\Alias\\CreateMerchantAlias',
         'createMerchantAliasRequest' => 'prbdias\\mbway\\Alias\\CreateMerchantAliasRequest',
         'createMerchantAliasResponse' => 'prbdias\\mbway\\Alias\\CreateMerchantAliasResponse',
@@ -58,17 +58,17 @@ class MBWayClient
         'removeMerchantAlias' => 'prbdias\\mbway\\Alias\\RemoveMerchantAlias',
         'removeMerchantAliasRequest' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasRequest',
         'removeMerchantAliasResponse' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResponse',
-        'removeMerchantAliasResult' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResult'
+        'removeMerchantAliasResult' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResult',
     );
 
     /**
      * @var array
      */
-    private static $classmapFinancialOperation = array (
+    private static $classmapFinancialOperation = array(
         'requestFinancialOperation' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperation',
         'requestFinancialOperationRequest' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationRequest',
         'requestFinancialOperationResponse' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResponse',
-        'requestFinancialOperationResult' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResult'
+        'requestFinancialOperationResult' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResult',
     );
 
     public function __construct(Config $config)
@@ -86,7 +86,7 @@ class MBWayClient
             'compression'   => SOAP_COMPRESSION_GZIP | SOAP_COMPRESSION_DEFLATE,
             'keep_alive'    => true,
             'trace'         => true,
-            'exceptions'    => true,
+            'exceptions'    => false,
             'cache_wsdl'    => WSDL_CACHE_NONE,
             'ssl_method'    => SOAP_SSL_METHOD_TLS,
             'local_cert'    => $config->getSSLCert(),
@@ -103,7 +103,7 @@ class MBWayClient
     }
 
     /**
-     * @param CreateMerchantAlias $parameters
+     * @param  CreateMerchantAlias         $parameters
      * @return CreateMerchantAliasResponse
      */
     public function createMerchantAlias(CreateMerchantAlias $parameters)
@@ -113,7 +113,7 @@ class MBWayClient
     }
 
     /**
-     * @param RemoveMerchantAlias $parameters
+     * @param  RemoveMerchantAlias         $parameters
      * @return RemoveMerchantAliasResponse
      */
     public function removeMerchantAlias(RemoveMerchantAlias $parameters)
@@ -122,7 +122,7 @@ class MBWayClient
     }
 
     /**
-     * @param RequestFinancialOperation $parameters
+     * @param  RequestFinancialOperation         $parameters
      * @return RequestFinancialOperationResponse
      */
     public function requestFinancialOperation(RequestFinancialOperation $parameters)
@@ -131,13 +131,14 @@ class MBWayClient
         return $this->financialOperationClient->__soapCall('RequestFinancialOperation', array($parameters));
     }
 
-    private function addAddressingFeature(SoapClient &$client, $action, $reply_to){
-        $ns = 'http://www.w3.org/2005/08/addressing'; //Namespace of the WS.
+    private function addAddressingFeature(SoapClient &$client, $action, $replyTo)
+    {
+        $namespace = 'http://www.w3.org/2005/08/addressing'; //Namespace of the WS.
         //Create Soap Header.
-        $header[] = new SOAPHeader($ns, 'Action', $action);
-        $address = new SoapVar($reply_to, XSD_STRING, null, null, 'Address', $ns);
-        $replyTo = new SoapVar(array($address), SOAP_ENC_OBJECT, null, null, null, $ns);
-        $header[] = new SOAPHeader($ns, 'ReplyTo', $replyTo, false);
+        $header[] = new SOAPHeader($namespace, 'Action', $action);
+        $address = new SoapVar($replyTo, XSD_STRING, null, null, 'Address', $namespace);
+        $replyTo = new SoapVar(array($address), SOAP_ENC_OBJECT, null, null, null, $namespace);
+        $header[] = new SOAPHeader($namespace, 'ReplyTo', $replyTo, false);
         $client->__setSoapHeaders($header);
     }
 }

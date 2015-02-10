@@ -25,8 +25,7 @@ class RemoveMerchantAliasRequest
      */
     protected $messageProperties;
 
-
-    function __construct()
+    public function __construct()
     {
         $this->messageType = 'N0002';
     }
@@ -40,12 +39,13 @@ class RemoveMerchantAliasRequest
     }
 
     /**
-     * @param Alias $alias
+     * @param  Alias                      $alias
      * @return RemoveMerchantAliasRequest
      */
     public function setAlias($alias)
     {
         $this->alias = $alias;
+
         return $this;
     }
 
@@ -58,12 +58,13 @@ class RemoveMerchantAliasRequest
     }
 
     /**
-     * @param Merchant $merchant
+     * @param  Merchant                   $merchant
      * @return RemoveMerchantAliasRequest
      */
     public function setMerchant($merchant)
     {
         $this->merchant = $merchant;
+
         return $this;
     }
 
@@ -76,12 +77,13 @@ class RemoveMerchantAliasRequest
     }
 
     /**
-     * @param MessageProperties $messageProperties
+     * @param  MessageProperties          $messageProperties
      * @return RemoveMerchantAliasRequest
      */
     public function setMessageProperties($messageProperties)
     {
         $this->messageProperties = $messageProperties;
+
         return $this;
     }
 }

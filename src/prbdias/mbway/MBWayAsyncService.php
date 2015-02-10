@@ -1,11 +1,12 @@
 <?php
 namespace prbdias\mbway;
+
 use SoapServer;
 
 class MBWayAsyncService
 {
     private $host;
-    function __construct($host)
+    public function __construct($host)
     {
         $this->host = $host;
     }
@@ -13,7 +14,8 @@ class MBWayAsyncService
     /**
      * @param callable $callback
      */
-    function createFinancialOperationAsyncResultService(callable $callback){
+    public function createFinancialOperationAsyncResultService(callable $callback)
+    {
         $server = new SoapServer(null, array(
             'location' => $this->host,
             'uri' => 'http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultRequest',
@@ -26,7 +28,8 @@ class MBWayAsyncService
     /**
      * @param callable $callback
      */
-    function createMerchantAliasAsyncResultService(callable $callback){
+    public function createMerchantAliasAsyncResultService(callable $callback)
+    {
         $server = new SoapServer(null, array(
             'location' => $this->host,
             'uri' => 'http://webservices.sibsmerchant.com/MerchantAliasAsyncResult/merchantAliasResultRequest',

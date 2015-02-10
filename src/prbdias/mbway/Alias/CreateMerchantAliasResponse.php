@@ -17,12 +17,13 @@ class CreateMerchantAliasResponse
     }
 
     /**
-     * @param CreateMerchantAliasResult $return
+     * @param  CreateMerchantAliasResult   $return
      * @return CreateMerchantAliasResponse
      */
     public function setReturn(CreateMerchantAliasResult $return)
     {
         $this->return = $return;
+
         return $this;
     }
 }

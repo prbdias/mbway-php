@@ -17,12 +17,13 @@ class RequestFinancialOperation
     }
 
     /**
-     * @param RequestFinancialOperationRequest $arg0
+     * @param  RequestFinancialOperationRequest $arg0
      * @return RequestFinancialOperation
      */
     public function setArg0(RequestFinancialOperationRequest $arg0)
     {
         $this->arg0 = $arg0;
+
         return $this;
     }
 }
