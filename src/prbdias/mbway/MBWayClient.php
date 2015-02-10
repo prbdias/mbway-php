@@ -190,7 +190,8 @@ class MBWayClient
      * @param string $action
      * @return string
      */
-    private function getLocation($action){
+    private function getLocation($action)
+    {
         return ($this->isSandbox() ? self::$ENDPOINTS['SANDBOX'] : self::$ENDPOINTS['PRODUCTION']) . self::$locations[$action];
     }
 
