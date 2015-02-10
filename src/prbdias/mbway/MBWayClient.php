@@ -58,9 +58,9 @@ class MBWayClient
      * @var array
      */
     private static $locations = array(
-        'createMerchantAlias'   => 'Merchant/createMerchantAliasWS',
-        'removeMerchantAlias'   => 'Merchant/removeMerchantAliasWS',
-        'createMerchantAlias'   => 'Merchant/requestFinancialOperationWS',
+        'createMerchantAlias' => 'Merchant/createMerchantAliasWS',
+        'removeMerchantAlias' => 'Merchant/removeMerchantAliasWS',
+        'requestFinancialOperation' => 'Merchant/requestFinancialOperationWS',
     );
 
     /**
