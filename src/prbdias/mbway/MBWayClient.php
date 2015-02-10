@@ -11,6 +11,10 @@ use prbdias\mbway\FinancialOperation\RequestFinancialOperationResponse;
 use SoapHeader;
 use SoapVar;
 
+/**
+ * Class MBWayClient
+ * @package prbdias\mbway
+ */
 class MBWayClient
 {
     /**
@@ -29,12 +33,34 @@ class MBWayClient
     private $config;
 
     /**
+     * @var boolean
+     */
+    private $sandbox;
+
+    /**
      * @var array
      */
     private static $WSDL = array(
         'DIR' => 'wsdl/',
         'MERCHANT_ALIAS' => 'MerchantAliasWSService.wsdl',
         'FINANCIAL_OPERATION' => 'MerchantFinancialWSService.wsdl',
+    );
+
+    /**
+     * @var array
+     */
+    private static $ENDPOINTS = array(
+        'PRODUCTION'    => 'https://mbway.pt/',
+        'SANDBOX'       => 'https://qly.mbway.pt/'
+    );
+
+    /**
+     * @var array
+     */
+    private static $locations = array(
+        'createMerchantAlias'   => 'Merchant/createMerchantAliasWS',
+        'removeMerchantAlias'   => 'Merchant/removeMerchantAliasWS',
+        'createMerchantAlias'   => 'Merchant/requestFinancialOperationWS',
     );
 
     /**
@@ -71,8 +97,13 @@ class MBWayClient
         'requestFinancialOperationResult' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResult',
     );
 
+
+    /**
+     * @param Config $config
+     */
     public function __construct(Config $config)
     {
+        $this->sandbox = false;
         $this->config = $config;
         foreach (self::$classmap as $key => $value) {
             if (!isset($options['classmap'][$key])) {
@@ -90,7 +121,7 @@ class MBWayClient
             'cache_wsdl'    => WSDL_CACHE_NONE,
             'ssl_method'    => SOAP_SSL_METHOD_TLS,
             'local_cert'    => $config->getSSLCert(),
-            'passphrase'    => $config->getSSLPass()
+            'passphrase'    => $config->getSSLPass(),
         ), $options);
 
         $aliasOptions = $options;
@@ -103,13 +134,32 @@ class MBWayClient
     }
 
     /**
+     * @return boolean
+     */
+    public function isSandbox()
+    {
+        return $this->sandbox;
+    }
+
+    /**
+     * Enable or disable communication to quality server
+     * @param boolean $sandbox
+     */
+    public function setSandbox($sandbox = true)
+    {
+        $this->sandbox = $sandbox;
+    }
+
+    /**
      * @param  CreateMerchantAlias         $parameters
      * @return CreateMerchantAliasResponse
      */
     public function createMerchantAlias(CreateMerchantAlias $parameters)
     {
         $this->addAddressingFeature($this->aliasClient, 'http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest', $this->config->getMerchantAliasAsyncService());
-        return $this->aliasClient->__soapCall('CreateMerchantAlias', array($parameters));
+        return $this->aliasClient->__soapCall('createMerchantAlias', array($parameters), [
+            'location' => $this->getLocation('createMerchantAlias')
+        ]);
     }
 
     /**
@@ -118,7 +168,9 @@ class MBWayClient
      */
     public function removeMerchantAlias(RemoveMerchantAlias $parameters)
     {
-        return $this->aliasClient->__soapCall('RemoveMerchantAlias', array($parameters));
+        return $this->aliasClient->__soapCall('removeMerchantAlias', array($parameters), [
+            'location' => $this->getLocation('removeMerchantAlias')
+        ]);
     }
 
     /**
@@ -128,12 +180,30 @@ class MBWayClient
     public function requestFinancialOperation(RequestFinancialOperation $parameters)
     {
         $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest', $this->config->getFinancialOperationAsyncService());
-        return $this->financialOperationClient->__soapCall('RequestFinancialOperation', array($parameters));
+        return $this->financialOperationClient->__soapCall('requestFinancialOperation', array($parameters), [
+            'location' => $this->getLocation('requestFinancialOperation')
+        ]);
     }
 
+    /**
+     * Get location with support for sandbox mode
+     * @param string $action
+     * @return string
+     */
+    private function getLocation($action)
+    {
+        return ($this->isSandbox() ? self::$ENDPOINTS['SANDBOX'] : self::$ENDPOINTS['PRODUCTION']) . self::$locations[$action];
+    }
+
+    /**
+     * @param SoapClient $client
+     * @param string $action
+     * @param string $replyTo
+     */
     private function addAddressingFeature(SoapClient &$client, $action, $replyTo)
     {
-        $namespace = 'http://www.w3.org/2005/08/addressing'; //Namespace of the WS.
+        //Namespace of the WS.
+        $namespace = 'http://www.w3.org/2005/08/addressing';
         //Create Soap Header.
         $header[] = new SOAPHeader($namespace, 'Action', $action);
         $address = new SoapVar($replyTo, XSD_STRING, null, null, 'Address', $namespace);

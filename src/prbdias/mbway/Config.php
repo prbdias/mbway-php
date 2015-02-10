@@ -10,6 +10,10 @@
 
 namespace prbdias\mbway;
 
+/**
+ * Class Config
+ * @package prbdias\mbway
+ */
 class Config
 {
     /**
@@ -28,13 +32,31 @@ class Config
      * @var string
      */
     private $financialOperationAsyncServiceUrl;
+    /**
+     * @var string
+     */
+    private $merchantPosId;
+    /**
+     * @var string
+     */
+    private $merchantIP;
 
-    public function __construct($sslCert, $sslPass, $merchantAliasAsyncServiceUrl, $financialOperationAsyncServiceUrl)
+    /**
+     * @param $sslCert
+     * @param $sslPass
+     * @param $merchantAliasAsyncServiceUrl
+     * @param $financialOperationAsyncServiceUrl
+     * @param $merchantPosId
+     * @param $merchantIP
+     */
+    public function __construct($sslCert, $sslPass, $merchantAliasAsyncServiceUrl, $financialOperationAsyncServiceUrl, $merchantPosId, $merchantIP)
     {
         $this->sslCert = $sslCert;
         $this->sslPass = $sslPass;
         $this->merchantAliasAsyncServiceUrl = $merchantAliasAsyncServiceUrl;
         $this->financialOperationAsyncServiceUrl = $financialOperationAsyncServiceUrl;
+        $this->merchantPosId = $merchantPosId;
+        $this->merchantIP = $merchantIP;
     }
 
     /**
@@ -67,6 +89,22 @@ class Config
     public function getFinancialOperationAsyncService()
     {
         return $this->financialOperationAsyncServiceUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMerchantPosId()
+    {
+        return $this->merchantPosId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMerchantIP()
+    {
+        return $this->merchantIP;
     }
 
     /**
@@ -103,5 +141,21 @@ class Config
     public function setFinancialOperationAsyncService($financialOperationAsyncServiceUrl)
     {
         $this->financialOperationAsyncServiceUrl = $financialOperationAsyncServiceUrl;
+    }
+
+    /**
+     * @param string $merchantPosId
+     */
+    public function setMerchantPosId($merchantPosId)
+    {
+        $this->merchantPosId = $merchantPosId;
+    }
+
+    /**
+     * @param string $merchantIP
+     */
+    public function setMerchantIP($merchantIP)
+    {
+        $this->merchantIP = $merchantIP;
     }
 }
