@@ -11,6 +11,10 @@ use prbdias\mbway\FinancialOperation\RequestFinancialOperationResponse;
 use SoapHeader;
 use SoapVar;
 
+/**
+ * Class MBWayClient
+ * @package prbdias\mbway
+ */
 class MBWayClient
 {
     /**
@@ -71,6 +75,10 @@ class MBWayClient
         'requestFinancialOperationResult' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResult',
     );
 
+
+    /**
+     * @param Config $config
+     */
     public function __construct(Config $config)
     {
         $this->config = $config;
@@ -109,10 +117,7 @@ class MBWayClient
     public function createMerchantAlias(CreateMerchantAlias $parameters)
     {
         $this->addAddressingFeature($this->aliasClient, 'http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest', $this->config->getMerchantAliasAsyncService());
-        $save = $this->aliasClient->__soapCall('CreateMerchantAlias', array($parameters));
-        echo $this->aliasClient->__getLastRequest();
-
-        return $save;
+        return $this->aliasClient->__soapCall('CreateMerchantAlias', array($parameters));
     }
 
     /**
@@ -131,13 +136,18 @@ class MBWayClient
     public function requestFinancialOperation(RequestFinancialOperation $parameters)
     {
         $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest', $this->config->getFinancialOperationAsyncService());
-
         return $this->financialOperationClient->__soapCall('RequestFinancialOperation', array($parameters));
     }
 
+    /**
+     * @param SoapClient $client
+     * @param string $action
+     * @param string $replyTo
+     */
     private function addAddressingFeature(SoapClient &$client, $action, $replyTo)
     {
-        $namespace = 'http://www.w3.org/2005/08/addressing'; //Namespace of the WS.
+        //Namespace of the WS.
+        $namespace = 'http://www.w3.org/2005/08/addressing';
         //Create Soap Header.
         $header[] = new SOAPHeader($namespace, 'Action', $action);
         $address = new SoapVar($replyTo, XSD_STRING, null, null, 'Address', $namespace);
