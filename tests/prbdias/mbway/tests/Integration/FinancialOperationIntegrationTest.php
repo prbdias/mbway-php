@@ -41,8 +41,8 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
             ->setAliasTypeCde(Alias::$CELLPHONE);
 
         $merchant = new Merchant();
-        $merchant->setIPAddress(MBWAY_CONFIG_MERCHANT_IP)
-            ->setPosId(MBWAY_CONFIG_MERCHANT_POSID);
+        $merchant->setIPAddress($this->getConfig()->getMerchantIP())
+            ->setPosId($this->getConfig()->getMerchantPosId());
 
         $messageProperties = new MessageProperties();
         $messageProperties->setApiVersion("1")

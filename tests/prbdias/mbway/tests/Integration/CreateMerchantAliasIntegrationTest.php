@@ -35,8 +35,9 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase
         $testArgument->setAlias($testAlias);
 
         $testMerchant = new Merchant();
-        $testMerchant->setIPAddress(MBWAY_CONFIG_MERCHANT_IP);
-        $testMerchant->setPosId(MBWAY_CONFIG_MERCHANT_POSID);
+        $testMerchant->setIPAddress($this->getConfig()->getMerchantIP())
+            ->setPosId($this->getConfig()->getMerchantPosId());
+
         $testArgument->setMerchant($testMerchant);
 
         $testMsgProps = new MessageProperties();
