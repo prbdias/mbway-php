@@ -56,6 +56,7 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase
         $test->setArg0($testArgument);
 
         $service = new MBWayClient($this->getConfig());
+        $service->setSandbox(true);
         $response = $service->createMerchantAlias($test);
         $return = $response->getReturn();
 

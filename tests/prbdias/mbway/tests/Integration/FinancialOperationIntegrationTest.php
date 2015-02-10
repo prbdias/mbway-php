@@ -60,6 +60,7 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
 
         $test->setArg0($request);
         $service = new MBWayClient($this->getConfig());
+        $service->setSandbox(true);
         $response = $service->requestFinancialOperation($test);
         $return = $response->getReturn();
 
