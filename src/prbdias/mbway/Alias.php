@@ -10,9 +10,9 @@ class Alias
     /**
      * Alias Type Codes
      */
-    public static $CELLPHONE = "001";
-    public static $EMAIL = "002";
-    public static $GENERIC = "005";
+    const CELLPHONE = "001";
+    const EMAIL = "002";
+    const GENERIC = "005";
 
     /**
      * @var string $aliasName

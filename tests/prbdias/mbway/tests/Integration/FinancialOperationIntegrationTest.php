@@ -34,11 +34,11 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $operation->setAmount($amount)
             ->setCurrencyCode($currency)
             ->setMerchantOprId($oprid)
-            ->setOperationTypeCode(FinancialOperation::$PURCHASE);
+            ->setOperationTypeCode(FinancialOperation::PURCHASE);
 
         $alias = new Alias();
         $alias->setAliasName("351#911521624")
-            ->setAliasTypeCde(Alias::$CELLPHONE);
+            ->setAliasTypeCde(Alias::CELLPHONE);
 
         $merchant = new Merchant();
         $merchant->setIPAddress($this->getConfig()->getMerchantIP())
