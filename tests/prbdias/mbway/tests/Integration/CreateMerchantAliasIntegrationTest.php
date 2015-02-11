@@ -31,7 +31,7 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase
         /* Setting the parameters */
         $testAlias = new Alias();
         $testAlias->setAliasName("351#911521624");
-        $testAlias->setAliasTypeCde(Alias::$CELLPHONE);
+        $testAlias->setAliasTypeCde(Alias::CELLPHONE);
         $testArgument->setAlias($testAlias);
 
         $testMerchant = new Merchant();
@@ -52,7 +52,7 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase
 
         $testNewAlias = new Alias();
         $testNewAlias->setAliasName("mykubo-mbway-1234567891234");
-        $testNewAlias->setAliasTypeCde(Alias::$GENERIC);
+        $testNewAlias->setAliasTypeCde(Alias::GENERIC);
         $testArgument->setNewAlias($testNewAlias);
         $test->setArg0($testArgument);
 
