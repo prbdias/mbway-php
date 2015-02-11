@@ -7,37 +7,37 @@ class RequestFinancialOperationResult
      * @type int
      * @var int $amount
      */
-    public $amount;
+    protected $amount;
 
     /**
      * @type string
      * @var string $currencyCode
      */
-    public $currencyCode;
+    protected $currencyCode;
 
     /**
      * @type string
      * @var string $merchantOperationID
      */
-    public $merchantOperationID;
+    protected $merchantOperationID;
 
     /**
      * @type string
      * @var string $statusCode
      */
-    public $statusCode;
+    protected $statusCode;
 
     /**
      * @type dateTime
      * @var \DateTime $timestamp
      */
-    public $timestamp;
+    protected $timestamp;
 
     /**
      * @type string
      * @var string $token
      */
-    public $token;
+    protected $token;
 
     /**
      * Check if result from webservice is valid

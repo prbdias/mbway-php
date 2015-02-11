@@ -10,12 +10,12 @@ class FinancialOperation
     /**
      * FinancialOperation Type Codes
      */
-    public static $PURCHASE = "022";
-    public static $RETURN = "023";
-    public static $PURCHASE_AUTHORIZATION = "024";
-    public static $PURCHASE_AFTER_AUTHORIZATION = "025";
-    public static $AUTHORIZATION_CANCEL = "026";
-    public static $ANNULMENT = "048";
+    const PURCHASE = "022";
+    const PURCHASE_RETURN = "023";
+    const PURCHASE_AUTHORIZATION = "024";
+    const PURCHASE_AFTER_AUTHORIZATION = "025";
+    const AUTHORIZATION_CANCEL = "026";
+    const ANNULMENT = "048";
 
     /**
      * @var int $amount
