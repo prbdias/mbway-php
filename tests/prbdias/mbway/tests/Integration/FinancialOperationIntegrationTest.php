@@ -22,22 +22,79 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
 {
     /**
      * @group integration
+     * @dataProvider requestProvider
+     * @param RequestFinancialOperationRequest $request
      */
-    public function testCallFinancialOperation()
+    public function testPurchase(RequestFinancialOperationRequest $request)
     {
         $oprid  = uniqid();
         $amount = 70;
         $currency = "9782";
+
         $test = new RequestFinancialOperation();
-        $request = new RequestFinancialOperationRequest();
         $operation = new FinancialOperation();
         $operation->setAmount($amount)
             ->setCurrencyCode($currency)
             ->setMerchantOprId($oprid)
             ->setOperationTypeCode(FinancialOperation::PURCHASE);
 
+        $request->setFinancialOperation($operation);
+
+        $test->setArg0($request);
+        $service = new MBWayClient($this->getConfig());
+        $service->setSandbox(true);
+        $response = $service->requestFinancialOperation($test);
+        $return = $response->getReturn();
+
+        $this->assertSame($amount, $return->getAmount());
+        $this->assertSame($oprid, $return->getMerchantOperationID());
+        $this->assertSame($currency, $return->getCurrencyCode());
+        $this->assertTrue($return->isValid());
+        $this->assertNotEmpty($return->getToken());
+        $this->assertNotEmpty($return->getTimestamp());
+    }
+
+    /**
+     * @group integration
+     * @dataProvider requestProvider
+     * @param RequestFinancialOperationRequest $request
+     */
+    public function testPurchaseAuthorization(RequestFinancialOperationRequest $request)
+    {
+        $oprid  = uniqid();
+        $amount = 70;
+        $currency = "9782";
+
+        $test = new RequestFinancialOperation();
+        $operation = new FinancialOperation();
+        $operation->setAmount($amount)
+            ->setCurrencyCode($currency)
+            ->setMerchantOprId($oprid)
+            ->setOperationTypeCode(FinancialOperation::PURCHASE_AUTHORIZATION);
+
+        $request->setFinancialOperation($operation);
+
+        $test->setArg0($request);
+        $service = new MBWayClient($this->getConfig());
+        $service->setSandbox(true);
+        $response = $service->requestFinancialOperation($test);
+        $return = $response->getReturn();
+
+        $this->assertSame($amount, $return->getAmount());
+        $this->assertSame($oprid, $return->getMerchantOperationID());
+        $this->assertSame($currency, $return->getCurrencyCode());
+        $this->assertTrue($return->isValid());
+        $this->assertNotEmpty($return->getToken());
+        $this->assertNotEmpty($return->getTimestamp());
+    }
+
+    /**
+     * @return RequestFinancialOperationRequest
+     */
+    public function requestProvider(){
+        $request = new RequestFinancialOperationRequest();
         $alias = new Alias();
-        $alias->setAliasName("351#911521624")
+        $alias->setAliasName("351#922039741")
             ->setAliasTypeCde(Alias::CELLPHONE);
 
         $merchant = new Merchant();
@@ -53,22 +110,10 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
             ->setTimestamp(date_create("2014-10-04"));
 
         $request->setAditionalData("TESTE")
-            ->setFinancialOperation($operation)
             ->setAlias($alias)
             ->setMerchant($merchant)
             ->setMessageProperties($messageProperties);
 
-        $test->setArg0($request);
-        $service = new MBWayClient($this->getConfig());
-        $service->setSandbox(true);
-        $response = $service->requestFinancialOperation($test);
-        $return = $response->getReturn();
-
-        $this->assertSame($amount, $return->getAmount());
-        $this->assertSame($oprid, $return->getMerchantOperationID());
-        $this->assertSame($currency, $return->getCurrencyCode());
-        $this->assertTrue($return->isValid());
-        $this->assertNotEmpty($return->getToken());
-        $this->assertNotEmpty($return->getTimestamp());
+        return $request;
     }
 }
