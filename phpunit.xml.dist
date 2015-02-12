@@ -31,5 +31,7 @@
         <const name="MBWAY_ASYNC_SERVICE_MERCHANT_ALIAS" value="http://34842a79.ngrok.com/CreateMerchantAliasAsyncResultService" />
         <const name="MBWAY_ASYNC_SERVICE_FINANCIAL_OPERATION" value="http://34842a79.ngrok.com/CreateFinancialOperationAsyncResultService" />
 
+        <!-- Define a MerchantOperatioId to test an authorization cancellation -->
+        <const name="MBWAY_MERCHANT_OPERATION_TO_CANCEL" value="" />
     </php>
 </phpunit>
