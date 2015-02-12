@@ -181,11 +181,9 @@ class MBWayClient
     {
         $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest', $this->config->getFinancialOperationAsyncService());
 
-        $save = $this->financialOperationClient->__soapCall('requestFinancialOperation', array($parameters), [
+        return $this->financialOperationClient->__soapCall('requestFinancialOperation', array($parameters), [
             'location' => $this->getLocation('requestFinancialOperation')
         ]);
-        echo $this->financialOperationClient->__getLastRequest();
-        return $save;
     }
 
     /**

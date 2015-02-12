@@ -86,6 +86,9 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $this->assertTrue($return->isValid());
         $this->assertNotEmpty($return->getToken());
         $this->assertNotEmpty($return->getTimestamp());
+
+
+        echo "AUTHORIZATION MERCHANT OPERATION ID:{$oprid}".PHP_EOL;
     }
 
     /**
