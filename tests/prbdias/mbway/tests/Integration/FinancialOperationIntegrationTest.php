@@ -93,17 +93,29 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
 
     /**
      * @group integration
-     * @depends testPurchaseAuthorization
+     * @dataProvider requestProvider
      * @param RequestFinancialOperationRequest $request
+     * @return RequestFinancialOperationRequest
      */
-    public function testPurchaseAuthorizationAndCancellation(RequestFinancialOperationRequest $request)
+    public function testAuthorizationCancellation(RequestFinancialOperationRequest $request)
     {
-        $operation = $request->getFinancialOperation();
+
+        if(MBWAY_MERCHANT_OPERATION_TO_CANCEL === ''){
+            return $this->assertTrue(true);
+        }
+
+        $oprid  = MBWAY_MERCHANT_OPERATION_TO_CANCEL;
+        $amount = 70;
+        $currency = "9782";
 
         $test = new RequestFinancialOperation();
+        $operation = new FinancialOperation();
+        $operation->setAmount($amount)
+            ->setCurrencyCode($currency)
+            ->setMerchantOprId($oprid)
+            ->setOperationTypeCode(FinancialOperation::AUTHORIZATION_CANCEL);
 
-        $operation->setOperationTypeCode(FinancialOperation::AUTHORIZATION_CANCEL);
-        $request->setFinancialOperation($operation);
+        $request->setReferencedFinancialOperation($operation);
 
         $test->setArg0($request);
         $service = new MBWayClient($this->getConfig());
@@ -111,12 +123,14 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $response = $service->requestFinancialOperation($test);
         $return = $response->getReturn();
 
-        $this->assertSame($operation->getAmount(), $return->getAmount());
-        $this->assertSame($operation->getMerchantOprId(), $return->getMerchantOperationID());
-        $this->assertSame($operation->getCurrencyCode(), $return->getCurrencyCode());
+        $this->assertSame($amount, $return->getAmount());
+        $this->assertSame($oprid, $return->getMerchantOperationID());
+        $this->assertSame($currency, $return->getCurrencyCode());
         $this->assertTrue($return->isValid());
         $this->assertNotEmpty($return->getToken());
         $this->assertNotEmpty($return->getTimestamp());
+
+        return $request;
     }
 
     /**
