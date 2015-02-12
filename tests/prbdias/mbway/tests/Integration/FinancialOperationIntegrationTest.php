@@ -112,7 +112,7 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $operation->setAmount($amount)
             ->setCurrencyCode($currency)
             ->setMerchantOprId(MBWAY_MERCHANT_OPERATION_TO_CANCEL)
-            ->setOperationTypeCode(FinancialOperation::AUTHORIZATION);
+            ->setOperationTypeCode(FinancialOperation::PURCHASE_AUTHORIZATION);
 
         $operationCancellation = new FinancialOperation();
         $operationCancellation->setAmount($amount)
@@ -158,7 +158,7 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $operation->setAmount($amountAuthorized)
             ->setCurrencyCode($currency)
             ->setMerchantOprId(MBWAY_MERCHANT_OPERATION_TO_PURCHASE_AFTER_AUTHORIZE)
-            ->setOperationTypeCode(FinancialOperation::AUTHORIZATION);
+            ->setOperationTypeCode(FinancialOperation::PURCHASE_AUTHORIZATION);
 
         $operationPurchaseAfterAuthorize = new FinancialOperation();
         $operationPurchaseAfterAuthorize->setAmount($amountToPurchase)
