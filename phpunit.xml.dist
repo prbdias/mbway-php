@@ -35,6 +35,6 @@
         <const name="MBWAY_MERCHANT_OPERATION_TO_CANCEL" value="" />
 
         <!-- Define a MerchantOperatioId to test an authorization cancellation -->
-        <const name="MBWAY_MERCHANT_OPERATION_TO_PURCHASE_AFTER_AUTHORIZE" value="" />
+        <const name="MBWAY_MERCHANT_OPERATION_TO_PURCHASE_AFTER_AUTHORIZE" value="54dcde7334232" />
     </php>
 </phpunit>
