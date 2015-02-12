@@ -117,7 +117,7 @@ class MBWayClient
             'compression'   => SOAP_COMPRESSION_GZIP | SOAP_COMPRESSION_DEFLATE,
             'keep_alive'    => true,
             'trace'         => true,
-            'exceptions'    => false,
+            'exceptions'    => true,
             'cache_wsdl'    => WSDL_CACHE_NONE,
             'ssl_method'    => SOAP_SSL_METHOD_TLS,
             'local_cert'    => $config->getSSLCert(),
@@ -180,9 +180,12 @@ class MBWayClient
     public function requestFinancialOperation(RequestFinancialOperation $parameters)
     {
         $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest', $this->config->getFinancialOperationAsyncService());
-        return $this->financialOperationClient->__soapCall('requestFinancialOperation', array($parameters), [
+
+        $save = $this->financialOperationClient->__soapCall('requestFinancialOperation', array($parameters), [
             'location' => $this->getLocation('requestFinancialOperation')
         ]);
+        echo $this->financialOperationClient->__getLastRequest();
+        return $save;
     }
 
     /**
