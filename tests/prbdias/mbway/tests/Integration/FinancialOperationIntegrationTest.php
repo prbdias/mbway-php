@@ -130,7 +130,52 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $this->assertSame($oprid, $return->getMerchantOperationID());
         $this->assertSame($currency, $return->getCurrencyCode());
         $this->assertTrue($return->isValid());
-        $this->assertNotEmpty($return->getToken());
+        $this->assertNotEmpty($return->getTimestamp());
+    }
+
+    /**
+     * @group integration
+     * @dataProvider requestProvider
+     * @param RequestFinancialOperationRequest $request
+     */
+    public function testPurchaseAfterAuthorization(RequestFinancialOperationRequest $request)
+    {
+        if(MBWAY_MERCHANT_OPERATION_TO_PURCHASE_AFTER_AUTHORIZE === ''){
+            return $this->assertTrue(true);
+        }
+
+        $oprid  = uniqid();
+        $amountAuthorized = 70;
+        $amountToPurchase = 20;
+        $currency = "9782";
+
+        $test = new RequestFinancialOperation();
+
+        $operation = new FinancialOperation();
+        $operation->setAmount($amountAuthorized)
+            ->setCurrencyCode($currency)
+            ->setMerchantOprId(MBWAY_MERCHANT_OPERATION_TO_PURCHASE_AFTER_AUTHORIZE)
+            ->setOperationTypeCode(FinancialOperation::AUTHORIZATION);
+
+        $operationPurchaseAfterAuthorize = new FinancialOperation();
+        $operationPurchaseAfterAuthorize->setAmount($amountToPurchase)
+            ->setCurrencyCode($currency)
+            ->setMerchantOprId($oprid)
+            ->setOperationTypeCode(FinancialOperation::PURCHASE_AFTER_AUTHORIZATION);
+
+        $request->setFinancialOperation($operationPurchaseAfterAuthorize);
+        $request->setReferencedFinancialOperation($operation);
+
+        $test->setArg0($request);
+        $service = new MBWayClient($this->getConfig());
+        $service->setSandbox(true);
+        $response = $service->requestFinancialOperation($test);
+        $return = $response->getReturn();
+
+        $this->assertSame($amountToPurchase, $return->getAmount());
+        $this->assertSame($oprid, $return->getMerchantOperationID());
+        $this->assertSame($currency, $return->getCurrencyCode());
+        $this->assertTrue($return->isValid());
         $this->assertNotEmpty($return->getTimestamp());
     }
 
