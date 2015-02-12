@@ -89,12 +89,13 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
     }
 
     /**
-     * @return RequestFinancialOperationRequest
+     * @group integration
+     * @return array
      */
     public function requestProvider(){
         $request = new RequestFinancialOperationRequest();
         $alias = new Alias();
-        $alias->setAliasName("351#922039741")
+        $alias->setAliasName("351#911521624")
             ->setAliasTypeCde(Alias::CELLPHONE);
 
         $merchant = new Merchant();
@@ -114,6 +115,8 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
             ->setMerchant($merchant)
             ->setMessageProperties($messageProperties);
 
-        return $request;
+        return array(
+            array($request)
+        );
     }
 }
