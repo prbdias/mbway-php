@@ -58,6 +58,7 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
      * @group integration
      * @dataProvider requestProvider
      * @param RequestFinancialOperationRequest $request
+     * @return RequestFinancialOperationRequest
      */
     public function testPurchaseAuthorization(RequestFinancialOperationRequest $request)
     {
@@ -86,15 +87,46 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $this->assertTrue($return->isValid());
         $this->assertNotEmpty($return->getToken());
         $this->assertNotEmpty($return->getTimestamp());
+
+        return $request;
     }
 
     /**
-     * @return RequestFinancialOperationRequest
+     * @group integration
+     * @depends testPurchaseAuthorization
+     * @param RequestFinancialOperationRequest $request
+     */
+    public function testPurchaseAuthorizationAndCancellation(RequestFinancialOperationRequest $request)
+    {
+        $operation = $request->getFinancialOperation();
+
+        $test = new RequestFinancialOperation();
+
+        $operation->setOperationTypeCode(FinancialOperation::AUTHORIZATION_CANCEL);
+        $request->setFinancialOperation($operation);
+
+        $test->setArg0($request);
+        $service = new MBWayClient($this->getConfig());
+        $service->setSandbox(true);
+        $response = $service->requestFinancialOperation($test);
+        $return = $response->getReturn();
+
+        $this->assertSame($operation->getAmount(), $return->getAmount());
+        $this->assertSame($operation->getMerchantOprId(), $return->getMerchantOperationID());
+        $this->assertSame($operation->getCurrencyCode(), $return->getCurrencyCode());
+        $this->assertTrue($return->isValid());
+        $this->assertNotEmpty($return->getToken());
+        $this->assertNotEmpty($return->getTimestamp());
+    }
+
+    /**
+     * @group integration
+     * @return array
      */
     public function requestProvider(){
         $request = new RequestFinancialOperationRequest();
         $alias = new Alias();
-        $alias->setAliasName("351#922039741")
+        $alias->setAliasName("351#927474744")
             ->setAliasTypeCde(Alias::CELLPHONE);
 
         $merchant = new Merchant();
@@ -114,6 +146,8 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
             ->setMerchant($merchant)
             ->setMessageProperties($messageProperties);
 
-        return $request;
+        return array(
+            array($request)
+        );
     }
 }
