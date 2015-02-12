@@ -6,6 +6,7 @@
 [![Total Downloads](https://poser.pugx.org/prbdias/mbway-php/downloads.svg)](https://packagist.org/packages/prbdias/mbway-php) 
 [![Latest Unstable Version](https://poser.pugx.org/prbdias/mbway-php/v/unstable.svg)](https://packagist.org/packages/prbdias/mbway-php) 
 [![License](https://poser.pugx.org/prbdias/mbway-php/license.svg)](https://packagist.org/packages/prbdias/mbway-php)
+
 PHP library to communicate with MB WAY API.
 
 # Installing via Composer
