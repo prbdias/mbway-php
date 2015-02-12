@@ -58,7 +58,6 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
      * @group integration
      * @dataProvider requestProvider
      * @param RequestFinancialOperationRequest $request
-     * @return RequestFinancialOperationRequest
      */
     public function testPurchaseAuthorization(RequestFinancialOperationRequest $request)
     {
@@ -87,34 +86,38 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $this->assertTrue($return->isValid());
         $this->assertNotEmpty($return->getToken());
         $this->assertNotEmpty($return->getTimestamp());
-
-        return $request;
     }
 
     /**
      * @group integration
      * @dataProvider requestProvider
      * @param RequestFinancialOperationRequest $request
-     * @return RequestFinancialOperationRequest
      */
     public function testAuthorizationCancellation(RequestFinancialOperationRequest $request)
     {
-
         if(MBWAY_MERCHANT_OPERATION_TO_CANCEL === ''){
             return $this->assertTrue(true);
         }
 
-        $oprid  = MBWAY_MERCHANT_OPERATION_TO_CANCEL;
+        $oprid  = uniqid();
         $amount = 70;
         $currency = "9782";
 
         $test = new RequestFinancialOperation();
+
         $operation = new FinancialOperation();
         $operation->setAmount($amount)
+            ->setCurrencyCode($currency)
+            ->setMerchantOprId(MBWAY_MERCHANT_OPERATION_TO_CANCEL)
+            ->setOperationTypeCode(FinancialOperation::AUTHORIZATION);
+
+        $operationCancellation = new FinancialOperation();
+        $operationCancellation->setAmount($amount)
             ->setCurrencyCode($currency)
             ->setMerchantOprId($oprid)
             ->setOperationTypeCode(FinancialOperation::AUTHORIZATION_CANCEL);
 
+        $request->setFinancialOperation($operationCancellation);
         $request->setReferencedFinancialOperation($operation);
 
         $test->setArg0($request);
@@ -129,8 +132,6 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $this->assertTrue($return->isValid());
         $this->assertNotEmpty($return->getToken());
         $this->assertNotEmpty($return->getTimestamp());
-
-        return $request;
     }
 
     /**
