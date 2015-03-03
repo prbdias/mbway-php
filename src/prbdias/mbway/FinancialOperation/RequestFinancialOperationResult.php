@@ -45,7 +45,7 @@ class RequestFinancialOperationResult
      */
     public function isValid()
     {
-        return $this->statusCode === '000';
+        return $this->statusCode === '000' || $this->statusCode === '020';
     }
 
     /**
