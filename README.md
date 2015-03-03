@@ -18,7 +18,7 @@ The recommended way to install is through [Composer](http://composer.org).
 $ curl -sS https://getcomposer.org/installer | php
 
 # Add mbway-php as a dependency
-$ php composer.phar require prbdias/mbway-php:0.0.4
+$ php composer.phar require prbdias/mbway-php:0.0.5
 ```
 
 After installing, you need to require Composer's autoloader:
