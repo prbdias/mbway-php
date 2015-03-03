@@ -126,11 +126,11 @@ class MBWayClient
 
         $aliasOptions = $options;
         $aliasOptions["classmap"] += self::$classmapMerchantAlias;
-        $this->aliasClient = new SoapClient(__DIR__.'/../'.self::$WSDL['DIR'].self::$WSDL['MERCHANT_ALIAS'], $aliasOptions);
+        $this->aliasClient = new SoapClient(__DIR__.'/../../../'.self::$WSDL['DIR'].self::$WSDL['MERCHANT_ALIAS'], $aliasOptions);
 
         $financialOperationOptions = $options;
         $financialOperationOptions["classmap"] += self::$classmapFinancialOperation;
-        $this->financialOperationClient = new SoapClient(__DIR__.'/../'.self::$WSDL['DIR'].self::$WSDL['FINANCIAL_OPERATION'], $financialOperationOptions);
+        $this->financialOperationClient = new SoapClient(__DIR__.'/../../../'.self::$WSDL['DIR'].self::$WSDL['FINANCIAL_OPERATION'], $financialOperationOptions);
     }
 
     /**
