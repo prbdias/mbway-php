@@ -11,6 +11,9 @@
             "email": "prbdias@gmail.com"
         }
     ],
+    "require": {
+        "php": ">=5.5"
+    },
     "require-dev": {
         "phpunit/phpunit": "@stable"
     },
