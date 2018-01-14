@@ -119,7 +119,7 @@ class MBWayClient
             'trace'         => true,
             'exceptions'    => true,
             'cache_wsdl'    => WSDL_CACHE_NONE,
-            'ssl_method'    => SOAP_SSL_METHOD_TLS,
+            'ssl_method'    => SOAP_SSL_METHOD_SSLv23,
             'local_cert'    => $config->getSSLCert(),
             'passphrase'    => $config->getSSLPass(),
         ), $options);
