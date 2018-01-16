@@ -2,7 +2,6 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/949bd5d2e9ba4d128e86cc04d11ed6e5)](https://www.codacy.com/app/prbdias/mbway-php?utm_source=github.com&utm_medium=referral&utm_content=prbdias/mbway-php&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/prbdias/mbway-php.png)](https://travis-ci.org/prbdias/mbway-php)
-[![Codacy Badge](https://www.codacy.com/project/badge/34c02c7bc8164667aa7bdc5fb93d0673)](https://www.codacy.com/public/prbdias/mbway-php)
 [![Latest Stable Version](https://poser.pugx.org/prbdias/mbway-php/v/stable.svg)](https://packagist.org/packages/prbdias/mbway-php) 
 [![Total Downloads](https://poser.pugx.org/prbdias/mbway-php/downloads.svg)](https://packagist.org/packages/prbdias/mbway-php) 
 [![Latest Unstable Version](https://poser.pugx.org/prbdias/mbway-php/v/unstable.svg)](https://packagist.org/packages/prbdias/mbway-php) 
