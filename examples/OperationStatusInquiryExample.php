@@ -4,18 +4,16 @@ ini_set('display_errors', '1');
 
 
 require __DIR__.'/../vendor/autoload.php';
+
 use prbdias\mbway\Config;
-use prbdias\mbway\Alias;
-use prbdias\mbway\FinancialOperation;
-use prbdias\mbway\FinancialOperation\RequestFinancialOperation;
-use prbdias\mbway\FinancialOperation\RequestFinancialOperationRequest;
+use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiry;
+use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiryRequest;
 use prbdias\mbway\MBWayClient;
 use prbdias\mbway\Merchant;
 use prbdias\mbway\MessageProperties;
-use prbdias\mbway\Alias\CreateMerchantAlias;
-use prbdias\mbway\Alias\CreateMerchantAliasRequest;
-use prbdias\mbway\Alias\CreateMerchantAliasResponse;
-use prbdias\mbway\Alias\CreateMerchantAliasResult;
+use prbdias\mbway\FinancialOperationInquiry;
+use prbdias\mbway\OperationInformation;
+use prbdias\mbway\FinancialOperationInquiryReq;
 
 
 $ssl_cert = '/Users/ricardo/develop/caress/mbway-php/certs/M0502722.pem';
@@ -33,11 +31,22 @@ $oprid  = uniqid();
 $amount = 129;
 $currency = "9782";
 
-$request = new RequestFinancialOperationRequest();
+$request = new FinancialOperationStatusInquiryRequest();
 
-$alias = new Alias();
-$alias->setAliasName("351#962694507")
-    ->setAliasTypeCde(Alias::CELLPHONE);
+$operationInformation=new OperationInformation();
+$operationInformation->setMerchantOprId(rand());
+
+$financialOperationInquiry1 = new FinancialOperationInquiryReq();
+$financialOperationInquiry1->setMerchantOprId('1213');
+
+$financialOperationInquiry2 = new FinancialOperationInquiryReq();
+$financialOperationInquiry2->setMerchantOprId('12134');
+
+
+$financialOperationInquiry=array();
+$financialOperationInquiry[]=$financialOperationInquiry1;
+$financialOperationInquiry[]=$financialOperationInquiry2;
+
 
 $merchant = new Merchant();
 $merchant->setIPAddress($config->getMerchantIP())
@@ -52,27 +61,20 @@ $messageProperties->setApiVersion("1")
     ->setApiVersion("1")
     ->setTimestamp(date_create(date("Y-m-d H:i:s")));
 
-$request->setAditionalData("TESTE")
-    ->setAlias($alias)
+$request->setOperationInformation($operationInformation)
+    ->setFinancialOperationInquiry($financialOperationInquiry)
     ->setMerchant($merchant)
     ->setMessageProperties($messageProperties);
 
-$test = new RequestFinancialOperation(); // FinancialOperationStatusInquiry
 
-$operation = new FinancialOperation();
-$operation->setAmount($amount)
-    ->setCurrencyCode($currency)
-    ->setMerchantOprId($oprid)
-    ->setOperationTypeCode(FinancialOperation::PURCHASE);
-
-$request->setFinancialOperation($operation);
+$test = new FinancialOperationStatusInquiry();
 
 $test->setArg0($request);
 $service = new MBWayClient($config);
 $service->setSandbox(true);
 
 try {
-    $response = $service->requestFinancialOperation($test);
+    $response = $service->financialOperationStatusInquiry($test);
     $return = $response->getReturn();
     print_r($return);
 

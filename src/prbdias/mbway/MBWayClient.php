@@ -8,6 +8,9 @@ use prbdias\mbway\Alias\RemoveMerchantAlias;
 use prbdias\mbway\Alias\RemoveMerchantAliasResponse;
 use prbdias\mbway\FinancialOperation\RequestFinancialOperation;
 use prbdias\mbway\FinancialOperation\RequestFinancialOperationResponse;
+use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiry;
+use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiryResponse;
+
 use SoapHeader;
 use SoapVar;
 
@@ -61,6 +64,7 @@ class MBWayClient
         'createMerchantAlias' => 'Merchant/createMerchantAliasWS',
         'removeMerchantAlias' => 'Merchant/removeMerchantAliasWS',
         'requestFinancialOperation' => 'Merchant/requestFinancialOperationWS',
+        'financialOperationStatusInquiry' => 'Merchant/financialOperationStatusInquiryWS',
     );
 
     /**
@@ -69,8 +73,12 @@ class MBWayClient
     private static $classmap = array(
         'alias' => 'prbdias\\mbway\\Alias',
         'financialOperation' => 'prbdias\\mbway\\FinancialOperation',
+        'financialOperationInquiry' => 'prbdias\\mbway\\FinancialOperationInquiry',
+        'financialOperationInquiryRes' => 'prbdias\\mbway\\FinancialOperationInquiryRes',
         'merchant' => 'prbdias\\mbway\\Merchant',
         'messageProperties' => 'prbdias\\mbway\\MessageProperties',
+        'operationInformation' => 'prbdias\\mbway\\OperationInformation',
+
     );
 
     /**
@@ -95,6 +103,11 @@ class MBWayClient
         'requestFinancialOperationRequest' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationRequest',
         'requestFinancialOperationResponse' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResponse',
         'requestFinancialOperationResult' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResult',
+
+        'financialOperationStatusInquiry' => 'prbdias\\mbway\\FinancialOperation\\FinancialOperationStatusInquiry',
+        'financialOperationStatusInquiryRequest' => 'prbdias\\mbway\\FinancialOperation\\FinancialOperationStatusInquiryRequest',
+        'financialOperationStatusInquiryResponse' => 'prbdias\\mbway\\FinancialOperation\\FinancialOperationStatusInquiryResponse',
+        'financialOperationStatusInquiryResult' => 'prbdias\\mbway\\FinancialOperation\\FinancialOperationStatusInquiryResult',
     );
 
 
@@ -184,6 +197,19 @@ class MBWayClient
 
         return $this->financialOperationClient->__soapCall('requestFinancialOperation', array($parameters), [
             'location' => $this->getLocation('requestFinancialOperation')
+        ]);
+    }
+
+    /**
+     * @param  FinancialOperationStatusInquiry   $parameters
+     * @return FinancialOperationStatusInquiryResponse
+     */
+    public function FinancialOperationStatusInquiry(FinancialOperationStatusInquiry $parameters)
+    {
+        $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationInquiryWS/financialOperationStatusInquiryRequest', $this->config->getFinancialOperationAsyncService());
+
+        return $this->financialOperationClient->__soapCall('financialOperationStatusInquiry', array($parameters), [
+            'location' => $this->getLocation('financialOperationStatusInquiry')
         ]);
     }
 
