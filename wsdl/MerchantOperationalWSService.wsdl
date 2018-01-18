@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MerchantOperationalWSService"
+	targetNamespace="http://operational.services.merchant.channelmanagermsp.sibs/"
+	xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:tns="http://operational.services.merchant.channelmanagermsp.sibs/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<types>
+		<xsd:schema>
+			<xsd:import
+				namespace="http://operational.services.merchant.channelmanagermsp.sibs/"
+				schemaLocation="MerchantOperationalWSService_schema1.xsd" />
+		</xsd:schema>
+	</types>
+
+	<!-- Start of the Close Accounting Period definition -->
+	<message name="closeAccountingPeriodResponse">
+		<part name="parameters" element="tns:closeAccountingPeriodResponse">
+		</part>
+	</message>
+	<message name="closeAccountingPeriod">
+		<part name="parameters" element="tns:closeAccountingPeriod">
+		</part>
+	</message>
+	<portType name="MerchantOperationalWS">
+		<operation name="closeAccountingPeriod">
+			<input message="tns:closeAccountingPeriod"
+				wsam:Action="http://operational.services.merchant.channelmanagermsp.sibs/MerchantOperationalWS/closeAccountingPeriodRequest">
+			</input>
+			<output message="tns:closeAccountingPeriodResponse"
+				wsam:Action="http://operational.services.merchant.channelmanagermsp.sibs/MerchantOperationalWS/closeAccountingPeriodResponse">
+			</output>
+		</operation>
+	</portType>
+
+
+	<binding name="MerchantOperationalWSPortBinding" type="tns:MerchantOperationalWS">
+		<wsaw:UsingAddressing required="false" />
+		<wsp:PolicyReference URI="#MerchantOperationalWSPortBinding_WSAM_Addressing_Policy" />
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="closeAccountingPeriod">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<!-- End of the Close Accounting Period definition -->
+
+	<service name="MerchantOperationalWSService">
+		<port name="MerchantOperationalWSPort" binding="tns:MerchantOperationalWSPortBinding">
+			<soap:address location="http://127.0.0.1:14000/Merchant/closeAccountingPeriodWS" />
+		</port>
+	</service>
+	<wsp:Policy wsu:Id="MerchantOperationalWSPortBinding_WSAM_Addressing_Policy">
+		<wsam:Addressing wsp:Optional="true">
+			<wsp:Policy />
+		</wsam:Addressing>
+	</wsp:Policy>
+</definitions>

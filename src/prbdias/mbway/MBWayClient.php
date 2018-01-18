@@ -112,6 +112,8 @@ class MBWayClient
         }
 
         $options = array_merge(array(
+            'local_cert'    => $config->getSSLCert(),
+            'passphrase'    => $config->getSSLPass(),
             'soap_version'  => SOAP_1_1,
             'features'      => SOAP_SINGLE_ELEMENT_ARRAYS,
             'compression'   => SOAP_COMPRESSION_GZIP | SOAP_COMPRESSION_DEFLATE,
@@ -120,8 +122,7 @@ class MBWayClient
             'exceptions'    => true,
             'cache_wsdl'    => WSDL_CACHE_NONE,
             'ssl_method'    => SOAP_SSL_METHOD_SSLv23,
-            'local_cert'    => $config->getSSLCert(),
-            'passphrase'    => $config->getSSLPass(),
+
         ), $options);
 
         $aliasOptions = $options;
@@ -185,6 +186,11 @@ class MBWayClient
             'location' => $this->getLocation('requestFinancialOperation')
         ]);
     }
+
+    public function getFinantialClient() {
+        return $this->financialOperationClient;
+    }
+
 
     /**
      * Get location with support for sandbox mode
