@@ -11,7 +11,6 @@ use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiryRequest;
 use prbdias\mbway\MBWayClient;
 use prbdias\mbway\Merchant;
 use prbdias\mbway\MessageProperties;
-use prbdias\mbway\FinancialOperationInquiry;
 use prbdias\mbway\OperationInformation;
 use prbdias\mbway\FinancialOperationInquiryReq;
 
@@ -37,7 +36,7 @@ $operationInformation=new OperationInformation();
 $operationInformation->setMerchantOprId(rand());
 
 $financialOperationInquiry1 = new FinancialOperationInquiryReq();
-$financialOperationInquiry1->setMerchantOprId('1213');
+$financialOperationInquiry1->setMerchantOprId('5a60801abbc1d');
 
 $financialOperationInquiry2 = new FinancialOperationInquiryReq();
 $financialOperationInquiry2->setMerchantOprId('12134');
