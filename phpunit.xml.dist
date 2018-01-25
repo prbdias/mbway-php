@@ -24,17 +24,22 @@
 
     <php>
         <const name="MBWAY_RUN_INTEGRATION_TESTS" value="true" />
+        <const name="MBWAY_ALIAS_TESTS" value="351#YOUR_GSM_NUM" />
+        <const name="MBWAY_CURRENCY_CODE" value="9782" />
         <const name="MBWAY_SSL_CERT_PATH" value="certs/file.withkey.pem" />
-        <const name="MBWAY_SSL_CERT_PASS" value="MyKubo2015!" />
-        <const name="MBWAY_CONFIG_MERCHANT_POSID" value="24830" />
-        <const name="MBWAY_CONFIG_MERCHANT_IP" value="5.196.51.129" />
+        <const name="MBWAY_SSL_CERT_PASS" value="YOUR_CERT_PASS" />
+        <const name="MBWAY_CONFIG_MERCHANT_POSID" value="YOUR_POS_ID" />
+        <const name="MBWAY_CONFIG_MERCHANT_IP" value="255.255.255.255" />
         <const name="MBWAY_ASYNC_SERVICE_MERCHANT_ALIAS" value="http://34842a79.ngrok.com/CreateMerchantAliasAsyncResultService" />
         <const name="MBWAY_ASYNC_SERVICE_FINANCIAL_OPERATION" value="http://34842a79.ngrok.com/CreateFinancialOperationAsyncResultService" />
+
+        <!-- Define a MerchantOperatioId to test a Status Inquiry -->
+        <const name="MBWAY_MERCHANT_OPERATION_INQUIRY" value="" />
 
         <!-- Define a MerchantOperatioId to test an authorization cancellation -->
         <const name="MBWAY_MERCHANT_OPERATION_TO_CANCEL" value="" />
 
         <!-- Define a MerchantOperatioId to test an authorization cancellation -->
-        <const name="MBWAY_MERCHANT_OPERATION_TO_PURCHASE_AFTER_AUTHORIZE" value="54dcde7334232" />
+        <const name="MBWAY_MERCHANT_OPERATION_TO_PURCHASE_AFTER_AUTHORIZE" value="" />
     </php>
 </phpunit>
