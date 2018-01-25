@@ -18,6 +18,7 @@ use prbdias\mbway\MBWayClient;
 use prbdias\mbway\Merchant;
 use prbdias\mbway\MessageProperties;
 
+
 class FinancialOperationIntegrationTest extends IntegrationTestCase
 {
     /**
@@ -27,10 +28,10 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
      */
     public function testPurchase(RequestFinancialOperationRequest $request)
     {
-        return true;
+
         $oprid  = uniqid();
         $amount = 70;
-        $currency = "9782";
+        $currency = MBWAY_CURRENCY_CODE;
 
         $test = new RequestFinancialOperation();
         $operation = new FinancialOperation();
@@ -53,6 +54,8 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $this->assertTrue($return->isValid());
         $this->assertNotEmpty($return->getToken());
         $this->assertNotEmpty($return->getTimestamp());
+
+        echo "PURCHASE MERCHANT OPERATION ID: {$oprid}".PHP_EOL;
     }
 
     /**
@@ -62,10 +65,10 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
      */
     public function testPurchaseAuthorization(RequestFinancialOperationRequest $request)
     {
-        return true;
+
         $oprid  = uniqid();
         $amount = 70;
-        $currency = "9782";
+        $currency = MBWAY_CURRENCY_CODE;
 
         $test = new RequestFinancialOperation();
         $operation = new FinancialOperation();
@@ -90,7 +93,7 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $this->assertNotEmpty($return->getTimestamp());
 
 
-        echo "AUTHORIZATION MERCHANT OPERATION ID:{$oprid}".PHP_EOL;
+        echo "AUTHORIZATION MERCHANT OPERATION ID: {$oprid}".PHP_EOL;
     }
 
     /**
@@ -152,7 +155,7 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $oprid  = uniqid();
         $amountAuthorized = 70;
         $amountToPurchase = 20;
-        $currency = "9782";
+        $currency = MBWAY_CURRENCY_CODE;
 
         $test = new RequestFinancialOperation();
 
@@ -191,7 +194,7 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
     public function requestProvider(){
         $request = new RequestFinancialOperationRequest();
         $alias = new Alias();
-        $alias->setAliasName("351#911521624")
+        $alias->setAliasName(MBWAY_ALIAS_TESTS)
             ->setAliasTypeCde(Alias::CELLPHONE);
 
         $merchant = new Merchant();
@@ -204,7 +207,7 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
             ->setChannelTypeCode("VPOS")
             ->setNetworkCode("MULTIB")
             ->setServiceType("01")
-            ->setTimestamp(date_create("2014-10-04"));
+            ->setTimestamp(date_create("2017-10-04"));
 
         $request->setAditionalData("TESTE")
             ->setAlias($alias)

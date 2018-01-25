@@ -16,7 +16,7 @@ use prbdias\mbway\MessageProperties;
  * Class MessagePropertiesTest
  * @package prbdias\mbway\tests
  */
-class MessagePropertiesTest extends \PHPUnit_Framework_TestCase
+class MessagePropertiesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @return MessageProperties

@@ -12,7 +12,7 @@ namespace prbdias\mbway\tests\Alias;
 
 use prbdias\mbway\Alias\RemoveMerchantAliasResult;
 
-class RemoveMerchantAliasResultTest extends \PHPUnit_Framework_TestCase
+class RemoveMerchantAliasResultTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @return RemoveMerchantAliasResult
