@@ -18,7 +18,7 @@ class FinancialOperationStatusInquiryRequest
      */
     protected $operationInformation;
     /**
-     * @var array $financialOperationInquiry
+     * @var FinancialOperationInquiryReq[] $financialOperationInquiry
      */
     protected $financialOperationInquiry;
 
