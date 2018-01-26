@@ -11,8 +11,9 @@
 namespace prbdias\mbway\tests\FinancialOperation;
 
 use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiryResponse;
+use \PHPUnit\Framework\TestCase;
 
-class FinancialOperationStatusInquiryResponseTest extends \PHPUnit\Framework\TestCase
+class FinancialOperationStatusInquiryResponseTest extends TestCase
 {
     /**
      * @return FinancialOperationStatusInquiryResponse
