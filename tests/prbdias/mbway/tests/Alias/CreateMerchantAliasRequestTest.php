@@ -27,7 +27,6 @@ class CreateMerchantAliasRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($merchantAliasRequest->getMessageProperties());
         $this->assertNull($merchantAliasRequest->getNewAlias());
 
-
         return $merchantAliasRequest;
     }
 

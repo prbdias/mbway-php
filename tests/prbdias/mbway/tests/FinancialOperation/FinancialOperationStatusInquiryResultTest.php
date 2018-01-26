@@ -37,7 +37,7 @@ class FinancialOperationStatusInquiryResultTest extends \PHPUnit_Framework_TestC
      */
     public function testGettersSetters(FinancialOperationStatusInquiryResult $financialOperationStatusInquiryResult)
     {
-        $datetime = date_create("2014-03-15");
+        $datetime = date_create('2014-03-15');
         $stubOperationInformation = $this->getMockBuilder('prbdias\mbway\OperationInformation')->getMock();
         $stubReferencedFinancialOperation[] = $this->getMockBuilder('prbdias\mbway\FinancialOperationInquiryRes')->getMock();
 

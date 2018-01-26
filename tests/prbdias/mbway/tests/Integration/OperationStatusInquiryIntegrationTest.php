@@ -12,42 +12,39 @@ namespace prbdias\mbway\tests\Integration;
 
 use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiry;
 use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiryRequest;
+use prbdias\mbway\FinancialOperationInquiryReq;
 use prbdias\mbway\MBWayClient;
 use prbdias\mbway\Merchant;
 use prbdias\mbway\MessageProperties;
 use prbdias\mbway\OperationInformation;
-use prbdias\mbway\FinancialOperationInquiryReq;
-
 
 class OperationStatusInquiryIntegrationTest extends IntegrationTestCase
 {
     /**
      * @group integration
      * @dataProvider requestStatusInquiryProvider
+     *
      * @param FinancialOperationStatusInquiryRequest $request
      */
     public function testOperationStatusInquiry(FinancialOperationStatusInquiryRequest $request)
     {
-        if(MBWAY_MERCHANT_OPERATION_INQUIRY === ''){
+        if (MBWAY_MERCHANT_OPERATION_INQUIRY === '') {
             return $this->assertTrue(true);
         }
 
-        $oprid  = uniqid();
+        $oprid = uniqid();
 
-        $operationInformation=new OperationInformation();
+        $operationInformation = new OperationInformation();
         $operationInformation->setMerchantOprId($oprid);
 
         $financialOperationInquiry1 = new FinancialOperationInquiryReq();
         $financialOperationInquiry1->setMerchantOprId(MBWAY_MERCHANT_OPERATION_INQUIRY);
 
-
-        $financialOperationInquiry=array();
-        $financialOperationInquiry[]=$financialOperationInquiry1;
-
+        $financialOperationInquiry = [];
+        $financialOperationInquiry[] = $financialOperationInquiry1;
 
         $request->setOperationInformation($operationInformation)
             ->setFinancialOperationInquiry($financialOperationInquiry);
-
 
         $test = new FinancialOperationStatusInquiry();
 
@@ -57,22 +54,21 @@ class OperationStatusInquiryIntegrationTest extends IntegrationTestCase
         $response = $service->financialOperationStatusInquiry($test);
         $return = $response->getReturn();
 
-
-
         $this->assertSame($oprid, $return->getOperationInformation()->getMerchantOprId());
         $this->assertTrue($return->isValid());
-        $this->assertArrayHasKey(0,$return->getReferencedFinancialOperation());
+        $this->assertArrayHasKey(0, $return->getReferencedFinancialOperation());
         $this->assertNotEmpty($return->getTimestamp());
 
-        echo "STATUS OF OPERATIONS: ".print_r($return->getReferencedFinancialOperation(),true).PHP_EOL;
+        echo 'STATUS OF OPERATIONS: '.print_r($return->getReferencedFinancialOperation(), true).PHP_EOL;
     }
-
 
     /**
      * @group integration
+     *
      * @return array
      */
-    public function requestStatusInquiryProvider(){
+    public function requestStatusInquiryProvider()
+    {
         $request = new FinancialOperationStatusInquiryRequest();
 
         $merchant = new Merchant();
@@ -80,20 +76,18 @@ class OperationStatusInquiryIntegrationTest extends IntegrationTestCase
             ->setPosId($this->getConfig()->getMerchantPosId());
 
         $messageProperties = new MessageProperties();
-        $messageProperties->setApiVersion("1")
-            ->setChannel("01")
-            ->setChannelTypeCode("VPOS")
-            ->setNetworkCode("MULTIB")
-            ->setServiceType("01")
-            ->setTimestamp(date_create("2017-10-04"));
+        $messageProperties->setApiVersion('1')
+            ->setChannel('01')
+            ->setChannelTypeCode('VPOS')
+            ->setNetworkCode('MULTIB')
+            ->setServiceType('01')
+            ->setTimestamp(date_create('2017-10-04'));
 
         $request->setMerchant($merchant)
             ->setMessageProperties($messageProperties);
 
-        return array(
-            array($request)
-        );
+        return [
+            [$request],
+        ];
     }
-
-
 }

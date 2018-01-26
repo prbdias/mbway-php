@@ -1,41 +1,41 @@
 <?php
+
 namespace prbdias\mbway\FinancialOperation;
 
 use prbdias\mbway\Merchant;
 use prbdias\mbway\MessageProperties;
 use prbdias\mbway\OperationInformation;
-use prbdias\mbway\FinancialOperationInquiry;
 
 class FinancialOperationStatusInquiryRequest
 {
     /**
-     * @var string $messageType
+     * @var string
      */
     private $messageType;
 
     /**
-     * @var OperationInformation $operationInformation
+     * @var OperationInformation
      */
     protected $operationInformation;
     /**
-     * @var FinancialOperationInquiryReq[] $financialOperationInquiry
+     * @var FinancialOperationInquiryReq[]
      */
     protected $financialOperationInquiry;
 
     /**
-     * @var Merchant $merchant
+     * @var Merchant
      */
     protected $merchant;
 
     /**
-     * @var MessageProperties $messageProperties
+     * @var MessageProperties
      */
     protected $messageProperties;
 
     public function __construct()
     {
         $this->messageType = 'N0004';
-        $this->financialOperationInquiry=array();
+        $this->financialOperationInquiry = [];
     }
 
     /**
@@ -47,7 +47,8 @@ class FinancialOperationStatusInquiryRequest
     }
 
     /**
-     * @param  OperationInformation $operationInformation
+     * @param OperationInformation $operationInformation
+     *
      * @return FinancialOperationStatusInquiryRequest
      */
     public function setOperationInformation(OperationInformation $operationInformation)
@@ -66,7 +67,8 @@ class FinancialOperationStatusInquiryRequest
     }
 
     /**
-     * @param  array $financialOperationInquiry
+     * @param array $financialOperationInquiry
+     *
      * @return FinancialOperationStatusInquiryRequest
      */
     public function setFinancialOperationInquiry($financialOperationInquiry)
@@ -85,7 +87,8 @@ class FinancialOperationStatusInquiryRequest
     }
 
     /**
-     * @param  Merchant                         $merchant
+     * @param Merchant $merchant
+     *
      * @return FinancialOperationStatusInquiryRequest
      */
     public function setMerchant(Merchant $merchant)
@@ -104,7 +107,8 @@ class FinancialOperationStatusInquiryRequest
     }
 
     /**
-     * @param  MessageProperties                $messageProperties
+     * @param MessageProperties $messageProperties
+     *
      * @return FinancialOperationStatusInquiryRequest
      */
     public function setMessageProperties(MessageProperties $messageProperties)

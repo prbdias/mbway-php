@@ -13,8 +13,7 @@ namespace prbdias\mbway\tests;
 use prbdias\mbway\Alias;
 
 /**
- * Class AliasTest
- * @package prbdias\mbway\tests
+ * Class AliasTest.
  */
 class AliasTest extends \PHPUnit_Framework_TestCase
 {

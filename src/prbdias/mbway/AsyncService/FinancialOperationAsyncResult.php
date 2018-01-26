@@ -15,6 +15,7 @@ use prbdias\mbway\FinancialOperation\RequestFinancialOperationResult;
 class FinancialOperationAsyncResult
 {
     private $callback;
+
     public function __construct(callable $callback)
     {
         $this->callback = $callback;

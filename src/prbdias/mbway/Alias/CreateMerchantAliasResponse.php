@@ -1,10 +1,11 @@
 <?php
+
 namespace prbdias\mbway\Alias;
 
 class CreateMerchantAliasResponse
 {
     /**
-     * @var CreateMerchantAliasResult $return
+     * @var CreateMerchantAliasResult
      */
     protected $return;
 
@@ -17,7 +18,8 @@ class CreateMerchantAliasResponse
     }
 
     /**
-     * @param  CreateMerchantAliasResult   $return
+     * @param CreateMerchantAliasResult $return
+     *
      * @return CreateMerchantAliasResponse
      */
     public function setReturn(CreateMerchantAliasResult $return)

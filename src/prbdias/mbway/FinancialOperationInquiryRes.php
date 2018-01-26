@@ -1,33 +1,30 @@
 <?php
+
 namespace prbdias\mbway;
 
 class FinancialOperationInquiryRes
 {
     /**
-     * @var string $merchantOprId
+     * @var string
      */
     protected $merchantOprId;
 
     /**
-     * @type dateTime
+     * @var dateTime
      * @var \DateTime $merchantOprTimestamp
      */
     protected $merchantOprTimestamp;
 
     /**
-     * @var int $merchantOprSttCde
+     * @var int
      */
     protected $merchantOprSttCde;
 
     /**
-     * @type dateTime
+     * @var dateTime
      * @var \DateTime $merchantOprSttCdeTimestamp
      */
     protected $merchantOprSttCdeTimestamp;
-
-
-
-
 
     /**
      * @return string
@@ -38,7 +35,8 @@ class FinancialOperationInquiryRes
     }
 
     /**
-     * @param  string $merchantOprId
+     * @param string $merchantOprId
+     *
      * @return FinancialOperationInquiryRes
      */
     public function setMerchantOprId($merchantOprId)
@@ -61,7 +59,8 @@ class FinancialOperationInquiryRes
     }
 
     /**
-     * @param  \DateTime $merchantOprTimestamp
+     * @param \DateTime $merchantOprTimestamp
+     *
      * @return FinancialOperationInquiryRes
      */
     public function setTimestamp(\DateTime $merchantOprTimestamp)
@@ -80,7 +79,8 @@ class FinancialOperationInquiryRes
     }
 
     /**
-     * @param  int $merchantOprSttCde
+     * @param int $merchantOprSttCde
+     *
      * @return FinancialOperationInquiryRes
      */
     public function setMerchantOprSttCde($merchantOprSttCde)
@@ -103,7 +103,8 @@ class FinancialOperationInquiryRes
     }
 
     /**
-     * @param  \DateTime $merchantOprSttCdeTimestamp
+     * @param \DateTime $merchantOprSttCdeTimestamp
+     *
      * @return FinancialOperationInquiryRes
      */
     public function setMerchantOprSttCdeTimestamp(\DateTime $merchantOprSttCdeTimestamp)
@@ -112,5 +113,4 @@ class FinancialOperationInquiryRes
 
         return $this;
     }
-
 }

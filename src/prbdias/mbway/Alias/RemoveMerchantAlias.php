@@ -1,10 +1,11 @@
 <?php
+
 namespace prbdias\mbway\Alias;
 
 class RemoveMerchantAlias
 {
     /**
-     * @var RemoveMerchantAliasRequest $arg0
+     * @var RemoveMerchantAliasRequest
      */
     protected $arg0;
 
@@ -17,7 +18,8 @@ class RemoveMerchantAlias
     }
 
     /**
-     * @param  RemoveMerchantAliasRequest $arg0
+     * @param RemoveMerchantAliasRequest $arg0
+     *
      * @return RemoveMerchantAlias
      */
     public function setArg0(RemoveMerchantAliasRequest $arg0)

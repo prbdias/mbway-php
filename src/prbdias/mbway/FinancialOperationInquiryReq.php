@@ -1,10 +1,11 @@
 <?php
+
 namespace prbdias\mbway;
 
 class FinancialOperationInquiryReq
 {
     /**
-     * @var string $merchantOprId
+     * @var string
      */
     protected $merchantOprId;
 
@@ -17,7 +18,8 @@ class FinancialOperationInquiryReq
     }
 
     /**
-     * @param  string $merchantOprId
+     * @param string $merchantOprId
+     *
      * @return FinancialOperationInquiryRes
      */
     public function setMerchantOprId($merchantOprId)
@@ -26,5 +28,4 @@ class FinancialOperationInquiryReq
 
         return $this;
     }
-
 }

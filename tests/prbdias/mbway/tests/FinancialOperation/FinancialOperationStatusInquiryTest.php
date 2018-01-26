@@ -29,6 +29,7 @@ class FinancialOperationStatusInquiryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @depends testConstructor
+     *
      * @param FinancialOperationStatusInquiry $financialOperationStatusInquiry
      */
     public function testGettersSetters(FinancialOperationStatusInquiry $financialOperationStatusInquiry)

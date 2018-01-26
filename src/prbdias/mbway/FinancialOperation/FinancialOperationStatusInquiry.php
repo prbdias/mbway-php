@@ -1,10 +1,11 @@
 <?php
+
 namespace prbdias\mbway\FinancialOperation;
 
 class FinancialOperationStatusInquiry
 {
     /**
-     * @var RequestFinancialOperationRequest $arg0
+     * @var RequestFinancialOperationRequest
      */
     protected $arg0;
 
@@ -17,7 +18,8 @@ class FinancialOperationStatusInquiry
     }
 
     /**
-     * @param  RequestFinancialOperationRequest $arg0
+     * @param RequestFinancialOperationRequest $arg0
+     *
      * @return RequestFinancialOperation
      */
     public function setArg0(FinancialOperationStatusInquiryRequest $arg0)
