@@ -28,7 +28,6 @@ class CreateMerchantAliasResultTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($merchantAliasResult->getTimestamp());
         $this->assertNull($merchantAliasResult->getToken());
 
-
         return $merchantAliasResult;
     }
 
@@ -41,7 +40,7 @@ class CreateMerchantAliasResultTest extends \PHPUnit_Framework_TestCase
     {
         $stubAlias = $this->getMockBuilder('prbdias\mbway\Alias')->getMock();
 
-        $datetime = date_create("2014-03-15");
+        $datetime = date_create('2014-03-15');
         $merchantAliasResult->setAlias($stubAlias)
             ->setOperationId('operationid')
             ->setStatusCode('statuscode')

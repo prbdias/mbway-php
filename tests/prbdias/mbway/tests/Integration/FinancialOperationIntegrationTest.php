@@ -18,18 +18,17 @@ use prbdias\mbway\MBWayClient;
 use prbdias\mbway\Merchant;
 use prbdias\mbway\MessageProperties;
 
-
 class FinancialOperationIntegrationTest extends IntegrationTestCase
 {
     /**
      * @group integration
      * @dataProvider requestProvider
+     *
      * @param RequestFinancialOperationRequest $request
      */
     public function testPurchase(RequestFinancialOperationRequest $request)
     {
-
-        $oprid  = uniqid();
+        $oprid = uniqid();
         $amount = 70;
         $currency = MBWAY_CURRENCY_CODE;
 
@@ -61,12 +60,12 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
     /**
      * @group integration
      * @dataProvider requestProvider
+     *
      * @param RequestFinancialOperationRequest $request
      */
     public function testPurchaseAuthorization(RequestFinancialOperationRequest $request)
     {
-
-        $oprid  = uniqid();
+        $oprid = uniqid();
         $amount = 70;
         $currency = MBWAY_CURRENCY_CODE;
 
@@ -92,24 +91,24 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
         $this->assertNotEmpty($return->getToken());
         $this->assertNotEmpty($return->getTimestamp());
 
-
         echo "AUTHORIZATION MERCHANT OPERATION ID: {$oprid}".PHP_EOL;
     }
 
     /**
      * @group integration
      * @dataProvider requestProvider
+     *
      * @param RequestFinancialOperationRequest $request
      */
     public function testAuthorizationCancellation(RequestFinancialOperationRequest $request)
     {
-        if(MBWAY_MERCHANT_OPERATION_TO_CANCEL === ''){
+        if (MBWAY_MERCHANT_OPERATION_TO_CANCEL === '') {
             return $this->assertTrue(true);
         }
 
-        $oprid  = uniqid();
+        $oprid = uniqid();
         $amount = 70;
-        $currency = "9782";
+        $currency = '9782';
 
         $test = new RequestFinancialOperation();
 
@@ -144,15 +143,16 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
     /**
      * @group integration
      * @dataProvider requestProvider
+     *
      * @param RequestFinancialOperationRequest $request
      */
     public function testPurchaseAfterAuthorization(RequestFinancialOperationRequest $request)
     {
-        if(MBWAY_MERCHANT_OPERATION_TO_PURCHASE_AFTER_AUTHORIZE === ''){
+        if (MBWAY_MERCHANT_OPERATION_TO_PURCHASE_AFTER_AUTHORIZE === '') {
             return $this->assertTrue(true);
         }
 
-        $oprid  = uniqid();
+        $oprid = uniqid();
         $amountAuthorized = 70;
         $amountToPurchase = 20;
         $currency = MBWAY_CURRENCY_CODE;
@@ -189,9 +189,11 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
 
     /**
      * @group integration
+     *
      * @return array
      */
-    public function requestProvider(){
+    public function requestProvider()
+    {
         $request = new RequestFinancialOperationRequest();
         $alias = new Alias();
         $alias->setAliasName(MBWAY_ALIAS_TESTS)
@@ -202,20 +204,20 @@ class FinancialOperationIntegrationTest extends IntegrationTestCase
             ->setPosId($this->getConfig()->getMerchantPosId());
 
         $messageProperties = new MessageProperties();
-        $messageProperties->setApiVersion("1")
-            ->setChannel("01")
-            ->setChannelTypeCode("VPOS")
-            ->setNetworkCode("MULTIB")
-            ->setServiceType("01")
-            ->setTimestamp(date_create("2017-10-04"));
+        $messageProperties->setApiVersion('1')
+            ->setChannel('01')
+            ->setChannelTypeCode('VPOS')
+            ->setNetworkCode('MULTIB')
+            ->setServiceType('01')
+            ->setTimestamp(date_create('2017-10-04'));
 
-        $request->setAditionalData("TESTE")
+        $request->setAditionalData('TESTE')
             ->setAlias($alias)
             ->setMerchant($merchant)
             ->setMessageProperties($messageProperties);
 
-        return array(
-            array($request)
-        );
+        return [
+            [$request],
+        ];
     }
 }

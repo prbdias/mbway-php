@@ -1,4 +1,5 @@
 <?php
+
 namespace prbdias\mbway\Alias;
 
 use prbdias\mbway\Alias;
@@ -6,32 +7,33 @@ use prbdias\mbway\Alias;
 class CreateMerchantAliasResult
 {
     /**
-     * @var Alias $alias
+     * @var Alias
      */
     protected $alias;
 
     /**
-     * @var string $operationId
+     * @var string
      */
     protected $operationId;
 
     /**
-     * @var string $statusCode
+     * @var string
      */
     protected $statusCode;
 
     /**
-     * @var \DateTime $timestamp
+     * @var \DateTime
      */
     protected $timestamp;
 
     /**
-     * @var string $token
+     * @var string
      */
     protected $token;
 
     /**
-     * Check if result from webservice is valid
+     * Check if result from webservice is valid.
+     *
      * @return bool
      */
     public function isValid()
@@ -48,7 +50,8 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param  Alias                     $alias
+     * @param Alias $alias
+     *
      * @return CreateMerchantAliasResult
      */
     public function setAlias(Alias $alias)
@@ -67,7 +70,8 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param  string                    $operationId
+     * @param string $operationId
+     *
      * @return CreateMerchantAliasResult
      */
     public function setOperationId($operationId)
@@ -86,7 +90,8 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param  string                    $statusCode
+     * @param string $statusCode
+     *
      * @return CreateMerchantAliasResult
      */
     public function setStatusCode($statusCode)
@@ -111,7 +116,8 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param  \DateTime                 $timestamp
+     * @param \DateTime $timestamp
+     *
      * @return CreateMerchantAliasResult
      */
     public function setTimestamp(\DateTime $timestamp)
@@ -130,7 +136,8 @@ class CreateMerchantAliasResult
     }
 
     /**
-     * @param  string                    $token
+     * @param string $token
+     *
      * @return CreateMerchantAliasResult
      */
     public function setToken($token)

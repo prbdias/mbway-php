@@ -1,15 +1,16 @@
 <?php
+
 namespace prbdias\mbway;
 
 class Merchant
 {
     /**
-     * @var string $iPAddress
+     * @var string
      */
     protected $iPAddress;
 
     /**
-     * @var string $posId
+     * @var string
      */
     protected $posId;
 
@@ -22,7 +23,8 @@ class Merchant
     }
 
     /**
-     * @param  string   $iPAddress
+     * @param string $iPAddress
+     *
      * @return Merchant
      */
     public function setIPAddress($iPAddress)
@@ -41,7 +43,8 @@ class Merchant
     }
 
     /**
-     * @param  string   $posId
+     * @param string $posId
+     *
      * @return Merchant
      */
     public function setPosId($posId)

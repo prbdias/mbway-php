@@ -31,7 +31,7 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase
         $testArgument = new CreateMerchantAliasRequest();
         /* Setting the parameters */
         $testAlias = new Alias();
-        $testAlias->setAliasName("351#911521624");
+        $testAlias->setAliasName('351#911521624');
         $testAlias->setAliasTypeCde(Alias::CELLPHONE);
         $testArgument->setAlias($testAlias);
 
@@ -42,17 +42,17 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase
         $testArgument->setMerchant($testMerchant);
 
         $testMsgProps = new MessageProperties();
-        $testMsgProps->setChannel("01");
-        $testMsgProps->setChannelTypeCode("VPOS");
-        $testMsgProps->setNetworkCode("MULTIB");
-        $merchantTimestamp = date_create("2014-09-28");
+        $testMsgProps->setChannel('01');
+        $testMsgProps->setChannelTypeCode('VPOS');
+        $testMsgProps->setNetworkCode('MULTIB');
+        $merchantTimestamp = date_create('2014-09-28');
         $testMsgProps->setTimestamp($merchantTimestamp);
-        $testMsgProps->setServiceType("01");
-        $testMsgProps->setApiVersion("1");
+        $testMsgProps->setServiceType('01');
+        $testMsgProps->setApiVersion('1');
         $testArgument->setMessageProperties($testMsgProps);
 
         $testNewAlias = new Alias();
-        $testNewAlias->setAliasName("mykubo-mbway-1234567891234");
+        $testNewAlias->setAliasName('mykubo-mbway-1234567891234');
         $testNewAlias->setAliasTypeCde(Alias::GENERIC);
         $testArgument->setNewAlias($testNewAlias);
         $test->setArg0($testArgument);
@@ -63,6 +63,6 @@ class CreateMerchantAliasIntegrationTest extends IntegrationTestCase
         $return = $response->getReturn();
 
         //Return 124 because merchant didn't make any purchase before
-        $this->assertSame("124", $return->getStatusCode());
+        $this->assertSame('124', $return->getStatusCode());
     }
 }

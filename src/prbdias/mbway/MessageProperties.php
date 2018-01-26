@@ -1,35 +1,36 @@
 <?php
+
 namespace prbdias\mbway;
 
 class MessageProperties
 {
     /**
-     * @var string $channel
+     * @var string
      */
     protected $channel;
 
     /**
-     * @var string $apiVersion
+     * @var string
      */
     protected $apiVersion;
 
     /**
-     * @var string $channelTypeCode
+     * @var string
      */
     protected $channelTypeCode;
 
     /**
-     * @var string $networkCode
+     * @var string
      */
     protected $networkCode;
 
     /**
-     * @var string $serviceType
+     * @var string
      */
     protected $serviceType;
 
     /**
-     * @var \DateTime $timestamp
+     * @var \DateTime
      */
     protected $timestamp;
 
@@ -42,7 +43,8 @@ class MessageProperties
     }
 
     /**
-     * @param  string            $channel
+     * @param string $channel
+     *
      * @return MessageProperties
      */
     public function setChannel($channel)
@@ -61,7 +63,8 @@ class MessageProperties
     }
 
     /**
-     * @param  string            $apiVersion
+     * @param string $apiVersion
+     *
      * @return MessageProperties
      */
     public function setApiVersion($apiVersion)
@@ -80,7 +83,8 @@ class MessageProperties
     }
 
     /**
-     * @param  string            $channelTypeCode
+     * @param string $channelTypeCode
+     *
      * @return MessageProperties
      */
     public function setChannelTypeCode($channelTypeCode)
@@ -99,7 +103,8 @@ class MessageProperties
     }
 
     /**
-     * @param  string            $networkCode
+     * @param string $networkCode
+     *
      * @return MessageProperties
      */
     public function setNetworkCode($networkCode)
@@ -118,7 +123,8 @@ class MessageProperties
     }
 
     /**
-     * @param  string            $serviceType
+     * @param string $serviceType
+     *
      * @return MessageProperties
      */
     public function setServiceType($serviceType)
@@ -141,7 +147,8 @@ class MessageProperties
     }
 
     /**
-     * @param  \DateTime         $timestamp
+     * @param \DateTime $timestamp
+     *
      * @return MessageProperties
      */
     public function setTimestamp(\DateTime $timestamp)

@@ -15,6 +15,7 @@ use prbdias\mbway\Alias\CreateMerchantAliasResult;
 class MerchantAliasAsyncResult
 {
     private $callback;
+
     public function __construct(callable $callback)
     {
         $this->callback = $callback;

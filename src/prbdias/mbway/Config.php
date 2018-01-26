@@ -11,8 +11,7 @@
 namespace prbdias\mbway;
 
 /**
- * Class Config
- * @package prbdias\mbway
+ * Class Config.
  */
 class Config
 {
@@ -108,7 +107,8 @@ class Config
     }
 
     /**
-     * @param  string $sslCert
+     * @param string $sslCert
+     *
      * @return void
      */
     public function setSSLCert($sslCert)
@@ -117,7 +117,8 @@ class Config
     }
 
     /**
-     * @param  string $sslPass
+     * @param string $sslPass
+     *
      * @return void
      */
     public function setSSLPass($sslPass)
@@ -126,7 +127,8 @@ class Config
     }
 
     /**
-     * @param  string $merchantAliasAsyncServiceUrl
+     * @param string $merchantAliasAsyncServiceUrl
+     *
      * @return void
      */
     public function setMerchantAliasAsyncService($merchantAliasAsyncServiceUrl)
@@ -135,7 +137,8 @@ class Config
     }
 
     /**
-     * @param  string $financialOperationAsyncServiceUrl
+     * @param string $financialOperationAsyncServiceUrl
+     *
      * @return void
      */
     public function setFinancialOperationAsyncService($financialOperationAsyncServiceUrl)

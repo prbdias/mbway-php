@@ -21,9 +21,8 @@ class FinancialOperationStatusInquiryRequestTest extends \PHPUnit_Framework_Test
     {
         $financialOperationStatusInquiryRequest = new FinancialOperationStatusInquiryRequest();
 
-
         $this->assertNull($financialOperationStatusInquiryRequest->getOperationInformation());
-        $this->assertArrayNotHasKey(0,$financialOperationStatusInquiryRequest->getFinancialOperationInquiry());
+        $this->assertArrayNotHasKey(0, $financialOperationStatusInquiryRequest->getFinancialOperationInquiry());
         $this->assertNull($financialOperationStatusInquiryRequest->getMerchant());
         $this->assertNull($financialOperationStatusInquiryRequest->getMessageProperties());
 
@@ -42,7 +41,6 @@ class FinancialOperationStatusInquiryRequestTest extends \PHPUnit_Framework_Test
         $stubMerchant = $this->getMockBuilder('prbdias\mbway\Merchant')->getMock();
         $stubMessageProperties = $this->getMockBuilder('prbdias\mbway\MessageProperties')->getMock();
         $stubFinancialOperationReq[] = $this->getMockBuilder('prbdias\mbway\FinancialOperationInquiryReq')->getMock();
-
 
         $financialOperationStatusInquiryRequest->setFinancialOperationInquiry($stubFinancialOperationReq)
             ->setMerchant($stubMerchant)

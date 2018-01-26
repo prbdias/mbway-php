@@ -1,10 +1,11 @@
 <?php
+
 namespace prbdias\mbway\FinancialOperation;
 
 class FinancialOperationStatusInquiryResponse
 {
     /**
-     * @var FinancialOperationStatusInquiryResult $return
+     * @var FinancialOperationStatusInquiryResult
      */
     protected $return;
 
@@ -17,7 +18,8 @@ class FinancialOperationStatusInquiryResponse
     }
 
     /**
-     * @param  FinancialOperationStatusInquiryResult   $return
+     * @param FinancialOperationStatusInquiryResult $return
+     *
      * @return FinancialOperationStatusInquiryResponse
      */
     public function setReturn(FinancialOperationStatusInquiryResult $return)

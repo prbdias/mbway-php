@@ -13,8 +13,7 @@ namespace prbdias\mbway\tests;
 use prbdias\mbway\Merchant;
 
 /**
- * Class MerchantTest
- * @package prbdias\mbway\tests
+ * Class MerchantTest.
  */
 class MerchantTest extends \PHPUnit_Framework_TestCase
 {

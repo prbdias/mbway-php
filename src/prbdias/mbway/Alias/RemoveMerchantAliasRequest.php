@@ -1,4 +1,5 @@
 <?php
+
 namespace prbdias\mbway\Alias;
 
 use prbdias\mbway\MessageProperties;
@@ -6,22 +7,22 @@ use prbdias\mbway\MessageProperties;
 class RemoveMerchantAliasRequest
 {
     /**
-     * @var string $messageType
+     * @var string
      */
     private $messageType;
 
     /**
-     * @var Alias $alias
+     * @var Alias
      */
     protected $alias;
 
     /**
-     * @var Merchant $merchant
+     * @var Merchant
      */
     protected $merchant;
 
     /**
-     * @var MessageProperties $messageProperties
+     * @var MessageProperties
      */
     protected $messageProperties;
 
@@ -39,7 +40,8 @@ class RemoveMerchantAliasRequest
     }
 
     /**
-     * @param  Alias                      $alias
+     * @param Alias $alias
+     *
      * @return RemoveMerchantAliasRequest
      */
     public function setAlias($alias)
@@ -58,7 +60,8 @@ class RemoveMerchantAliasRequest
     }
 
     /**
-     * @param  Merchant                   $merchant
+     * @param Merchant $merchant
+     *
      * @return RemoveMerchantAliasRequest
      */
     public function setMerchant($merchant)
@@ -77,7 +80,8 @@ class RemoveMerchantAliasRequest
     }
 
     /**
-     * @param  MessageProperties          $messageProperties
+     * @param MessageProperties $messageProperties
+     *
      * @return RemoveMerchantAliasRequest
      */
     public function setMessageProperties($messageProperties)

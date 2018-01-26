@@ -1,10 +1,11 @@
 <?php
+
 namespace prbdias\mbway\Alias;
 
 class CreateMerchantAlias
 {
     /**
-     * @var CreateMerchantAliasRequest $arg0
+     * @var CreateMerchantAliasRequest
      */
     protected $arg0;
 
@@ -17,7 +18,8 @@ class CreateMerchantAlias
     }
 
     /**
-     * @param  CreateMerchantAliasRequest $arg0
+     * @param CreateMerchantAliasRequest $arg0
+     *
      * @return CreateMerchantAlias
      */
     public function setArg0(CreateMerchantAliasRequest $arg0)

@@ -1,4 +1,5 @@
 <?php
+
 namespace prbdias\mbway\Alias;
 
 use prbdias\mbway\Alias;
@@ -6,22 +7,23 @@ use prbdias\mbway\Alias;
 class RemoveMerchantAliasResult
 {
     /**
-     * @var Alias $alias
+     * @var Alias
      */
     protected $alias;
 
     /**
-     * @var string $statusCode
+     * @var string
      */
     protected $statusCode;
 
     /**
-     * @var \DateTime $timestamp
+     * @var \DateTime
      */
     protected $timestamp;
 
     /**
-     * Check if result from webservice is valid
+     * Check if result from webservice is valid.
+     *
      * @return bool
      */
     public function isValid()
@@ -38,7 +40,8 @@ class RemoveMerchantAliasResult
     }
 
     /**
-     * @param  Alias                     $alias
+     * @param Alias $alias
+     *
      * @return RemoveMerchantAliasResult
      */
     public function setAlias(Alias $alias)
@@ -57,7 +60,8 @@ class RemoveMerchantAliasResult
     }
 
     /**
-     * @param  string                    $statusCode
+     * @param string $statusCode
+     *
      * @return RemoveMerchantAliasResult
      */
     public function setStatusCode($statusCode)
@@ -80,7 +84,8 @@ class RemoveMerchantAliasResult
     }
 
     /**
-     * @param  \DateTime                 $timestamp
+     * @param \DateTime $timestamp
+     *
      * @return RemoveMerchantAliasResult
      */
     public function setTimestamp(\DateTime $timestamp)

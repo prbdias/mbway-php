@@ -1,4 +1,5 @@
 <?php
+
 namespace prbdias\mbway\FinancialOperation;
 
 use prbdias\mbway\FinancialOperationInquiryRes;
@@ -6,31 +7,27 @@ use prbdias\mbway\OperationInformation;
 
 class FinancialOperationStatusInquiryResult
 {
-
-
     /**
-     * @var OperationInformation $operationInformation
+     * @var OperationInformation
      */
     protected $operationInformation;
 
     /**
-     * @var FinancialOperationInquiryRes[] $referencedFinancialOperation
+     * @var FinancialOperationInquiryRes[]
      */
     protected $referencedFinancialOperation;
 
     /**
-     * @type string
+     * @var string
      * @var string $statusCode
      */
     protected $statusCode;
 
     /**
-     * @type dateTime
+     * @var dateTime
      * @var \DateTime $timestamp
      */
     protected $timestamp;
-
-
 
     /**
      * @return bool
@@ -39,7 +36,6 @@ class FinancialOperationStatusInquiryResult
     {
         return $this->statusCode === '000' || $this->statusCode === '020';
     }
-
 
     /**
      * @return OperationInformation
@@ -50,7 +46,8 @@ class FinancialOperationStatusInquiryResult
     }
 
     /**
-     * @param  OperationInformation $operationInformation
+     * @param OperationInformation $operationInformation
+     *
      * @return RequestFinancialOperationResult
      */
     public function setOperationInformation(OperationInformation $operationInformation)
@@ -69,7 +66,8 @@ class FinancialOperationStatusInquiryResult
     }
 
     /**
-     * @param  FinancialOperationInquiryRes[] $referencedFinancialOperation
+     * @param FinancialOperationInquiryRes[] $referencedFinancialOperation
+     *
      * @return RequestFinancialOperationResult
      */
     public function setReferencedFinancialOperation($referencedFinancialOperation)
@@ -88,7 +86,8 @@ class FinancialOperationStatusInquiryResult
     }
 
     /**
-     * @param  string                          $statusCode
+     * @param string $statusCode
+     *
      * @return RequestFinancialOperationResult
      */
     public function setStatusCode($statusCode)
@@ -111,7 +110,8 @@ class FinancialOperationStatusInquiryResult
     }
 
     /**
-     * @param  \DateTime $timestamp
+     * @param \DateTime $timestamp
+     *
      * @return RequestFinancialOperationResult
      */
     public function setTimestamp(\DateTime $timestamp)
@@ -120,5 +120,4 @@ class FinancialOperationStatusInquiryResult
 
         return $this;
     }
-
 }
