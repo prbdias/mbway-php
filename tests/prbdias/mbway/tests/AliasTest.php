@@ -16,7 +16,7 @@ use prbdias\mbway\Alias;
  * Class AliasTest
  * @package prbdias\mbway\tests
  */
-class AliasTest extends \PHPUnit\Framework\TestCase
+class AliasTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @return Alias

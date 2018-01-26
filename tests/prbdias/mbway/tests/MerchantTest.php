@@ -16,7 +16,7 @@ use prbdias\mbway\Merchant;
  * Class MerchantTest
  * @package prbdias\mbway\tests
  */
-class MerchantTest extends \PHPUnit\Framework\TestCase
+class MerchantTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @return Merchant
