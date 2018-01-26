@@ -92,10 +92,10 @@
 
 	<service name="MerchantAliasWSService">
 		<port name="MerchantAliasWSPortCreate" binding="tns:MerchantAliasWSPortBindingCreate">
-			<soap:address location="https://qly.mbway.pt/Merchant/createMerchantAliasWS" />
+			<soap:address location="http://127.0.0.1:14000/Merchant/createMerchantAliasWS" />
 		</port>
 		<port name="MerchantAliasWSPortRemove" binding="tns:MerchantAliasWSPortBindingRemove">
-			<soap:address location="https://qly.mbway.pt/Merchant/removeMerchantAliasWS" />
+			<soap:address location="http://127.0.0.1:14000/Merchant/removeMerchantAliasWS" />
 		</port>
 	</service>
 

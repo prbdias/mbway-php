@@ -1,29 +1,29 @@
 <?php
+
 namespace prbdias\mbway;
 
 /**
- * Class FinancialOperation
- * @package prbdias\mbway
+ * Class FinancialOperation.
  */
 class FinancialOperation
 {
     /**
-     * FinancialOperation Type Codes
+     * FinancialOperation Type Codes.
      */
-    const PURCHASE = "022";
-    const PURCHASE_RETURN = "023";
-    const PURCHASE_AUTHORIZATION = "024";
-    const PURCHASE_AFTER_AUTHORIZATION = "025";
-    const AUTHORIZATION_CANCEL = "026";
-    const ANNULMENT = "048";
+    const PURCHASE = '022';
+    const PURCHASE_RETURN = '023';
+    const PURCHASE_AUTHORIZATION = '024';
+    const PURCHASE_AFTER_AUTHORIZATION = '025';
+    const AUTHORIZATION_CANCEL = '026';
+    const ANNULMENT = '048';
 
     /**
-     * @var int $amount
+     * @var int
      */
     protected $amount;
 
     /**
-     * @var string $currencyCode
+     * @var string
      */
     protected $currencyCode;
 
@@ -33,13 +33,14 @@ class FinancialOperation
      * 024 – Autorização de compra
      * 025 – Compra após autorização
      * 026 – Cancelamento de autorização
-     * 048 – Anulação
-     * @var string $operationTypeCode
+     * 048 – Anulação.
+     *
+     * @var string
      */
     protected $operationTypeCode;
 
     /**
-     * @var string $merchantOprId
+     * @var string
      */
     protected $merchantOprId;
 
@@ -52,7 +53,8 @@ class FinancialOperation
     }
 
     /**
-     * @param  int                $amount
+     * @param int $amount
+     *
      * @return FinancialOperation
      */
     public function setAmount($amount)
@@ -71,7 +73,8 @@ class FinancialOperation
     }
 
     /**
-     * @param  string             $currencyCode
+     * @param string $currencyCode
+     *
      * @return FinancialOperation
      */
     public function setCurrencyCode($currencyCode)
@@ -90,7 +93,8 @@ class FinancialOperation
     }
 
     /**
-     * @param  string             $operationTypeCode
+     * @param string $operationTypeCode
+     *
      * @return FinancialOperation
      */
     public function setOperationTypeCode($operationTypeCode)
@@ -109,7 +113,8 @@ class FinancialOperation
     }
 
     /**
-     * @param  string             $merchantOprId
+     * @param string $merchantOprId
+     *
      * @return FinancialOperation
      */
     public function setMerchantOprId($merchantOprId)

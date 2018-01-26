@@ -13,8 +13,7 @@ namespace prbdias\mbway\tests;
 use prbdias\mbway\MessageProperties;
 
 /**
- * Class MessagePropertiesTest
- * @package prbdias\mbway\tests
+ * Class MessagePropertiesTest.
  */
 class MessagePropertiesTest extends \PHPUnit_Framework_TestCase
 {
@@ -46,7 +45,7 @@ class MessagePropertiesTest extends \PHPUnit_Framework_TestCase
         $messageProperties->setChannelTypeCode('channeltypecode2');
         $messageProperties->setNetworkCode('networkcode2');
         $messageProperties->setServiceType('servicetype2');
-        $datetime = date_create("2014-03-15");
+        $datetime = date_create('2014-03-15');
         $messageProperties->setTimestamp($datetime);
 
         $this->assertSame($messageProperties->getChannel(), 'channel2');

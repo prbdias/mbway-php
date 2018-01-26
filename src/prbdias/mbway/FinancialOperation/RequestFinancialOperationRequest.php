@@ -1,45 +1,46 @@
 <?php
+
 namespace prbdias\mbway\FinancialOperation;
 
 use prbdias\mbway\Alias;
+use prbdias\mbway\FinancialOperation;
 use prbdias\mbway\Merchant;
 use prbdias\mbway\MessageProperties;
-use prbdias\mbway\FinancialOperation;
 
 class RequestFinancialOperationRequest
 {
     /**
-     * @var string $messageType
+     * @var string
      */
     private $messageType;
 
     /**
-     * @var string $aditionalData
+     * @var string
      */
     protected $aditionalData;
 
     /**
-     * @var Alias $alias
+     * @var Alias
      */
     protected $alias;
 
     /**
-     * @var FinancialOperation $financialOperation
+     * @var FinancialOperation
      */
     protected $financialOperation;
 
     /**
-     * @var FinancialOperation $referencedFinancialOperation
+     * @var FinancialOperation
      */
     protected $referencedFinancialOperation;
 
     /**
-     * @var Merchant $merchant
+     * @var Merchant
      */
     protected $merchant;
 
     /**
-     * @var MessageProperties $messageProperties
+     * @var MessageProperties
      */
     protected $messageProperties;
 
@@ -57,7 +58,8 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param  string                           $aditionalData
+     * @param string $aditionalData
+     *
      * @return RequestFinancialOperationRequest
      */
     public function setAditionalData($aditionalData)
@@ -76,7 +78,8 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param  Alias                            $alias
+     * @param Alias $alias
+     *
      * @return RequestFinancialOperationRequest
      */
     public function setAlias(Alias $alias)
@@ -95,7 +98,8 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param  FinancialOperation               $financialOperation
+     * @param FinancialOperation $financialOperation
+     *
      * @return RequestFinancialOperationRequest
      */
     public function setFinancialOperation(FinancialOperation $financialOperation)
@@ -114,7 +118,8 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param  FinancialOperation               $referencedFinancialOperation
+     * @param FinancialOperation $referencedFinancialOperation
+     *
      * @return RequestFinancialOperationRequest
      */
     public function setReferencedFinancialOperation(FinancialOperation $referencedFinancialOperation)
@@ -133,7 +138,8 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param  Merchant                         $merchant
+     * @param Merchant $merchant
+     *
      * @return RequestFinancialOperationRequest
      */
     public function setMerchant(Merchant $merchant)
@@ -152,7 +158,8 @@ class RequestFinancialOperationRequest
     }
 
     /**
-     * @param  MessageProperties                $messageProperties
+     * @param MessageProperties $messageProperties
+     *
      * @return RequestFinancialOperationRequest
      */
     public function setMessageProperties(MessageProperties $messageProperties)

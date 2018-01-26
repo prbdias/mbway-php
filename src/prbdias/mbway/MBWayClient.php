@@ -1,19 +1,21 @@
 <?php
+
 namespace prbdias\mbway;
 
-use SoapClient;
 use prbdias\mbway\Alias\CreateMerchantAlias;
 use prbdias\mbway\Alias\CreateMerchantAliasResponse;
 use prbdias\mbway\Alias\RemoveMerchantAlias;
 use prbdias\mbway\Alias\RemoveMerchantAliasResponse;
+use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiry;
+use prbdias\mbway\FinancialOperation\FinancialOperationStatusInquiryResponse;
 use prbdias\mbway\FinancialOperation\RequestFinancialOperation;
 use prbdias\mbway\FinancialOperation\RequestFinancialOperationResponse;
+use SoapClient;
 use SoapHeader;
 use SoapVar;
 
 /**
- * Class MBWayClient
- * @package prbdias\mbway
+ * Class MBWayClient.
  */
 class MBWayClient
 {
@@ -33,70 +35,79 @@ class MBWayClient
     private $config;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $sandbox;
 
     /**
      * @var array
      */
-    private static $WSDL = array(
-        'DIR' => 'wsdl/',
-        'MERCHANT_ALIAS' => 'MerchantAliasWSService.wsdl',
+    private static $WSDL = [
+        'DIR'                 => 'wsdl/',
+        'MERCHANT_ALIAS'      => 'MerchantAliasWSService.wsdl',
         'FINANCIAL_OPERATION' => 'MerchantFinancialWSService.wsdl',
-    );
+    ];
 
     /**
      * @var array
      */
-    private static $ENDPOINTS = array(
+    private static $ENDPOINTS = [
         'PRODUCTION'    => 'https://mbway.pt/',
-        'SANDBOX'       => 'https://qly.mbway.pt/'
-    );
+        'SANDBOX'       => 'https://qly.mbway.pt/',
+    ];
 
     /**
      * @var array
      */
-    private static $locations = array(
-        'createMerchantAlias' => 'Merchant/createMerchantAliasWS',
-        'removeMerchantAlias' => 'Merchant/removeMerchantAliasWS',
-        'requestFinancialOperation' => 'Merchant/requestFinancialOperationWS',
-    );
+    private static $locations = [
+        'createMerchantAlias'             => 'Merchant/createMerchantAliasWS',
+        'removeMerchantAlias'             => 'Merchant/removeMerchantAliasWS',
+        'requestFinancialOperation'       => 'Merchant/requestFinancialOperationWS',
+        'financialOperationStatusInquiry' => 'Merchant/financialOperationStatusInquiryWS',
+    ];
 
     /**
      * @var array
      */
-    private static $classmap = array(
-        'alias' => 'prbdias\\mbway\\Alias',
-        'financialOperation' => 'prbdias\\mbway\\FinancialOperation',
-        'merchant' => 'prbdias\\mbway\\Merchant',
-        'messageProperties' => 'prbdias\\mbway\\MessageProperties',
-    );
+    private static $classmap = [
+        'alias'                        => 'prbdias\\mbway\\Alias',
+        'financialOperation'           => 'prbdias\\mbway\\FinancialOperation',
+        'financialOperationInquiry'    => 'prbdias\\mbway\\FinancialOperationInquiry',
+        'financialOperationInquiryRes' => 'prbdias\\mbway\\FinancialOperationInquiryRes',
+        'merchant'                     => 'prbdias\\mbway\\Merchant',
+        'messageProperties'            => 'prbdias\\mbway\\MessageProperties',
+        'operationInformation'         => 'prbdias\\mbway\\OperationInformation',
+
+    ];
 
     /**
      * @var array
      */
-    private static $classmapMerchantAlias = array(
-        'createMerchantAlias' => 'prbdias\\mbway\\Alias\\CreateMerchantAlias',
-        'createMerchantAliasRequest' => 'prbdias\\mbway\\Alias\\CreateMerchantAliasRequest',
+    private static $classmapMerchantAlias = [
+        'createMerchantAlias'         => 'prbdias\\mbway\\Alias\\CreateMerchantAlias',
+        'createMerchantAliasRequest'  => 'prbdias\\mbway\\Alias\\CreateMerchantAliasRequest',
         'createMerchantAliasResponse' => 'prbdias\\mbway\\Alias\\CreateMerchantAliasResponse',
-        'createMerchantAliasResult' => 'prbdias\\mbway\\Alias\\CreateMerchantAliasResult',
-        'removeMerchantAlias' => 'prbdias\\mbway\\Alias\\RemoveMerchantAlias',
-        'removeMerchantAliasRequest' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasRequest',
+        'createMerchantAliasResult'   => 'prbdias\\mbway\\Alias\\CreateMerchantAliasResult',
+        'removeMerchantAlias'         => 'prbdias\\mbway\\Alias\\RemoveMerchantAlias',
+        'removeMerchantAliasRequest'  => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasRequest',
         'removeMerchantAliasResponse' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResponse',
-        'removeMerchantAliasResult' => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResult',
-    );
+        'removeMerchantAliasResult'   => 'prbdias\\mbway\\Alias\\RemoveMerchantAliasResult',
+    ];
 
     /**
      * @var array
      */
-    private static $classmapFinancialOperation = array(
-        'requestFinancialOperation' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperation',
-        'requestFinancialOperationRequest' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationRequest',
+    private static $classmapFinancialOperation = [
+        'requestFinancialOperation'         => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperation',
+        'requestFinancialOperationRequest'  => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationRequest',
         'requestFinancialOperationResponse' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResponse',
-        'requestFinancialOperationResult' => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResult',
-    );
+        'requestFinancialOperationResult'   => 'prbdias\\mbway\\FinancialOperation\\RequestFinancialOperationResult',
 
+        'financialOperationStatusInquiry'         => 'prbdias\\mbway\\FinancialOperation\\FinancialOperationStatusInquiry',
+        'financialOperationStatusInquiryRequest'  => 'prbdias\\mbway\\FinancialOperation\\FinancialOperationStatusInquiryRequest',
+        'financialOperationStatusInquiryResponse' => 'prbdias\\mbway\\FinancialOperation\\FinancialOperationStatusInquiryResponse',
+        'financialOperationStatusInquiryResult'   => 'prbdias\\mbway\\FinancialOperation\\FinancialOperationStatusInquiryResult',
+    ];
 
     /**
      * @param Config $config
@@ -111,7 +122,9 @@ class MBWayClient
             }
         }
 
-        $options = array_merge(array(
+        $options = array_merge([
+            'local_cert'    => $config->getSSLCert(),
+            'passphrase'    => $config->getSSLPass(),
             'soap_version'  => SOAP_1_1,
             'features'      => SOAP_SINGLE_ELEMENT_ARRAYS,
             'compression'   => SOAP_COMPRESSION_GZIP | SOAP_COMPRESSION_DEFLATE,
@@ -119,22 +132,21 @@ class MBWayClient
             'trace'         => true,
             'exceptions'    => true,
             'cache_wsdl'    => WSDL_CACHE_NONE,
-            'ssl_method'    => SOAP_SSL_METHOD_TLS,
-            'local_cert'    => $config->getSSLCert(),
-            'passphrase'    => $config->getSSLPass(),
-        ), $options);
+            'ssl_method'    => SOAP_SSL_METHOD_SSLv23,
+
+        ], $options);
 
         $aliasOptions = $options;
-        $aliasOptions["classmap"] += self::$classmapMerchantAlias;
+        $aliasOptions['classmap'] += self::$classmapMerchantAlias;
         $this->aliasClient = new SoapClient(__DIR__.'/../../../'.self::$WSDL['DIR'].self::$WSDL['MERCHANT_ALIAS'], $aliasOptions);
 
         $financialOperationOptions = $options;
-        $financialOperationOptions["classmap"] += self::$classmapFinancialOperation;
+        $financialOperationOptions['classmap'] += self::$classmapFinancialOperation;
         $this->financialOperationClient = new SoapClient(__DIR__.'/../../../'.self::$WSDL['DIR'].self::$WSDL['FINANCIAL_OPERATION'], $financialOperationOptions);
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isSandbox()
     {
@@ -142,8 +154,9 @@ class MBWayClient
     }
 
     /**
-     * Enable or disable communication to quality server
-     * @param boolean $sandbox
+     * Enable or disable communication to quality server.
+     *
+     * @param bool $sandbox
      */
     public function setSandbox($sandbox = true)
     {
@@ -151,55 +164,80 @@ class MBWayClient
     }
 
     /**
-     * @param  CreateMerchantAlias         $parameters
+     * @param CreateMerchantAlias $parameters
+     *
      * @return CreateMerchantAliasResponse
      */
     public function createMerchantAlias(CreateMerchantAlias $parameters)
     {
         $this->addAddressingFeature($this->aliasClient, 'http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest', $this->config->getMerchantAliasAsyncService());
-        return $this->aliasClient->__soapCall('createMerchantAlias', array($parameters), [
-            'location' => $this->getLocation('createMerchantAlias')
+
+        return $this->aliasClient->__soapCall('createMerchantAlias', [$parameters], [
+            'location' => $this->getLocation('createMerchantAlias'),
         ]);
     }
 
     /**
-     * @param  RemoveMerchantAlias         $parameters
+     * @param RemoveMerchantAlias $parameters
+     *
      * @return RemoveMerchantAliasResponse
      */
     public function removeMerchantAlias(RemoveMerchantAlias $parameters)
     {
-        return $this->aliasClient->__soapCall('removeMerchantAlias', array($parameters), [
-            'location' => $this->getLocation('removeMerchantAlias')
+        return $this->aliasClient->__soapCall('removeMerchantAlias', [$parameters], [
+            'location' => $this->getLocation('removeMerchantAlias'),
         ]);
     }
 
     /**
-     * @param  RequestFinancialOperation         $parameters
+     * @param RequestFinancialOperation $parameters
+     *
      * @return RequestFinancialOperationResponse
      */
     public function requestFinancialOperation(RequestFinancialOperation $parameters)
     {
         $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest', $this->config->getFinancialOperationAsyncService());
 
-        return $this->financialOperationClient->__soapCall('requestFinancialOperation', array($parameters), [
-            'location' => $this->getLocation('requestFinancialOperation')
+        return $this->financialOperationClient->__soapCall('requestFinancialOperation', [$parameters], [
+            'location' => $this->getLocation('requestFinancialOperation'),
         ]);
     }
 
     /**
-     * Get location with support for sandbox mode
+     * @param FinancialOperationStatusInquiry $parameters
+     *
+     * @return FinancialOperationStatusInquiryResponse
+     */
+    public function financialOperationStatusInquiry(FinancialOperationStatusInquiry $parameters)
+    {
+        $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationInquiryWS/financialOperationStatusInquiryRequest', $this->config->getFinancialOperationAsyncService());
+
+        return $this->financialOperationClient->__soapCall('financialOperationStatusInquiry', [$parameters], [
+            'location' => $this->getLocation('financialOperationStatusInquiry'),
+        ]);
+    }
+
+    public function getFinantialClient()
+    {
+        return $this->financialOperationClient;
+    }
+
+    /**
+     * Get location with support for sandbox mode.
+     *
      * @param string $action
+     *
      * @return string
      */
     private function getLocation($action)
     {
-        return ($this->isSandbox() ? self::$ENDPOINTS['SANDBOX'] : self::$ENDPOINTS['PRODUCTION']) . self::$locations[$action];
+        return ($this->isSandbox() ? self::$ENDPOINTS['SANDBOX'] : self::$ENDPOINTS['PRODUCTION']).self::$locations[$action];
     }
 
     /**
      * @param SoapClient $client
-     * @param string $action
-     * @param string $replyTo
+     * @param string     $action
+     * @param string     $replyTo
      */
     private function addAddressingFeature(SoapClient &$client, $action, $replyTo)
     {
@@ -208,7 +246,7 @@ class MBWayClient
         //Create Soap Header.
         $header[] = new SOAPHeader($namespace, 'Action', $action);
         $address = new SoapVar($replyTo, XSD_STRING, null, null, 'Address', $namespace);
-        $replyTo = new SoapVar(array($address), SOAP_ENC_OBJECT, null, null, null, $namespace);
+        $replyTo = new SoapVar([$address], SOAP_ENC_OBJECT, null, null, null, $namespace);
         $header[] = new SOAPHeader($namespace, 'ReplyTo', $replyTo, false);
         $client->__setSoapHeaders($header);
     }

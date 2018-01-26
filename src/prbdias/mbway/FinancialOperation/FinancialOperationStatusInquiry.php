@@ -2,7 +2,7 @@
 
 namespace prbdias\mbway\FinancialOperation;
 
-class RequestFinancialOperation
+class FinancialOperationStatusInquiry
 {
     /**
      * @var RequestFinancialOperationRequest
@@ -22,7 +22,7 @@ class RequestFinancialOperation
      *
      * @return RequestFinancialOperation
      */
-    public function setArg0(RequestFinancialOperationRequest $arg0)
+    public function setArg0(FinancialOperationStatusInquiryRequest $arg0)
     {
         $this->arg0 = $arg0;
 

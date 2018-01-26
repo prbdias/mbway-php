@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="FinancialOperationAsyncResultService" targetNamespace="http://webservices.sibsmerchant.com/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://webservices.sibsmerchant.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://webservices.sibsmerchant.com/" schemaLocation="FinancialOperationAsyncResultService_schema1.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://financial.services.merchant.channelmanagermsp.sibs/" schemaLocation="FinancialOperationAsyncResultService_schema2.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="financialOperationResult">
+    <part name="parameters" element="tns:financialOperationResult">
+    </part>
+  </message>
+  <message name="financialOperationResultResponse">
+    <part name="parameters" element="tns:financialOperationResultResponse">
+    </part>
+  </message>
+  <portType name="FinancialOperationAsyncResult">
+    <operation name="financialOperationResult">
+      <input message="tns:financialOperationResult" wsam:Action="http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultRequest">
+    </input>
+      <output message="tns:financialOperationResultResponse" wsam:Action="http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="FinancialOperationAsyncResultPortBinding" type="tns:FinancialOperationAsyncResult">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="financialOperationResult">
+      <soap:operation soapAction="http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultRequest"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="FinancialOperationAsyncResultService">
+    <port name="FinancialOperationAsyncResultPort" binding="tns:FinancialOperationAsyncResultPortBinding">
+      <soap:address location="http://vsarctibd1:9082/client/FinancialOperationAsyncResultService"/>
+    </port>
+  </service>
+</definitions>

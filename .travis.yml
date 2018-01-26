@@ -5,3 +5,6 @@ php:
 
 before_script:
     - composer install --dev --prefer-source
+
+script:
+    - ./phpunit --configuration phpunit.xml.dist

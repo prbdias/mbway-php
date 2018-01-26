@@ -13,8 +13,7 @@ namespace prbdias\mbway\tests;
 use prbdias\mbway\FinancialOperation;
 
 /**
- * Class FinancialOperationTest
- * @package prbdias\mbway\tests
+ * Class FinancialOperationTest.
  */
 class FinancialOperationTest extends \PHPUnit_Framework_TestCase
 {

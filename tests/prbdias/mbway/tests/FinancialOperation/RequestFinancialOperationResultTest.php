@@ -39,7 +39,7 @@ class RequestFinancialOperationResultTest extends \PHPUnit_Framework_TestCase
      */
     public function testGettersSetters(RequestFinancialOperationResult $financialOperationResult)
     {
-        $datetime = date_create("2014-03-15");
+        $datetime = date_create('2014-03-15');
         $financialOperationResult->setAmount(2)
             ->setCurrencyCode('USD')
             ->setMerchantOperationID('operationid')

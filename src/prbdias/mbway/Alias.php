@@ -1,26 +1,26 @@
 <?php
+
 namespace prbdias\mbway;
 
 /**
- * Class Alias
- * @package prbdias\mbway
+ * Class Alias.
  */
 class Alias
 {
     /**
-     * Alias Type Codes
+     * Alias Type Codes.
      */
-    const CELLPHONE = "001";
-    const EMAIL = "002";
-    const GENERIC = "005";
+    const CELLPHONE = '001';
+    const EMAIL = '002';
+    const GENERIC = '005';
 
     /**
-     * @var string $aliasName
+     * @var string
      */
     protected $aliasName;
 
     /**
-     * @var string $aliasTypeCde
+     * @var string
      */
     protected $aliasTypeCde;
 
@@ -33,8 +33,10 @@ class Alias
     }
 
     /**
-     * Email or Cellphone(<country code>#<cellphone number>)
-     * @param  string $aliasName
+     * Email or Cellphone(<country code>#<cellphone number>).
+     *
+     * @param string $aliasName
+     *
      * @return Alias
      */
     public function setAliasName($aliasName)
@@ -53,7 +55,8 @@ class Alias
     }
 
     /**
-     * @param  string $aliasTypeCde
+     * @param string $aliasTypeCde
+     *
      * @return Alias
      */
     public function setAliasTypeCde($aliasTypeCde)

@@ -1,46 +1,48 @@
 <?php
+
 namespace prbdias\mbway\FinancialOperation;
 
 class RequestFinancialOperationResult
 {
     /**
-     * @type int
+     * @var int
      * @var int $amount
      */
     protected $amount;
 
     /**
-     * @type string
+     * @var string
      * @var string $currencyCode
      */
     protected $currencyCode;
 
     /**
-     * @type string
+     * @var string
      * @var string $merchantOperationID
      */
     protected $merchantOperationID;
 
     /**
-     * @type string
+     * @var string
      * @var string $statusCode
      */
     protected $statusCode;
 
     /**
-     * @type dateTime
+     * @var dateTime
      * @var \DateTime $timestamp
      */
     protected $timestamp;
 
     /**
-     * @type string
+     * @var string
      * @var string $token
      */
     protected $token;
 
     /**
-     * Check if result from webservice is valid
+     * Check if result from webservice is valid.
+     *
      * @return bool
      */
     public function isValid()
@@ -57,7 +59,8 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param  int                             $amount
+     * @param int $amount
+     *
      * @return RequestFinancialOperationResult
      */
     public function setAmount($amount)
@@ -76,7 +79,8 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param  string                          $currencyCode
+     * @param string $currencyCode
+     *
      * @return RequestFinancialOperationResult
      */
     public function setCurrencyCode($currencyCode)
@@ -95,7 +99,8 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param  string                          $merchantOperationID
+     * @param string $merchantOperationID
+     *
      * @return RequestFinancialOperationResult
      */
     public function setMerchantOperationID($merchantOperationID)
@@ -114,7 +119,8 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param  string                          $statusCode
+     * @param string $statusCode
+     *
      * @return RequestFinancialOperationResult
      */
     public function setStatusCode($statusCode)
@@ -137,7 +143,8 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param  \DateTime                       $timestamp
+     * @param \DateTime $timestamp
+     *
      * @return RequestFinancialOperationResult
      */
     public function setTimestamp(\DateTime $timestamp)
@@ -156,7 +163,8 @@ class RequestFinancialOperationResult
     }
 
     /**
-     * @param  string                          $token
+     * @param string $token
+     *
      * @return RequestFinancialOperationResult
      */
     public function setToken($token)
