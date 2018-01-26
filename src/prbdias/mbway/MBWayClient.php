@@ -204,7 +204,7 @@ class MBWayClient
      * @param  FinancialOperationStatusInquiry   $parameters
      * @return FinancialOperationStatusInquiryResponse
      */
-    public function FinancialOperationStatusInquiry(FinancialOperationStatusInquiry $parameters)
+    public function financialOperationStatusInquiry(FinancialOperationStatusInquiry $parameters)
     {
         $this->addAddressingFeature($this->financialOperationClient, 'http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationInquiryWS/financialOperationStatusInquiryRequest', $this->config->getFinancialOperationAsyncService());
 
