@@ -11,9 +11,8 @@
 namespace prbdias\mbway\tests\Alias;
 
 use prbdias\mbway\Alias\CreateMerchantAliasResult;
-use \PHPUnit\Framework\TestCase;
 
-class CreateMerchantAliasResultTest extends TestCase
+class CreateMerchantAliasResultTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @return CreateMerchantAliasResult

@@ -11,9 +11,8 @@
 namespace prbdias\mbway\tests\Integration;
 
 use prbdias\mbway\Config;
-use \PHPUnit\Framework\TestCase;
 
-class IntegrationTestCase extends  TestCase
+class IntegrationTestCase extends  \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
