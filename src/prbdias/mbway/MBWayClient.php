@@ -123,16 +123,20 @@ class MBWayClient
         }
 
         $options = array_merge([
-            'local_cert'    => $config->getSSLCert(),
-            'passphrase'    => $config->getSSLPass(),
-            'soap_version'  => SOAP_1_1,
-            'features'      => SOAP_SINGLE_ELEMENT_ARRAYS,
-            'compression'   => SOAP_COMPRESSION_GZIP | SOAP_COMPRESSION_DEFLATE,
-            'keep_alive'    => true,
-            'trace'         => true,
-            'exceptions'    => true,
-            'cache_wsdl'    => WSDL_CACHE_NONE,
-            'ssl_method'    => SOAP_SSL_METHOD_SSLv23,
+            'local_cert'     => $config->getSSLCert(),
+            'passphrase'     => $config->getSSLPass(),
+            'soap_version'   => SOAP_1_1,
+            'features'       => SOAP_SINGLE_ELEMENT_ARRAYS,
+            'compression'    => SOAP_COMPRESSION_GZIP | SOAP_COMPRESSION_DEFLATE,
+            'keep_alive'     => true,
+            'trace'          => true,
+            'exceptions'     => true,
+            'cache_wsdl'     => WSDL_CACHE_NONE,
+            'stream_context' => stream_context_create([
+                'ssl' => [
+                    'crypto_method' => STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+                    ],
+            ]),
 
         ], $options);
 
