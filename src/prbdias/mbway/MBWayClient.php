@@ -132,7 +132,11 @@ class MBWayClient
             'trace'         => true,
             'exceptions'    => true,
             'cache_wsdl'    => WSDL_CACHE_NONE,
-            'ssl_method'    => SOAP_SSL_METHOD_SSLv23,
+            'stream_context' => stream_context_create([
+                'ssl' => [
+                    'crypto_method' =>  STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+                    ]
+            ])
 
         ], $options);
 
